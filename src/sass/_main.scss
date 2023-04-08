@@ -1,0 +1,83 @@
+:root {
+	--primary-color: #5ab450;
+	// #ff9000
+
+	--secondary-color: #316dd9;
+	--primary-font-color: #111;
+	--lighter-font-color: #979393;
+	--main-bg-color: #fff;
+	--black-bg: #111;
+	--white-bg: #fff;
+	--warning: #f72020;
+	--grey: #fafafa;
+	--font-size: 1.8rem;
+	--smaller-font-size: 1.5rem;
+	--bigger-font-size: 2rem;
+	--larger-font-size: 2.5rem;
+	--nav-item-font-size: 2.3rem;
+	--logo-footer-size: 2.8rem;
+	--main-title-size: 2.5rem;
+}
+@media (min-width: 992px) {
+	:root {
+		--logo-footer-size: 3.5rem;
+		--main-title-size: 3rem;
+	}
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 62.5%;
+	font-family: "Montserrat", sans-serif;
+}
+textarea {
+	font-family: "Montserrat", sans-serif;
+}
+body {
+	background-color: var(--main-bg-color);
+	color: var(--primary-font-color);
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	font-family: "Montserrat", sans-serif;
+	cursor: pointer;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+a {
+	text-decoration: none;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 92%;
+	max-width: 1300px;
+}
+.primary-btn,
+.secondary-btn {
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+.primary-btn {
+	background-color: var(--primary-color);
+	color: var(--white-bg);
+	&:hover {
+		background-color: #409037;
+	}
+}
+.secondary-btn {
+	background-color: var(--secondary-color);
+	color: var(--white-bg);
+	&:hover {
+		background-color: #0a51d5;
+	}
+}

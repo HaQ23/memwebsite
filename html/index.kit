@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MemHub</title>
+		<!-- @include 'googleFonts.kit' -->
+		<link rel="stylesheet" href="../dist/css/home.min.css" />
+	</head>
+	<body>
+		<!-- @include 'navbar.kit' -->
+		<div class="container">
+			<main class="main">
+				<div class="wrapper">
+					<h1 class="main-title">
+						Mem<span class="other-color">Hub</span> - najlepsze memy w sieci!
+					</h1>
+
+					<section class="mems">
+						<button class="sort">Sortuj Według</button>
+						<ul class="sort-list">
+							<li data-category="najnowsze" class="sort-list__item active">
+								Najnowsze
+							</li>
+							<li data-category="najstarsze" class="sort-list__item">
+								Najstarsze
+							</li>
+							<li data-category="najlepsze" class="sort-list__item">
+								Najwyższa ocena
+							</li>
+							<li data-category="najgorsze" class="sort-list__item">
+								Najgorsza ocena
+							</li>
+						</ul>
+						<div class="mems__container">
+							<div class="mem">
+								<img
+									src="../dist/assets/images/mem1.webp"
+									alt=""
+									class="mem__img"
+								/>
+								<div class="mem__info">
+									<div class="mem__assessments">
+										<div class="mem__assessment">
+											<span class="mem__assessment-score"> 123 </span>
+											<button
+												aria-label="Polub ten mem"
+												class="add-assessment like"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													class="feather feather-thumbs-up"
+												>
+													<path
+														d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+													></path>
+												</svg>
+											</button>
+										</div>
+										<div class="mem__assessment">
+											<span class="mem__assessment-score"> 123 </span>
+											<button
+												aria-label="Polub ten mem"
+												class="add-assessment dilike"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													class="feather feather-thumbs-down"
+												>
+													<path
+														d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"
+													></path>
+												</svg>
+											</button>
+										</div>
+									</div>
+									<div class="mem__comment">
+										<span class="mem__comment"> 123 </span>
+										<button aria-label="Polub ten mem" class="add-comment">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="feather feather-message-square"
+											>
+												<path
+													d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+												></path>
+											</svg>
+										</button>
+									</div>
+									<div class="mem__author">
+										<div class="img-box">
+											<img
+												src="../dist/assets/icons/user.svg"
+												alt=""
+												class="auhor-photo"
+											/>
+										</div>
+										<span class="user-name">Jan Kowalski</span>
+									</div>
+									<button class="report-mem">Zgłoś mema</button>
+								</div>
+							</div>
+						</div>
+						<div class="mems__container">
+							<div class="mem">
+								<img
+									src="../dist/assets/images/mem2.webp"
+									alt=""
+									class="mem__img"
+								/>
+								<div class="mem__info">
+									<div class="mem__assessments">
+										<div class="mem__assessment">
+											<span class="mem__assessment-score"> 123 </span>
+											<button
+												aria-label="Polub ten mem"
+												class="add-assessment like"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													class="feather feather-thumbs-up"
+												>
+													<path
+														d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+													></path>
+												</svg>
+											</button>
+										</div>
+										<div class="mem__assessment">
+											<span class="mem__assessment-score"> 123 </span>
+											<button
+												aria-label="Polub ten mem"
+												class="add-assessment dilike"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													class="feather feather-thumbs-down"
+												>
+													<path
+														d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"
+													></path>
+												</svg>
+											</button>
+										</div>
+									</div>
+									<div class="mem__comment">
+										<span class="mem__comment"> 123 </span>
+										<button aria-label="Polub ten mem" class="add-comment">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="feather feather-message-square"
+											>
+												<path
+													d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+												></path>
+											</svg>
+										</button>
+									</div>
+									<div class="mem__author">
+										<div class="img-box">
+											<img
+												src="../dist/assets/icons/user.svg"
+												alt=""
+												class="auhor-photo"
+											/>
+										</div>
+										<span class="user-name">Jan Kowalski</span>
+									</div>
+									<button class="report-mem">Zgłoś mema</button>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</main>
+			<aside class="aside">
+				<section class="best-users">
+					<h2 class="section-title">Top 3 użytkowników tygodnia:</h2>
+					<ol class="best-users__container">
+						<li class="best-users__item">
+							<span class="number">1.</span>
+							<div class="img-box">
+								<img
+									src="../dist/assets/icons/user.svg"
+									alt=""
+									class="user-photo"
+								/>
+							</div>
+							<span class="name-user">Jan kowalski</span>
+							<span class="user-score">1233pkt</span>
+						</li>
+						<li class="best-users__item">
+							<span class="number">2.</span>
+							<div class="img-box">
+								<img
+									src="../dist/assets/icons/user.svg"
+									alt=""
+									class="user-photo"
+								/>
+							</div>
+							<span class="name-user">Jan kowalski</span>
+							<span class="user-score">1233pkt</span>
+						</li>
+						<li class="best-users__item">
+							<span class="number">3.</span>
+							<div class="img-box">
+								<img
+									src="../dist/assets/icons/user.svg"
+									alt=""
+									class="user-photo"
+								/>
+							</div>
+							<span class="name-user">Jan kowalski</span>
+							<span class="user-score">1233pkt</span>
+						</li>
+					</ol>
+				</section>
+				<section class="best-mems">
+					<h2 class="section-title">Najlepsze memy</h2>
+					<a
+						aria-label="link do najlepszego mema"
+						href="#"
+						class="best-mems__container"
+					>
+						<img src="../dist/assets/images/mem2.webp" alt="" />
+					</a>
+					<a
+						aria-label="link do najlepszego mema"
+						href="#"
+						class="best-mems__container"
+					>
+						<img src="../dist/assets/images/mem2.webp" alt="" />
+					</a>
+				</section>
+			</aside>
+		</div>
+		<!-- @include 'footer.kit' -->
+		<script src="../dist/js/main.min.js"></script>
+		<script src="../dist/js/index.min.js"></script>
+	</body>
+</html>

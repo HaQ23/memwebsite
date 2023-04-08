@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- @include 'googleFonts.kit' -->
+		<title>MemHub</title>
+		<link rel="stylesheet" href="../dist/css/contact.min.css" />
+	</head>
+	<body>
+		<!-- @include 'navbar.kit' -->
+		<main class="main">
+			<div class="wrapper">
+				<section class="contact">
+					<h2 class="section-title">
+						Masz jakieś pytania? <br />
+						Śmiało skontaktuj się z nami, z chęcią odpowiemy na twoje wszelkie
+						pytania.
+					</h2>
+					<form action="" class="contact-form" id="contact-form">
+						<div class="input-box">
+							<label for="contact-mail">Email</label>
+							<input
+								class="input-text"
+								type="text"
+								name="contact-mail"
+								id="contact-mail"
+							/>
+						</div>
+						<div class="input-box">
+							<label for="contact-name">Imie i nazwisko</label>
+							<input
+								class="input-text"
+								type="text"
+								name="contact-name"
+								id="contact-name"
+							/>
+						</div>
+						<div class="input-box">
+							<label for="message">Wiadomość</label>
+							<textarea
+								class="areaItem input-text"
+								id="message"
+								name="message"
+							></textarea>
+						</div>
+						<input class="sign-btn" type="submit" value="Wyślij" />
+						<p class="form-info">Nieprawidłowe dane!</p>
+					</form>
+				</section>
+			</div>
+		</main>
+		<div class="bg-color-other"></div>
+		<!-- @include 'footer.kit' -->
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+		></script>
+		<script src="../dist/js/contact.min.js"></script>
+		<script src="../dist/js/main.min.js"></script>
+	</body>
+</html>
