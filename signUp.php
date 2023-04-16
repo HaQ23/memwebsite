@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -6,16 +8,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta charset="UTF-8" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
-	rel="stylesheet"
-/>
-<meta name="description" content="Put your description here." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="description" content="Put your description here." />
 
 		<title>MemHub</title>
-		<link rel="stylesheet" href="../dist/css/signIn.min.css" />
+		<link rel="stylesheet" href="./dist/css/signIn.min.css" />
 	</head>
 	<body>
 		<main class="main signUp-main">
@@ -61,7 +63,11 @@
 					>Mem<span class="other-color">Hub</span></a
 				>
 				<h2 class="section-title">Zarejestruj się</h2>
-				<form action="" class="form-sign">
+				<form
+					action="./backend/login/signup.php"
+					method="POST"
+					class="form-sign"
+				>
 					<div class="inputs-boxes">
 						<div class="input-box">
 							<label for="name-user">Imie</label>
@@ -69,7 +75,7 @@
 						</div>
 						<div class="input-box">
 							<label for="surname-user">Nazwisko</label>
-							<input type="text" name="surname-user" id="surname-user" />
+							<input type="text" name="surrname-user" id="surname-user" />
 						</div>
 					</div>
 					<div class="inputs-boxes">
@@ -106,7 +112,12 @@
 							id="user-password-repeat"
 						/>
 					</div>
-					<input class="sign-btn" type="submit" value="Stwórz konto" />
+					<input
+						class="sign-btn"
+						type="submit"
+						name="user-signup-submit"
+						value="Stwórz konto"
+					/>
 					<div class="info-box">
 						<p class="form-text">Masz już konto ?</p>
 						<a href="../signIn.html" class="sign-now">Zaloguj się teraz</a>

@@ -15,7 +15,7 @@
 <meta name="description" content="Put your description here." />
 
 		<title>MemHub</title>
-		<link rel="stylesheet" href="../dist/css/signIn.min.css" />
+		<link rel="stylesheet" href="./dist/css/signIn.min.css" />
 	</head>
 	<body>
 		<main class="main">
@@ -24,7 +24,8 @@
 					>Mem<span class="other-color">Hub</span></a
 				>
 				<h2 class="section-title">Zaloguj się</h2>
-				<form action="" class="form-sign">
+				<form 	action="./backend/login/signin.php"
+					method="POST" class="form-sign">
 					<div class="input-box">
 						<label for="login-user">Nazwa użytkownika lub Email</label>
 						<input type="text" name="login-user" id="login-user" />
@@ -36,10 +37,10 @@
 						</div>
 						<input type="password" name="user-password" id="user-password" />
 					</div>
-					<input class="sign-btn" type="submit" value="Zaloguj się" />
+					<input class="sign-btn" name="user-signin-submit" type="submit" value="Zaloguj się" />
 					<div class="info-box">
 						<p class="form-text">Nie masz konta jeszcze?</p>
-						<a href="../signUp.html" class="sign-now">Zarejestruj się teraz</a>
+						<a href="../signUp.php" class="sign-now">Zarejestruj się teraz</a>
 					</div>
 				</form>
 			</section>

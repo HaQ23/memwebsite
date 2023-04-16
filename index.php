@@ -1,3 +1,8 @@
+<?php
+	session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -14,12 +19,12 @@
 />
 <meta name="description" content="Put your description here." />
 
-		<link rel="stylesheet" href="../dist/css/home.min.css" />
+		<link rel="stylesheet" href="./dist/css/home.min.css" />
 	</head>
 	<body>
 		<nav class="nav">
 	<div class="wrapper">
-		<a href="index.html" class="logo-name"
+		<a href="index.php" class="logo-name"
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<button class="ham-btn" aria-label="Show menu">
@@ -35,7 +40,13 @@
 			<a href="#" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
 				<a href="#" class="nav__button secondary-btn"> Dodaj mema </a>
-				<a href="../signIn.html" class="nav__button primary-btn"> Logowanie </a>
+				<?php
+					if(isset($_SESSION['userid'])) {
+						echo '<a href="./signIn.php" class="nav__button primary-btn"> Panel </a>';
+					} else {
+						echo '<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>';
+					}
+				?>
 			</div>
 		</div>
 	</div>
@@ -67,7 +78,7 @@
 						<div class="mems__container">
 							<div class="mem">
 								<img
-									src="../dist/assets/images/mem1.webp"
+									src="./dist/assets/images/mem1.webp"
 									alt=""
 									class="mem__img"
 								/>
@@ -146,7 +157,7 @@
 									<div class="mem__author">
 										<div class="img-box">
 											<img
-												src="../dist/assets/icons/user.svg"
+												src="./dist/assets/icons/user.svg"
 												alt=""
 												class="auhor-photo"
 											/>
@@ -160,7 +171,7 @@
 						<div class="mems__container">
 							<div class="mem">
 								<img
-									src="../dist/assets/images/mem2.webp"
+									src="./dist/assets/images/mem2.webp"
 									alt=""
 									class="mem__img"
 								/>
@@ -239,7 +250,7 @@
 									<div class="mem__author">
 										<div class="img-box">
 											<img
-												src="../dist/assets/icons/user.svg"
+												src="./dist/assets/icons/user.svg"
 												alt=""
 												class="auhor-photo"
 											/>
@@ -261,7 +272,7 @@
 							<span class="number">1.</span>
 							<div class="img-box">
 								<img
-									src="../dist/assets/icons/user.svg"
+									src="./dist/assets/icons/user.svg"
 									alt=""
 									class="user-photo"
 								/>
@@ -273,7 +284,7 @@
 							<span class="number">2.</span>
 							<div class="img-box">
 								<img
-									src="../dist/assets/icons/user.svg"
+									src="./dist/assets/icons/user.svg"
 									alt=""
 									class="user-photo"
 								/>
@@ -285,7 +296,7 @@
 							<span class="number">3.</span>
 							<div class="img-box">
 								<img
-									src="../dist/assets/icons/user.svg"
+									src="./dist/assets/icons/user.svg"
 									alt=""
 									class="user-photo"
 								/>
@@ -302,14 +313,14 @@
 						href="#"
 						class="best-mems__container"
 					>
-						<img src="../dist/assets/images/mem2.webp" alt="" />
+						<img src="./dist/assets/images/mem2.webp" alt="" />
 					</a>
 					<a
 						aria-label="link do najlepszego mema"
 						href="#"
 						class="best-mems__container"
 					>
-						<img src="../dist/assets/images/mem2.webp" alt="" />
+						<img src="./dist/assets/images/mem2.webp" alt="" />
 					</a>
 				</section>
 			</aside>
@@ -320,7 +331,7 @@
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<div class="footer__items">
-			<a href="../contact.html" class="footer__item">Kontakt</a>
+			<a href="./contact.html" class="footer__item">Kontakt</a>
 			<a href="#" class="footer__item">Regulamin</a>
 		</div>
 		<div class="footer__social-media">
@@ -375,7 +386,7 @@
 	</div>
 </footer>
 
-		<script src="../dist/js/main.min.js"></script>
-		<script src="../dist/js/index.min.js"></script>
+		<script src="./dist/js/main.min.js"></script>
+		<script src="./dist/js/index.min.js"></script>
 	</body>
 </html>
