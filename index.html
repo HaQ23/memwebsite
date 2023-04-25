@@ -144,11 +144,11 @@
 										</button>
 									</div>
 									<div class="mem__author">
-										<div class="img-box">
+										<div class="profile-box">
 											<img
 												src="../dist/assets/icons/user.svg"
 												alt=""
-												class="auhor-photo"
+												class="profile-photo"
 											/>
 										</div>
 										<span class="user-name">Jan Kowalski</span>
@@ -172,22 +172,11 @@
 												aria-label="Polub ten mem"
 												class="add-assessment like"
 											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="24"
-													height="24"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													stroke-width="2"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													class="feather feather-thumbs-up"
-												>
-													<path
-														d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
-													></path>
-												</svg>
+												<img
+													src="../dist/assets/icons/thumbs-up.svg"
+													alt=""
+													class="icon"
+												/>
 											</button>
 										</div>
 										<div class="mem__assessment">
@@ -196,54 +185,92 @@
 												aria-label="Polub ten mem"
 												class="add-assessment dilike"
 											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="24"
-													height="24"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													stroke-width="2"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													class="feather feather-thumbs-down"
-												>
-													<path
-														d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"
-													></path>
-												</svg>
+												<img
+													src="../dist/assets/icons/thumbs-down.svg"
+													alt=""
+													class="icon"
+												/>
 											</button>
 										</div>
 									</div>
 									<div class="mem__comment">
-										<span class="mem__comment"> 123 </span>
+										<span class="mem__comment-score"> 123 </span>
 										<button aria-label="Polub ten mem" class="add-comment">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="24"
-												height="24"
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="2"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-message-square"
-											>
-												<path
-													d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-												></path>
-											</svg>
+											<img
+												src="../dist/assets/icons/message-square.svg"
+												alt=""
+												class="icon"
+											/>
 										</button>
 									</div>
 									<div class="mem__author">
-										<div class="img-box">
+										<a href="#" class="profile-box">
 											<img
 												src="../dist/assets/icons/user.svg"
 												alt=""
-												class="auhor-photo"
+												class="profile-photo"
 											/>
+										</a>
+										<span class="user-name">Jan Kowalski</span>
+									</div>
+									<button class="report-mem">Zgłoś mema</button>
+								</div>
+							</div>
+						</div>
+						<div class="mems__container">
+							<div class="mem">
+								<img
+									src="../dist/assets/images/mem2.webp"
+									alt=""
+									class="mem__img"
+								/>
+								<div class="mem__info">
+									<div class="mem__assessments">
+										<div class="mem__assessment">
+											<span class="mem__assessment-score"> 123 </span>
+											<button
+												aria-label="Polub ten mem"
+												class="add-assessment like"
+											>
+												<img
+													src="../dist/assets/icons/thumbs-up.svg"
+													alt=""
+													class="icon"
+												/>
+											</button>
 										</div>
+										<div class="mem__assessment">
+											<span class="mem__assessment-score"> 123 </span>
+											<button
+												aria-label="Polub ten mem"
+												class="add-assessment dilike"
+											>
+												<img
+													src="../dist/assets/icons/thumbs-down.svg"
+													alt=""
+													class="icon"
+												/>
+											</button>
+										</div>
+									</div>
+									<div class="mem__comment">
+										<span class="mem__comment-score"> 123 </span>
+										<button aria-label="Polub ten mem" class="add-comment">
+											<img
+												src="../dist/assets/icons/message-square.svg"
+												alt=""
+												class="icon"
+											/>
+										</button>
+									</div>
+									<div class="mem__author">
+										<a href="#" class="profile-box">
+											<img
+												src="../dist/assets/icons/user.svg"
+												alt=""
+												class="profile-photo"
+											/>
+										</a>
 										<span class="user-name">Jan Kowalski</span>
 									</div>
 									<button class="report-mem">Zgłoś mema</button>
@@ -259,11 +286,11 @@
 					<ol class="best-users__container">
 						<li class="best-users__item">
 							<span class="number">1.</span>
-							<div class="img-box">
+							<div class="profile-box">
 								<img
 									src="../dist/assets/icons/user.svg"
 									alt=""
-									class="user-photo"
+									class="profile-photo"
 								/>
 							</div>
 							<span class="name-user">Jan kowalski</span>
@@ -271,11 +298,11 @@
 						</li>
 						<li class="best-users__item">
 							<span class="number">2.</span>
-							<div class="img-box">
+							<div class="profile-box">
 								<img
 									src="../dist/assets/icons/user.svg"
 									alt=""
-									class="user-photo"
+									class="profile-photo"
 								/>
 							</div>
 							<span class="name-user">Jan kowalski</span>
@@ -283,11 +310,11 @@
 						</li>
 						<li class="best-users__item">
 							<span class="number">3.</span>
-							<div class="img-box">
+							<div class="profile-box">
 								<img
 									src="../dist/assets/icons/user.svg"
 									alt=""
-									class="user-photo"
+									class="profile-photo"
 								/>
 							</div>
 							<span class="name-user">Jan kowalski</span>
@@ -314,6 +341,506 @@
 				</section>
 			</aside>
 		</div>
+		<section class="comments">
+			<div class="comments__options-box">
+				<button class="btn-sort-comments">
+					Najtrafniejsze
+					<img
+						src="../dist/assets/icons/chevron-down.svg"
+						alt=""
+						class="icon"
+					/>
+				</button>
+				<button class="close-btn" aria-label="Zamknij sekcje komentarzy">
+					<div class="close-btn__box">
+						<span class="close-btn__inner"></span>
+					</div>
+				</button>
+			</div>
+			<ul class="sort-comments-options">
+				<li class="sort-comments-options__item">
+					<button
+						data-category="Najtrafniejsze"
+						class="sort-comments-options__btn currentSort"
+					>
+						<div class="circle">
+							<span class="inner-circle"></span>
+						</div>
+						Najtrafniejsze
+					</button>
+				</li>
+				<li class="sort-comments-options__item">
+					<button data-category="Najnowsze" class="sort-comments-options__btn">
+						<div class="circle">
+							<span class="inner-circle"></span>
+						</div>
+						Najnowsze
+					</button>
+				</li>
+				<li class="sort-comments-options__item">
+					<button data-category="Najstarsze" class="sort-comments-options__btn">
+						<div class="circle">
+							<span class="inner-circle"></span>
+						</div>
+						Najstarsze
+					</button>
+				</li>
+			</ul>
+			<div class="comments__content">
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<a href="#" class="profile-box">
+						<img
+							src="../dist/assets/icons/user.svg"
+							alt=""
+							class="profile-photo"
+						/>
+					</a>
+					<div class="comment__content-box">
+						<div class="comment__content">
+							<span class="comment__author">Jan kowalski</span>
+							<p class="comment__text">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+								ratione impedit commodi, minus optio et ipsam deserunt
+								provident?
+							</p>
+						</div>
+						<div class="comment__options">
+							<div class="box">
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__like"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-up.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__like-score"
+										>123</span
+									>
+								</div>
+								<div class="comment__assessment">
+									<button
+										aria-label="Polub ten mem"
+										class="comment__option comment__dislike"
+									>
+										<img
+											src="../dist/assets/icons/thumbs-down.svg"
+											alt=""
+											class="icon"
+										/>
+									</button>
+									<span class="comment__assessment-score comment__unlike-score"
+										>123
+									</span>
+								</div>
+							</div>
+							<div class="box">
+								<button class="comment__option comment__report">Zgłoś</button>
+								<span class="comment__date-info">1 dzień temu</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bg-shadow"></div>
+			<div class="add-coment-container">
+				<textarea
+					class="addComment"
+					aria-label=""
+					type="text"
+					placeholder="Napisz komentarz..."
+				></textarea>
+				<button aria-label="Dodaj kometrz" class="add-comment-btn">
+					<img
+						class="icon"
+						src="../dist/assets/icons/chevron-right.svg"
+						alt=""
+					/>
+				</button>
+			</div>
+		</section>
+		<section class="report">
+			<div class="report__header">
+				<h2 class="report__title">Zgłoś</h2>
+				<button class="close-btn close-report-btn" aria-label="Zamknij sekcje zgłoszenia">
+					<div class="close-btn__box">
+						<span class="close-btn__inner"></span>
+					</div>
+				</button>
+			</div>
+
+			<div class="report__content">
+				<h3 class="report__subTitle">
+					Zgłoś tą treść, która wygląda na nieodpowiednią
+				</h3>
+				<p class="report__description">
+					Jeżeli uważasz, że dane treść nie jest zgodna z naszym regulaminem,
+					lub też któraś z treści występująca na naszej stronie jest obrażliwa
+					dla ciebie, poinforumuj nas o tym.
+				</p>
+				<form action="" class="report__form">
+					<h3 class="report__form-title">
+						Napisz nam jaki jest powód zgłoszenia
+					</h3>
+					<textarea
+						class="report__text"
+						name="report__text"
+						placeholder="Wpisz powód zgłoszenia"
+					></textarea>
+					<input
+						type="submit"
+						value="Wyślij zgłoszenie"
+						class="report__send-btn primary-btn"
+					/>
+				</form>
+			</div>
+		</section>
+		<div class="body-shadow bg-shadow"></div>
 		<footer class="footer">
 	<div class="wrapper">
 		<a href="index.html" class="logo-name"
@@ -376,6 +903,7 @@
 </footer>
 
 		<script src="../dist/js/main.min.js"></script>
+		<script src="../dist/js/mems.min.js"></script>
 		<script src="../dist/js/index.min.js"></script>
 	</body>
 </html>

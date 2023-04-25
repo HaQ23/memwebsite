@@ -108,7 +108,8 @@
 
 @media (min-width: 992px) {
 	.main {
-		padding: 14rem 0 16rem;
+		position: relative;
+		padding: 6rem 0 16rem;
 		.contact {
 			.section-title {
 				font-size: var(--larger-font-size);
@@ -125,11 +126,9 @@
 	}
 	.bg-color-other {
 		position: absolute;
-		z-index: -1;
-		left: 0;
-		bottom: -5rem;
+		bottom: 0;
 		border-style: solid;
-		border-width: 75vh 0 0 40vw;
+		border-width: 70vh 0 0 40vw;
 		border-color: transparent transparent transparent var(--primary-color);
 	}
 }

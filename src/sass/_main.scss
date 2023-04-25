@@ -1,16 +1,19 @@
 :root {
 	--primary-color: #5ab450;
 	// #ff9000
-
+	--primary-color-pale: hsl(114, 40%, 81%);
 	--secondary-color: #316dd9;
 	--primary-font-color: #111;
 	--lighter-font-color: #979393;
+	--dark-grey: hsl(0, 0%, 92%);
 	--main-bg-color: #fff;
 	--black-bg: #111;
 	--white-bg: #fff;
 	--warning: #f72020;
 	--grey: #fafafa;
 	--font-size: 1.8rem;
+	--comment-font: 1.4rem;
+	--comment-smaller-font: 1.2rem;
 	--smaller-font-size: 1.5rem;
 	--bigger-font-size: 2rem;
 	--larger-font-size: 2.5rem;
@@ -40,6 +43,7 @@ textarea {
 	font-family: "Montserrat", sans-serif;
 }
 body {
+	position: relative;
 	background-color: var(--main-bg-color);
 	color: var(--primary-font-color);
 }
@@ -59,7 +63,9 @@ a {
 }
 .wrapper {
 	margin: 0 auto;
-	width: 92%;
+	padding: 0 1rem;
+	width: 94%;
+
 	max-width: 1300px;
 }
 .primary-btn,
@@ -79,5 +85,70 @@ a {
 	color: var(--white-bg);
 	&:hover {
 		background-color: #0a51d5;
+	}
+}
+.profile-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 60%;
+	border: 2px solid var(--black-bg);
+	.profile-photo {
+		object-fit: cover;
+		width: 100%;
+	}
+}
+.close-btn {
+	position: relative;
+	padding: 0.75rem;
+	padding-right: 0;
+	cursor: pointer;
+	&__box {
+		position: relative;
+		width: 3rem;
+		height: 2rem;
+		pointer-events: none;
+	}
+	&__inner {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		transform: translateY(-50%);
+		&::after,
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			background-color: var(--black-bg);
+			transition: transform 0.2s 0.2s ease-in-out;
+		}
+		&::after {
+			top: -1rem;
+			transform: translateY(1rem) rotate(45deg);
+		}
+		&::before {
+			top: 1rem;
+			transform: translateY(-1rem) rotate(-45deg);
+		}
+	}
+}
+.bg-shadow {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 992px) {
+	body.no-scroll {
+		overflow: hidden;
 	}
 }
