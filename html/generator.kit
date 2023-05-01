@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- @include 'googleFonts.kit' -->
+		<title>MemHub</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+		/>
+		<link rel="stylesheet" href="../dist/css/generator.min.css" />
+	</head>
+	<body class="">
+		<!-- @include 'navbar.kit' -->
+		<main class="main">
+			<h2 class="section-title">
+				Generator <span class="other-color">Memów</span>
+			</h2>
+			<p class="main-description">
+				Wybierz odpowiedni szablon, dodaj zdjęcie i stwórz swojego mema!
+			</p>
+			<section class="select-temaplate show">
+				<h3 class="select-temaplate__title">Wybierz szablon</h3>
+				<div class="select-temaplate__carousel main-carousel" data-flickity>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="1"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-1.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="2"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-2.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="3"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-3.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="4"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-4.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="5"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-5.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="6"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-6.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="7"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-7.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="8"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-8.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+					<div
+						class="select-temaplate__carousel-item carousel-cell"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="9"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-9.webp"
+							alt="zdjęcie szablonu 1"
+							class="select-temaplate__carousel-img"
+						/>
+					</div>
+				</div>
+			</section>
+			<section class="set-image">
+				<div class="set-image__box">
+					<div class="selected-temaplate">
+						<img
+							src="../dist/assets/images/meme-demo-template-9.webp"
+							alt="zdjęcie szablonu 1"
+							class="set-image__img"
+						/>
+					</div>
+					<div class="set-image__box-file">
+						<h3 class="subTitle">Prześlij swoje zdjęcie</h3>
+						<label name="add-file " class="set-image__label"
+							><img
+								src="../dist/assets/icons/plus-circle.svg"
+								alt=""
+								class="icon"
+							/>
+							Wybierz plik
+							<input
+								for="add-file"
+								type="file"
+								class="set-image__input add-file"
+							/>
+						</label>
+
+						<button class="set-image__back">Zmień szablon</button>
+					</div>
+				</div>
+				<div class="standard-theme">
+					<h2 class="section-title">Nie masz własnego zdjęcia?</h2>
+					<p class="standard-theme__description">
+						Jeżeli nie masz zadnego swojego zdjęcia, nie ma problemu, wybierz z
+						pośród gotowych motywów.
+					</p>
+					<div class="standard-theme__container">
+						<div class="standard-theme__main-carousel">
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-1.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-2.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-3.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-4.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-5.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+						</div>
+						<div class="standard-theme__nav-carousel">
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-1.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-2.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-3.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-4.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+							<div
+								class="standard-theme__item carousel-cell"
+								role="button"
+								aria-label="Wybierz szablon 1"
+								data-type-template="9"
+							>
+								<img
+									src="../dist/assets/images/them-5.webp"
+									alt="zdjęcie szablonu 1"
+									class="standard-theme__carousel-img"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="guide">
+				<h2 class="guide__title">Jak stworzyć mema?</h2>
+				<div class="guide__items">
+					<div class="guide__item">
+						<span class="step">Krok 1</span>
+						<h3 class="subTitle">Otwórz plik</h3>
+						<p class="guide__text">
+							Wybierz jeden z 8 dostępnych szablonów memów. Następnie wybierz
+							obraz ze swojego urządzenia
+						</p>
+					</div>
+					<div class="guide__item">
+						<span class="step">Krok 2</span>
+						<h3 class="subTitle">Stwórz mema</h3>
+						<p class="guide__text">
+							Po przesłaniu pliku możesz zmienić szablon mema, jeśli chcesz.
+							Następnie wprowadź tekst, dostosuj czcionkę i przytnij ramkę.
+						</p>
+					</div>
+					<div class="guide__item">
+						<span class="step">Krok 3</span>
+						<h3 class="subTitle">Pobierz własnego mema</h3>
+						<p class="guide__text">
+							Zapisz mema, klikając odpowiedni przycisk, następnie możesz
+							pochwalić się stworzonym memem i umieścic go na naszej stronie.
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<section class="create-mem">
+			<button class="back">
+				<img src="../dist/assets/icons/chevron-left.svg" alt="" class="icon" />
+			</button>
+			<div class="create-mem__mem-box">
+				<div class="create-mem__img-box">
+					<img
+						src="../dist/assets/images/meme-demo-template-2.webp"
+						alt=""
+						class="create-mem__img"
+					/>
+				</div>
+				<canvas class="canvas" id="canvas-mem"> </canvas>
+			</div>
+			<div class="create-mem__options-container">
+				<button class="create-mem__change-template">
+					<img src="../dist/assets/icons/image.svg" alt="" class="icon" />Zmień
+					szablon
+				</button>
+				<div class="create-mem__text-box">
+					<h2 class="create-mem__subTitle">Wpisz tekst</h2>
+					<div class="create-mem__input-text-box">
+						<input
+							type="text"
+							placeholder="Górny tekst"
+							class="create-mem__input"
+							id="top-text"
+						/>
+						<input
+							placeholder="Dolny tekst"
+							type="text"
+							class="create-mem__input"
+							id="bottom-text"
+						/>
+					</div>
+					<div class="create-mem__option-box">
+						<select
+							name="font"
+							class="create-mem__select-input create-mem__input"
+							id="select-font"
+						>
+							<option value="Arial, sans-serif" class="option-item" checked>
+								Arial
+							</option>
+							<option value="Times New Roman, Times, serif" class="option-item">
+								Times New Roman
+							</option>
+							<option
+								value="Courier New, Courier, monospace"
+								class="option-item"
+							>
+								Courier New, Courier
+							</option>
+							<option value="Georgia, serif" class="option-item">
+								Georgia
+							</option>
+							<option value="Verdana, sans-serif" class="option-item">
+								Verdana
+							</option>
+							<option value="Tahoma, sans-serif" class="option-item">
+								Tahoma
+							</option>
+							<option value="Impact, sans-serif" class="option-item">
+								Impact
+							</option>
+							<option value="Comic Sans MS, sans-serif" class="option-item">
+								Comic Sans MS
+							</option>
+						</select>
+						<div class="create-mem__option-box">
+							<button
+								data-text-align="left"
+								class="create-mem__option-btn active-value"
+							>
+								<img
+									src="../dist/assets/icons/align-left.svg"
+									alt=""
+									class="icon"
+								/>
+							</button>
+							<button data-text-align="center" class="create-mem__option-btn">
+								<img
+									src="../dist/assets/icons/align-center.svg"
+									alt=""
+									class="icon"
+								/>
+							</button>
+							<button data-text-align="right" class="create-mem__option-btn">
+								<img
+									src="../dist/assets/icons/align-right.svg"
+									alt=""
+									class="icon"
+								/>
+							</button>
+						</div>
+					</div>
+					<div class="create-mem__option-box">
+						<input
+							placeholder="Rozmiar czcionki "
+							type="number"
+							min="1"
+							max="100"
+							class="create-mem__input"
+							id="font-size"
+							value=""
+						/>
+						<button
+							data-font-style="normal"
+							class="create-mem__option-btn font-style-btn active-value"
+						>
+							<img src="../dist/assets/icons/type.svg" alt="" class="icon" />
+						</button>
+						<button
+							data-font-style="italic"
+							class="create-mem__option-btn font-style-btn"
+						>
+							<img src="../dist/assets/icons/italic.svg" alt="" class="icon" />
+						</button>
+					</div>
+					<div class="create-mem__option-box">
+						<label for="input-color-text" class="create-mem__label"
+							><span class="text"> Kolor czcionki </span>
+							<input
+								name="input-color-text"
+								type="color"
+								value="#ff0000"
+								class="create-mem__input input-color"
+								id="input-color-text"
+						/></label>
+
+						<label for="input-stroke-style" class="create-mem__label"
+							><span class="text">Obramowanie czcionki </span>
+							<input
+								name="input-stroke-style"
+								type="color"
+								value="#000000"
+								class="create-mem__input input-color"
+								id="input-stroke-style"
+						/></label>
+					</div>
+					<div class="create-mem__buttons-box">
+						<a href="#" class="download-mem primary-btn"
+							><img
+								src="../dist/assets/icons/download.svg"
+								alt=""
+								class="icon"
+							/>Pobierz mema</a
+						>
+						<button class="add-mem primary-btn">Dodaj na stronę</button>
+					</div>
+				</div>
+			</div>
+			<div class="change-template">
+				<button class="close-btn" aria-label="Zamknij wybor szablonu">
+					<div class="close-btn__box">
+						<span class="close-btn__inner"></span>
+					</div>
+				</button>
+				<h2 class="change-template__title">Zmień swój szablon</h2>
+				<div class="change-template__items">
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="1"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-1.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="2"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-2.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="3"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-3.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="4"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-4.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="5"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-5.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="6"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-6.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="7"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-7.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="8"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-8.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+					<div
+						class="change-template__item"
+						role="button"
+						aria-label="Wybierz szablon 1"
+						data-type-template="9"
+					>
+						<img
+							src="../dist/assets/images/meme-demo-template-9.webp"
+							alt="zdjęcie szablonu 1"
+							class="change-template__img"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- @include 'footer.kit' -->
+		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+		<script src="../dist/js/carousel.min.js"></script>
+		<script src="../dist/js/main.min.js"></script>
+		<script src="../dist/js/generateMem.min.js"></script>
+	</body>
+</html>
