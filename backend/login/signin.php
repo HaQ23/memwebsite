@@ -7,7 +7,7 @@
         $userPwd = $_POST['user-password'];
 
         if(!checkSignInFormInputs($userLogin, $userPwd)) {
-            header('location: ../../signIp.php?error=emptyfields');
+            header('location: ../../signIn.php?error=emptyfields');
             exit();
         }
 

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -8,13 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta charset="UTF-8" />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
-			rel="stylesheet"
-		/>
-		<meta name="description" content="Put your description here." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+	rel="stylesheet"
+/>
+<meta name="description" content="Put your description here." />
 
 		<title>MemHub</title>
 		<link rel="stylesheet" href="./dist/css/signIn.min.css" />
@@ -29,26 +27,26 @@
 				<h3 class="sub-title">Co uzyskasz?</h3>
 				<ul class="encourage-register__profits">
 					<li class="encourage-register__profit">
-						<img src="../dist/assets/icons/check.svg" alt="" class="icon" />
+						<img src="./dist/assets/icons/check.svg" alt="" class="icon" />
 						Możliwośc dodawania memów.
 					</li>
 					<li class="encourage-register__profit">
 						<img
-							src="../dist/assets/icons/check.svg"
+							src="./dist/assets/icons/check.svg"
 							alt=""
 							class="icon"
 						/>Możliwośc komentowania memów.
 					</li>
 					<li class="encourage-register__profit">
 						<img
-							src="../dist/assets/icons/check.svg"
+							src="./dist/assets/icons/check.svg"
 							alt=""
 							class="icon"
 						/>Możliwośc oceniania memów.
 					</li>
 					<li class="encourage-register__profit">
 						<img
-							src="../dist/assets/icons/check.svg"
+							src="./dist/assets/icons/check.svg"
 							alt=""
 							class="icon"
 						/>Panel użytkownika z wieloma nowymi funkcjami.
@@ -59,15 +57,12 @@
 				</ul>
 			</section>
 			<section class="sign signUp">
-				<a href="index.html" class="logo-name"
+				<a href="index.php" class="logo-name"
 					>Mem<span class="other-color">Hub</span></a
 				>
 				<h2 class="section-title">Zarejestruj się</h2>
-				<form
-					action="./backend/login/signup.php"
-					method="POST"
-					class="form-sign"
-				>
+				<form action="./backend/login/signup.php"
+				method="POST" class="form-sign">
 					<div class="inputs-boxes">
 						<div class="input-box">
 							<label for="name-user">Imie</label>
@@ -77,6 +72,7 @@
 						<div class="input-box">
 							<label for="surname-user">Nazwisko</label>
 							<input type="text" name="surrname-user" id="surname-user" />
+							<p aria-hidden="true" class="error-info">Błędne dane</p>
 						</div>
 					</div>
 					<div class="inputs-boxes">
@@ -117,15 +113,10 @@
 						/>
 						<p aria-hidden="true" class="error-info">Błędne dane</p>
 					</div>
-					<input
-						class="sign-btn"
-						type="submit"
-						name="user-signup-submit"
-						value="Stwórz konto"
-					/>
+					<input class="sign-btn" name="user-signup-submit" type="submit" value="Stwórz konto" />
 					<div class="info-box">
 						<p class="form-text">Masz już konto ?</p>
-						<a href="../signIn.html" class="sign-now">Zaloguj się teraz</a>
+						<a href="./signIn.php" class="sign-now">Zaloguj się teraz</a>
 					</div>
 				</form>
 			</section>

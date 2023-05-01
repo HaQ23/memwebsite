@@ -24,7 +24,7 @@
 	<body>
 		<nav class="nav">
 	<div class="wrapper">
-		<a href="index.php" class="logo-name"
+		<a href="index.html" class="logo-name"
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<button class="ham-btn" aria-label="Show menu">
@@ -33,8 +33,8 @@
 			</div>
 		</button>
 		<div class="nav__items">
-			<a href="../index.html" class="nav__item">Strona główna</a>
-			<a href="../generator.html" class="nav__item">Generator</a>
+			<a href="./index.html" class="nav__item">Strona główna</a>
+			<a href="./generator.html" class="nav__item">Generator</a>
 
 			<a href="#" class="nav__item">Ranking</a>
 			<a href="#" class="nav__item">Poczekalnia</a>
@@ -184,7 +184,7 @@
 												class="add-assessment like"
 											>
 												<img
-													src="../dist/assets/icons/thumbs-up.svg"
+													src="./dist/assets/icons/thumbs-up.svg"
 													alt=""
 													class="icon"
 												/>
@@ -197,7 +197,7 @@
 												class="add-assessment dilike"
 											>
 												<img
-													src="../dist/assets/icons/thumbs-down.svg"
+													src="./dist/assets/icons/thumbs-down.svg"
 													alt=""
 													class="icon"
 												/>
@@ -208,7 +208,7 @@
 										<span class="mem__comment-score"> 123 </span>
 										<button aria-label="Polub ten mem" class="add-comment">
 											<img
-												src="../dist/assets/icons/message-square.svg"
+												src="./dist/assets/icons/message-square.svg"
 												alt=""
 												class="icon"
 											/>
@@ -231,7 +231,7 @@
 						<div class="mems__container">
 							<div class="mem">
 								<img
-									src="../dist/assets/images/mem2.webp"
+									src="./dist/assets/images/mem2.webp"
 									alt=""
 									class="mem__img"
 								/>
@@ -244,7 +244,7 @@
 												class="add-assessment like"
 											>
 												<img
-													src="../dist/assets/icons/thumbs-up.svg"
+													src="./dist/assets/icons/thumbs-up.svg"
 													alt=""
 													class="icon"
 												/>
@@ -257,7 +257,7 @@
 												class="add-assessment dilike"
 											>
 												<img
-													src="../dist/assets/icons/thumbs-down.svg"
+													src="./dist/assets/icons/thumbs-down.svg"
 													alt=""
 													class="icon"
 												/>
@@ -268,7 +268,7 @@
 										<span class="mem__comment-score"> 123 </span>
 										<button aria-label="Polub ten mem" class="add-comment">
 											<img
-												src="../dist/assets/icons/message-square.svg"
+												src="./dist/assets/icons/message-square.svg"
 												alt=""
 												class="icon"
 											/>
@@ -277,7 +277,7 @@
 									<div class="mem__author">
 										<a href="#" class="profile-box">
 											<img
-												src="../dist/assets/icons/user.svg"
+												src="./dist/assets/icons/user.svg"
 												alt=""
 												class="profile-photo"
 											/>
@@ -357,7 +357,7 @@
 				<button class="btn-sort-comments">
 					Najtrafniejsze
 					<img
-						src="../dist/assets/icons/chevron-down.svg"
+						src="./dist/assets/icons/chevron-down.svg"
 						alt=""
 						class="icon"
 					/>
@@ -401,7 +401,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -423,7 +423,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -438,7 +438,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -458,7 +458,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -480,7 +480,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -495,7 +495,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -515,7 +515,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -537,7 +537,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -552,7 +552,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -572,7 +572,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -594,7 +594,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -609,7 +609,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -629,7 +629,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -651,7 +651,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -666,7 +666,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -686,7 +686,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -708,7 +708,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -723,7 +723,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -743,7 +743,7 @@
 				<div class="comment">
 					<a href="#" class="profile-box">
 						<img
-							src="../dist/assets/icons/user.svg"
+							src="./dist/assets/icons/user.svg"
 							alt=""
 							class="profile-photo"
 						/>
@@ -765,7 +765,7 @@
 										class="comment__option comment__like"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-up.svg"
+											src="./dist/assets/icons/thumbs-up.svg"
 											alt=""
 											class="icon"
 										/>
@@ -780,7 +780,7 @@
 										class="comment__option comment__dislike"
 									>
 										<img
-											src="../dist/assets/icons/thumbs-down.svg"
+											src="./dist/assets/icons/thumbs-down.svg"
 											alt=""
 											class="icon"
 										/>
@@ -809,7 +809,7 @@
 				<button aria-label="Dodaj kometrz" class="add-comment-btn">
 					<img
 						class="icon"
-						src="../dist/assets/icons/chevron-right.svg"
+						src="./dist/assets/icons/chevron-right.svg"
 						alt=""
 					/>
 				</button>
@@ -913,13 +913,8 @@
 	</div>
 </footer>
 
-<<<<<<< HEAD:index.php
 		<script src="./dist/js/main.min.js"></script>
+		<script src="./dist/js/mems.min.js"></script>
 		<script src="./dist/js/index.min.js"></script>
-=======
-		<script src="../dist/js/main.min.js"></script>
-		<script src="../dist/js/mems.min.js"></script>
-		<script src="../dist/js/index.min.js"></script>
->>>>>>> origin/only-html-ver:index.html
 	</body>
 </html>
