@@ -29,13 +29,16 @@
 					<div class="input-box">
 						<label for="login-user">Nazwa użytkownika lub Email</label>
 						<input type="text" name="login-user" id="login-user" />
+						<p aria-hidden="true" class="error-info">Błędne dane</p>
 					</div>
+
 					<div class="input-box">
 						<div class="text-box">
 							<label for="user-password">Hasło</label>
 							<a href="#" class="forgot-password">Zapomniałeś hasła?</a>
 						</div>
 						<input type="password" name="user-password" id="user-password" />
+						<p aria-hidden="true" class="error-info">Błędne dane</p>
 					</div>
 					<input class="sign-btn" name="user-signin-submit" type="submit" value="Zaloguj się" />
 					<div class="info-box">

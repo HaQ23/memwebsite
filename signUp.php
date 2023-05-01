@@ -72,6 +72,7 @@
 						<div class="input-box">
 							<label for="name-user">Imie</label>
 							<input type="text" name="name-user" id="name-user" />
+							<p aria-hidden="true" class="error-info">Błędne dane</p>
 						</div>
 						<div class="input-box">
 							<label for="surname-user">Nazwisko</label>
@@ -82,6 +83,7 @@
 						<div class="input-box">
 							<label for="nick-user">Nazwa użytkownika </label>
 							<input type="text" name="nick-user" id="nick-user" />
+							<p aria-hidden="true" class="error-info">Błędne dane</p>
 						</div>
 						<div class="input-box">
 							<label for="data-of-birth-user">Data urodzenia </label>
@@ -91,17 +93,19 @@
 								id="data-of-birth-user"
 								value="2023-07-22"
 							/>
+							<p aria-hidden="true" class="error-info">Błędne dane</p>
 						</div>
 					</div>
-
 					<div class="input-box">
 						<label for="email-user">Email </label>
 						<input type="email" name="email-user" id="email-user" />
+						<p aria-hidden="true" class="error-info">Błędne dane</p>
 					</div>
 
 					<div class="input-box">
 						<label for="user-password">Hasło</label>
 						<input type="password" name="user-password" id="user-password" />
+						<p aria-hidden="true" class="error-info">Błędne dane</p>
 					</div>
 
 					<div class="input-box">
@@ -111,6 +115,7 @@
 							name="user-password-repeat"
 							id="user-password-repeat"
 						/>
+						<p aria-hidden="true" class="error-info">Błędne dane</p>
 					</div>
 					<input
 						class="sign-btn"

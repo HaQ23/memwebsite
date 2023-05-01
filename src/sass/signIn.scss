@@ -45,7 +45,7 @@
 		.form-sign {
 			display: flex;
 			flex-direction: column;
-			gap: 3rem;
+			gap: 1rem;
 			max-width: 400px;
 			.text-box {
 				display: flex;
@@ -64,8 +64,22 @@
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
+				.error-info {
+					font-size: var(--comment-font);
+					font-weight: 500;
+					color: var(--warning);
+					visibility: hidden;
+				}
 				label {
 					font-weight: 500;
+				}
+				&.error {
+					input {
+						border-color: var(--warning);
+					}
+					.error-info {
+						visibility: visible;
+					}
 				}
 			}
 			.inputs-boxes {
@@ -79,10 +93,12 @@
 				font-size: var(--smaller-font-size);
 				border-radius: 8px;
 				transition: outline-color 0.2s;
+				outline: none;
+				border: 2px solid var(--black-bg);
 				width: 100%;
 				height: 46px;
 				&:focus {
-					outline-color: var(--primary-color);
+					border-color: var(--primary-color);
 				}
 				&.wrong {
 					border: 2px solid red;
@@ -115,13 +131,14 @@
 		}
 	}
 	.sign.signUp {
+		.form-sign {
+			gap: 0.5rem;
+		}
 		.section-title {
 			margin: 4rem 0 6rem;
 		}
 	}
 	.encourage-register {
-		position: relative;
-		z-index: 5;
 		display: none;
 		padding: 0 0 2rem 2rem;
 		background-color: var(--white-bg);
@@ -160,6 +177,7 @@
 
 @media (min-width: 992px) {
 	.signUp-main {
+		position: relative;
 		display: grid;
 		grid-template-columns: max-content 1fr;
 		align-items: flex-start;
@@ -186,7 +204,16 @@
 	}
 	.bg-color-other {
 		position: absolute;
+		bottom: 0;
 		left: 0;
+
+		border-style: solid;
+		border-width: 55vh 0 0 50vw;
+		border-color: transparent transparent transparent var(--primary-color);
+	}
+}
+@media (min-width: 1400px) {
+	.bg-color-other {
 		bottom: 0;
 		border-style: solid;
 		border-width: 70vh 0 0 40vw;
