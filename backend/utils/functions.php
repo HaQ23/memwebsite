@@ -44,7 +44,7 @@
         return $result;
     }
     function checkIfUserExists($conn, $userName, $userEmail) {
-        $sql = "SELECT * FROM uzytkownicy WHERE nazwa = ? OR email = ?;";
+        $sql = "SELECT * FROM account WHERE nick = ? OR email = ?;";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
          header('location: ../../signUp.php?error=stmterror1');
@@ -64,18 +64,18 @@
         mysqli_stmt_close($stmt);
     }
     function createUser($conn, $userName, $userSurrname, $userNickname, $userDateOfBirth, $userEmail, $userPwd, $userRole, $userCreateDate) {
-        $sql = "INSERT INTO uzytkownicy (nazwa, imie, nazwisko, data_urodzenia, data_utworzenia, email, haslo, rola) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO account (nick, name, surrname, email, password, birth_date, creation_date, role) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
             header('location: ../../signUp.php?error=stmterror2');
             exit();
         }
         $hashedPwd = password_hash($userPwd, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssssssss", $userNickname, $userName, $userSurrname, $userDateOfBirth, $userCreateDate, $userEmail, $hashedPwd, $userRole);
+        mysqli_stmt_bind_param($stmt, "ssssssss", $userNickname, $userName, $userSurrname, $userEmail, $hashedPwd, $userDateOfBirth, $userCreateDate, $userRole);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header('location: ../../signUp.php?error=none');
+        header('location: ../../signUp.php?signup=success');
         exit();
     }
 
@@ -86,7 +86,7 @@
             header("location: ../../signIn.php?error=wronglogin");
             exit();
         }
-        $userPwdHashed = $userExists["haslo"];
+        $userPwdHashed = $userExists["password"];
         $checkPwd = password_verify($userPwd, $userPwdHashed);
 
         if($checkPwd === false) {
@@ -94,9 +94,9 @@
             exit();
         } else {
             session_start();
-            $_SESSION['userid'] = $userExists['id_uzytkownika'];
-            $_SESSION['username'] = $userExists['nazwa'];
-            header("location: ../../index.php");
+            $_SESSION['userid'] = $userExists['id_user'];
+            $_SESSION['username'] = $userExists['nick'];
+            header("location: ../../index.php?login=success");
             exit();
         }
     }

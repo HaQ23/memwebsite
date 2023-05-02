@@ -29,7 +29,17 @@
 					<div class="input-box">
 						<label for="login-user">Nazwa użytkownika lub Email</label>
 						<input type="text" name="login-user" id="login-user" />
-						<p aria-hidden="true" class="error-info">Błędne dane</p>
+						<?php 
+						if(isset($_GET['error'])) {
+							if($_GET['error'] == "emptyfields") {
+
+								echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+							} else if($_GET['error'] == "wronglogin") {
+								echo '<p aria-hidden="true" class="error-info">Błędny login lub e-mail</p>';
+							}
+						}
+						?>
+						
 					</div>
 
 					<div class="input-box">
@@ -38,7 +48,16 @@
 							<a href="#" class="forgot-password">Zapomniałeś hasła?</a>
 						</div>
 						<input type="password" name="user-password" id="user-password" />
-						<p aria-hidden="true" class="error-info">Błędne dane</p>
+						<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} else if($_GET['error'] == "wrongpassword") {
+									echo '<p aria-hidden="true" class="error-info">Błędne hasło</p>';
+								}
+							}
+						?>
 					</div>
 					<input class="sign-btn" name="user-signin-submit" type="submit" value="Zaloguj się" />
 					<div class="info-box">

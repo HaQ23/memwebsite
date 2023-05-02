@@ -67,19 +67,42 @@
 						<div class="input-box">
 							<label for="name-user">Imie</label>
 							<input type="text" name="name-user" id="name-user" />
-							<p aria-hidden="true" class="error-info">Błędne dane</p>
+							<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} 
+							}
+							?>
 						</div>
 						<div class="input-box">
 							<label for="surname-user">Nazwisko</label>
 							<input type="text" name="surrname-user" id="surname-user" />
-							<p aria-hidden="true" class="error-info">Błędne dane</p>
+							<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} 
+							}
+							?>
 						</div>
 					</div>
 					<div class="inputs-boxes">
 						<div class="input-box">
 							<label for="nick-user">Nazwa użytkownika </label>
 							<input type="text" name="nick-user" id="nick-user" />
-							<p aria-hidden="true" class="error-info">Błędne dane</p>
+							<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} else if($_GET['error'] == "username") {
+									echo '<p aria-hidden="true" class="error-info">Ta nazwa jest zajęta</p>';
+								} 
+							}
+							?>
 						</div>
 						<div class="input-box">
 							<label for="data-of-birth-user">Data urodzenia </label>
@@ -89,19 +112,44 @@
 								id="data-of-birth-user"
 								value="2023-07-22"
 							/>
-							<p aria-hidden="true" class="error-info">Błędne dane</p>
+							<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} 
+							}
+							?>
 						</div>
 					</div>
 					<div class="input-box">
 						<label for="email-user">Email </label>
 						<input type="email" name="email-user" id="email-user" />
-						<p aria-hidden="true" class="error-info">Błędne dane</p>
+						<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} else if($_GET['error'] == "email") {
+									echo '<p aria-hidden="true" class="error-info">Podaj poprawny adres email</p>';
+								} 
+							}
+						?>
 					</div>
 
 					<div class="input-box">
 						<label for="user-password">Hasło</label>
 						<input type="password" name="user-password" id="user-password" />
-						<p aria-hidden="true" class="error-info">Błędne dane</p>
+						<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								} else if($_GET['error'] == "pwd") {
+									echo '<p aria-hidden="true" class="error-info">Hasła nie są identyczne</p>';
+								} 
+							}
+						?>
 					</div>
 
 					<div class="input-box">
@@ -111,9 +159,27 @@
 							name="user-password-repeat"
 							id="user-password-repeat"
 						/>
-						<p aria-hidden="true" class="error-info">Błędne dane</p>
+						<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "emptyfields") {
+
+									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+								}  else if($_GET['error'] == "pwd") {
+									echo '<p aria-hidden="true" class="error-info">Hasła nie są identyczne</p>';
+								}
+							}
+						?>
 					</div>
 					<input class="sign-btn" name="user-signup-submit" type="submit" value="Stwórz konto" />
+					<?php 
+							if(isset($_GET['error'])) {
+								if($_GET['error'] == "userexists") {
+
+									echo '<p aria-hidden="true" class="error-info">Użytkownik o podanym adresie email lub nazwie użytkownika istnieje</p>';
+								}
+							}
+						?>
+						
 					<div class="info-box">
 						<p class="form-text">Masz już konto ?</p>
 						<a href="./signIn.php" class="sign-now">Zaloguj się teraz</a>

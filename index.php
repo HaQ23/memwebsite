@@ -19,12 +19,12 @@
 />
 <meta name="description" content="Put your description here." />
 
-		<link rel="stylesheet" href="./dist/css/home.min.css" />
+		<link rel="stylesheet" href="./dist/css/home.min.css?v=1" />
 	</head>
 	<body>
 		<nav class="nav">
 	<div class="wrapper">
-		<a href="index.html" class="logo-name"
+		<a href="index.php" class="logo-name"
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<button class="ham-btn" aria-label="Show menu">
@@ -33,8 +33,8 @@
 			</div>
 		</button>
 		<div class="nav__items">
-			<a href="./index.html" class="nav__item">Strona główna</a>
-			<a href="./generator.html" class="nav__item">Generator</a>
+			<a href="./index.php" class="nav__item">Strona główna</a>
+			<a href="./generator.php" class="nav__item">Generator</a>
 
 			<a href="#" class="nav__item">Ranking</a>
 			<a href="#" class="nav__item">Poczekalnia</a>
@@ -42,7 +42,7 @@
 				<a href="#" class="nav__button secondary-btn"> Dodaj mema </a>
 				<?php
 					if(isset($_SESSION['userid'])) {
-						echo '<a href="./signIn.php" class="nav__button primary-btn"> Panel </a>';
+						echo '<a href="./dashboard.php" class="nav__button primary-btn"> Panel </a>';
 					} else {
 						echo '<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>';
 					}
@@ -854,11 +854,11 @@
 		<div class="body-shadow bg-shadow"></div>
 		<footer class="footer">
 	<div class="wrapper">
-		<a href="index.html" class="logo-name"
+		<a href="index.php" class="logo-name"
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<div class="footer__items">
-			<a href="./contact.html" class="footer__item">Kontakt</a>
+			<a href="./contact.php" class="footer__item">Kontakt</a>
 			<a href="#" class="footer__item">Regulamin</a>
 		</div>
 		<div class="footer__social-media">
