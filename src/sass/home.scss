@@ -3,6 +3,10 @@
 @use "./footer";
 @use "./memStyle";
 @use "./reportSection";
+
+:root {
+	--scale-alert: 1;
+}
 .main {
 	margin: 0 auto;
 	padding: 6rem 0;
@@ -30,6 +34,7 @@
 .aside {
 	display: none;
 }
+
 
 @media (min-width: 1200px) {
 	.container {

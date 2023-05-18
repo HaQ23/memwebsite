@@ -154,6 +154,7 @@
 											</svg>
 										</button>
 									</div>
+									<a href="./account.html">
 									<div class="mem__author">
 										<div class="profile-box">
 											<img
@@ -164,6 +165,7 @@
 										</div>
 										<span class="user-name">Jan Kowalski</span>
 									</div>
+									</a>
 									<button class="report-mem">Zgłoś mema</button>
 								</div>
 							</div>
@@ -912,9 +914,22 @@
 		</p>
 	</div>
 </footer>
+		<div class="alert">
+			<p class="alert__text">Zalogowano pomyślnie!</p>
+		</div>
+	
 
 		<script src="./dist/js/main.min.js"></script>
 		<script src="./dist/js/mems.min.js"></script>
 		<script src="./dist/js/index.min.js"></script>
+		<?php
+			sleep(0.1);
+			if(isset($_GET['login'])) {
+				echo '<script>handleAlert("Witaj, '.$_SESSION['username'].'!")</script>';
+			}		
+			if(isset($_GET['signUp'])) {
+				echo '<script>handleAlert("Pomyślnie zarejestrowano!")</script>';
+			}		
+		?>
 	</body>
 </html>

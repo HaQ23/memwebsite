@@ -45,7 +45,7 @@
 					<div class="input-box">
 						<div class="text-box">
 							<label for="user-password">Hasło</label>
-							<a href="#" class="forgot-password">Zapomniałeś hasła?</a>
+							<a href="./recovery.php" class="forgot-password">Zapomniałeś hasła?</a>
 						</div>
 						<input type="password" name="user-password" id="user-password" />
 						<?php 

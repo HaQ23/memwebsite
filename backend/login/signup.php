@@ -30,7 +30,7 @@
             header('location: ../../signUp.php?error=pwd');
             exit();
         }
-        if(checkIfUserExists($conn, $userName, $userEmail)) {
+        if(checkIfUserExists($conn, $userNickname, $userEmail)) {
             header('location: ../../signUp.php?error=userexists');
             exit();
         }

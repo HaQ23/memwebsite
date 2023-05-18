@@ -20,5 +20,8 @@ function closeShortList(el) {
 		});
 	}
 }
+
+
+
 sortBtn.addEventListener("click", showSortList);
 sortList.addEventListener("click", closeShortList);

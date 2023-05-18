@@ -1,0 +1,164 @@
+@use "./main" as *;
+@use "./navbar";
+@use "./footer";
+
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2.6rem 1.6rem;
+}
+
+.recovery {
+	&__form {
+		padding: 2.4rem 1.6rem;
+		background-color: var(--dark-grey);
+		border-radius: 10px;
+
+       
+	}
+	&__heading {
+		font-size: 2.6rem;
+	}
+	&__box {
+		margin-top: 3rem;
+		display: flex;
+		flex-direction: column;
+	}
+	&__label {
+		font-size: 1.8rem;
+		margin-bottom: 1rem;
+	}
+	&__input {
+		border-radius: 10px;
+		border: 0;
+		padding: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        &::placeholder {
+            font-family: 'Montserrat', sans-serif;
+        }
+	}
+	&__submit {
+		margin-top: 4rem;
+        font-family: 'Montserrat', sans-serif;
+        cursor: pointer;
+		background-color: var(--primary-color);
+		color: #fff;
+		border: 0;
+		font-size: 1.6rem;
+		padding: 1rem 3rem;
+		width: 100%;
+		border-radius: 10px;
+        transition: opacity .3s;
+        font-weight: 500;
+        &:hover {
+            opacity: 0.7;
+        }
+	}
+	&__info {
+		margin-top: 2rem;
+		font-size: 1.4rem;
+	}
+	&__sup {
+		color: red;
+	}
+    &__text {
+        font-size: 1.8rem;
+        max-width: 550px;
+        margin-top: 1.5rem;
+    }
+}
+
+.final {
+    background-color: var(--dark-grey);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    border-radius: 10px;
+    &__heading {
+        font-size: 2.3rem;
+        text-align: center;
+    }
+    &__text {
+        text-align: center;
+        max-width: 650px;
+        font-size: 1.6rem;
+    }
+    &__button {
+        color: #fff;
+        background-color: var(--primary-color);
+        font-size: 1.8rem;
+        padding: 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: opacity .3s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+@media screen and (min-width: 750px) {
+	.recovery {
+		&__form {
+            padding: 4rem 2rem;
+			width: 700px;
+		}
+        &__heading {
+            font-size: 3.2rem;
+        }
+        &__label {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+        &__input {
+            font-size: 2rem;
+        }
+        &__info {
+            font-size: 1.8rem;
+        }
+        &__submit {
+            font-size: 2.2rem;
+        }
+	}
+    .final {
+        padding: 2rem 4rem;
+        gap: 2rem;
+        &__button {
+            font-size: 2.2rem;
+        }
+        &__text {
+            font-size: 1.8rem;
+        }
+        &__heading {
+            font-size: 3.2rem;  
+        }
+    }
+}
+@media screen and (min-width: 1024px) {
+	.recovery {
+		&__form {
+			width: 900px;
+		}
+	}
+}
+@media screen and (min-width: 1200px) {
+    .main {
+        padding: 5rem 2rem;
+    }
+	.recovery {
+		&__form {
+			width: 1100px;
+		}
+        &__input {
+            padding: 1.8rem 1.5rem;
+        }
+        &__submit {
+            padding: 1.5rem;
+        }
+	}
+   
+}

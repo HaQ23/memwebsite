@@ -144,9 +144,9 @@
 							if(isset($_GET['error'])) {
 								if($_GET['error'] == "emptyfields") {
 
-									echo '<p aria-hidden="true" class="error-info">To pole jest wymagane</p>';
+									echo '<p  class="error-info">To pole jest wymagane</p>';
 								} else if($_GET['error'] == "pwd") {
-									echo '<p aria-hidden="true" class="error-info">Hasła nie są identyczne</p>';
+									echo '<p  class="error-info">Hasła nie są identyczne</p>';
 								} 
 							}
 						?>
