@@ -4,6 +4,8 @@
 	flex-direction: column;
 	gap: 3rem;
 	margin-top: 4rem;
+	width: 100%;
+	max-width: 550px;
 	&::after,
 	&::before {
 		content: "";
@@ -63,16 +65,16 @@
 		transform: scaleY(100%);
 	}
 	.mem {
+		margin-bottom: 4rem;
 		width: 100%;
 		max-width: 550px;
-
 		background-color: #fff;
 		border-radius: 8px;
 		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 		&__img {
 			width: 100%;
-			max-height: 600px;
+			max-height: 1000px;
 			object-fit: fill;
 		}
 		&__info {
@@ -119,7 +121,7 @@
 			cursor: pointer;
 		}
 		.like,
-		.dilike,
+		.dislike,
 		.add-comment,
 		.report-mem {
 			&:hover {
@@ -173,7 +175,7 @@
 		position: relative;
 		margin: 0 auto;
 		padding: 0 1.5rem;
-		overflow: scroll;
+		overflow-y: scroll;
 		width: 100%;
 		height: auto;
 	}
@@ -195,6 +197,9 @@
 		gap: 0.25rem;
 		font-size: var(--comment-font);
 		font-weight: 600;
+		.icon {
+			transition: transform 0.3s;
+		}
 	}
 	.sort-comments-options {
 		position: fixed;
@@ -258,6 +263,7 @@
 		margin: 0 auto;
 		font-size: var(--comment-font);
 		max-width: 550px;
+		width: 100%;
 		&:nth-last-of-type(1) {
 			margin-bottom: 13rem;
 		}
@@ -316,6 +322,11 @@
 		}
 		.bg-shadow {
 			display: block;
+		}
+		.btn-sort-comments {
+			.icon {
+				transform: rotate(-180deg);
+			}
 		}
 	}
 	.add-coment-container {
