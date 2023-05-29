@@ -64,7 +64,7 @@ function updateAssessmentStatus(idMeme) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		"GET",
-		"../mem-website/backend/utils/showMems.php?idMeme=" +
+		"../memwebsite/backend/utils/showMems.php?idMeme=" +
 			idMeme +
 			"&functionToDo=getCountAssessment",
 		true
@@ -105,7 +105,7 @@ function updateCommentsStatus(idMeme) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		"GET",
-		"../mem-website/backend/utils/showMems.php?idMeme=" +
+		"../memwebsite/backend/utils/showMems.php?idMeme=" +
 			idMeme +
 			"&functionToDo=getCountComments",
 		true
@@ -136,7 +136,7 @@ function getCountOfMems() {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		"GET",
-		"../mem-website/backend/utils/showMems.php?" + "&functionToDo=getCountMems",
+		"../memwebsite/backend/utils/showMems.php?" + "&functionToDo=getCountMems",
 		true
 	);
 	xhr.onload = function () {
@@ -195,7 +195,7 @@ function sendRating(idMeme, rating) {
 
 	xhr.open(
 		"POST",
-		"../mem-website/backend/utils/showMems.php?" + "&functionToDo=sendRating"
+		"../memwebsite/backend/utils/showMems.php?" + "&functionToDo=sendRating"
 	);
 
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -231,7 +231,7 @@ function sendCommentRating(idComment, rating) {
 
 	xhr.open(
 		"POST",
-		"../mem-website/backend/utils/showMems.php?" +
+		"../memwebsite/backend/utils/showMems.php?" +
 			"&functionToDo=sendRatingComment"
 	);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -288,7 +288,7 @@ function getMems(index) {
 		const xhr = new XMLHttpRequest();
 		xhr.open(
 			"GET",
-			"../mem-website/backend/utils/showMems.php?index=" +
+			"../memwebsite/backend/utils/showMems.php?index=" +
 				index +
 				"&limit=" +
 				limit +
@@ -422,7 +422,7 @@ function loadComments(idMeme) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		"GET",
-		"../mem-website/backend/utils/showMems.php?idMeme=" +
+		"../memwebsite/backend/utils/showMems.php?idMeme=" +
 			idMeme +
 			"&sort=" +
 			sortCommentsValue +
@@ -530,7 +530,7 @@ function sendComment() {
 	if (commentValue.value !== "") {
 		xhr.open(
 			"POST",
-			"../mem-website/backend/utils/showMems.php?" +
+			"../memwebsite/backend/utils/showMems.php?" +
 				"&functionToDo=sendComment",
 			true
 		);
@@ -561,7 +561,7 @@ function sendReport() {
 		const xhr = new XMLHttpRequest();
 		xhr.open(
 			"POST",
-			"../mem-website/backend/utils/showMems.php?" + "&functionToDo=sendReport",
+			"../memwebsite/backend/utils/showMems.php?" + "&functionToDo=sendReport",
 			true
 		);
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

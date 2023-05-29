@@ -37,12 +37,11 @@
 			<a href="./generator.php" class="nav__item">Generator</a>
 
 			<a href="#" class="nav__item">Ranking</a>
-			<a href="./queue.php" class="nav__item">Poczekalnia</a>
+			<a href="#" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
-			
+				<a href="#" class="nav__button secondary-btn"> Dodaj mema </a>
 				<?php
 					if(isset($_SESSION['userid'])) {
-						echo '<button class="nav__button secondary-btn upload-button-navbar"> Dodaj mema </button>';
 						echo '<a href="./dashboard.php" class="nav__button primary-btn"> Panel </a>';
 					} else {
 						echo '<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>';
@@ -381,11 +380,13 @@
 			<p class="alert__text">Zalogowano pomyślnie!</p>
 		</div>
 	
-
+		<script>
+			
+		</script>				
 		<script src="./dist/js/main.min.js"></script>
 		<script src="./dist/js/mems.min.js"></script>
 		<script src="./dist/js/index.min.js"></script>
-		<?php
+		<!-- <?php
 			sleep(0.1);
 			if(isset($_GET['login'])) {
 				echo '<script>handleAlert("Witaj, '.$_SESSION['username'].'!")</script>';
@@ -393,6 +394,6 @@
 			if(isset($_GET['signUp'])) {
 				echo '<script>handleAlert("Pomyślnie zarejestrowano!")</script>';
 			}		
-		?>
+		?> -->
 	</body>
 </html>
