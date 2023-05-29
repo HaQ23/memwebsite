@@ -16,7 +16,7 @@ const allStandardImage = document.querySelectorAll(".standard-theme__item");
 const downloadMemBtn = document.querySelector(".download-mem");
 const createMemBox = document.querySelector(".create-mem__mem-box");
 const canvas = document.querySelector("#canvas-mem");
-const textAlignBtns = document.querySelectorAll("[data-text-align]");
+const textAlignBtns = document.querySelectorAll("[data-text-align]")
 const fontStyleBtns = document.querySelectorAll(".font-style-btn");
 const changeTemplateBtn = document.querySelector(
 	".create-mem__change-template"
@@ -29,6 +29,7 @@ let useYourPhoto = false;
 let image;
 let imageWidth, imageHeight;
 let numberOfMem = 1;
+
 const changeShowElement = () => {
 	setImageSection.classList.toggle("show");
 	selectTemplateSection.classList.toggle("show");
