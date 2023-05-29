@@ -311,6 +311,8 @@ function getMems(index) {
 		xhr.send();
 	});
 }
+
+//  /account.php?user=5
 async function loadMems(index) {
 	try {
 		const memy = await getMems(index);
