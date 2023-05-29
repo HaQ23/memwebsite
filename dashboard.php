@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Panel Użytkownika</h1>
+    <a href="./backend/login/logout.php">Wyloguj</a>
 </body>
 </html>

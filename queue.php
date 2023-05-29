@@ -1,3 +1,9 @@
+<?php
+	require_once './backend/database/database.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -15,12 +21,12 @@
 />
 <meta name="description" content="Put your description here." />
 
-		<link rel="stylesheet" href="../dist/css/queue.min.css" />
+		<link rel="stylesheet" href="./dist/css/queue.min.css" />
 	</head>
 	<body>
 		<nav class="nav">
 	<div class="wrapper">
-		<a href="index.html" class="logo-name"
+		<a href="index.php" class="logo-name"
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<button class="ham-btn" aria-label="Show menu">
@@ -29,14 +35,14 @@
 			</div>
 		</button>
 		<div class="nav__items">
-			<a href="../index.html" class="nav__item">Strona główna</a>
-			<a href="../generator.html" class="nav__item">Generator</a>
+			<a href="./index.php" class="nav__item">Strona główna</a>
+			<a href="./generator.php" class="nav__item">Generator</a>
 
 			<a href="#" class="nav__item">Ranking</a>
-			<a href="../queue.php" class="nav__item">Poczekalnia</a>
+			<a href="#" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
-				<button class="nav__button secondary-btn upload-button-navbar"> Dodaj mema </button>
-				<a href="../signIn.html" class="nav__button primary-btn"> Logowanie </a>
+				<a href="#" class="nav__button secondary-btn"> Dodaj mema </a>
+				<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>
 			</div>
 		</div>
 	</div>
@@ -45,41 +51,41 @@
 		<main class="main wrapper">
             <h1 class="heading">Mem<span class="heading__highlighted">Hub</span> - Poczekalnia</h1>
             <div class="queue">
-                <div class="queue__item">
-                    <img src="../dist/assets/images/mem1.webp" alt="" class="queue__image">
-                    <p class="queue__author"><img src="../dist/assets/icons/user.svg" alt=""> <span class="queue__author-name">Jan Kowalski</span></p>
-                    <p class="queue__date">Dodano: <span class="queue__date-time">18.05.2023</span></p>
-                </div>
-                <div class="queue__item">
-                    <img src="../dist/assets/images/mem1.webp" alt="" class="queue__image">
-                    <p class="queue__author"><img src="../dist/assets/icons/user.svg" alt=""> <span class="queue__author-name">Jan Kowalski</span></p>
-                    <p class="queue__date">Dodano: <span class="queue__date-time">18.05.2023</span></p>
-                </div>
-                <div class="queue__item">
-                    <img src="../dist/assets/images/mem1.webp" alt="" class="queue__image">
-                    <p class="queue__author"><img src="../dist/assets/icons/user.svg" alt=""> <span class="queue__author-name">Jan Kowalski</span></p>
-                    <p class="queue__date">Dodano: <span class="queue__date-time">18.05.2023</span></p>
-                </div>
-                <div class="queue__item">
-                    <img src="../dist/assets/images/mem1.webp" alt="" class="queue__image">
-                    <p class="queue__author"><img src="../dist/assets/icons/user.svg" alt=""> <span class="queue__author-name">Jan Kowalski</span></p>
-                    <p class="queue__date">Dodano: <span class="queue__date-time">18.05.2023</span></p>
-                </div>
-                <div class="queue__item">
-                    <img src="../dist/assets/images/mem1.webp" alt="" class="queue__image">
-                    <p class="queue__author"><img src="../dist/assets/icons/user.svg" alt=""> <span class="queue__author-name">Jan Kowalski</span></p>
-                    <p class="queue__date">Dodano: <span class="queue__date-time">18.05.2023</span></p>
-                </div>
+				<?php
+					$sql = "SELECT imgsource, adding_date, name, surrname FROM meme INNER JOIN account ON meme.id_user = account.id_user WHERE accepted = 0 ORDER BY adding_date DESC";
+
+					$result = $conn->query($sql);
+					$isEmpty = false;
+					if($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {
+							$imgSource = $row['imgsource'];
+							$author = $row['name'].' '.$row['surrname'];
+							$date = $row['adding_date'];
+							echo '
+
+							<div class="queue__item">
+                    			<img src="./memes/'.$imgSource.'" alt="" class="queue__image">
+                    			<p class="queue__author"><img src="./dist/assets/icons/user.svg" alt=""> <span class="queue__author-name">'.$author.'</span></p>
+                    			<p class="queue__date">Dodano: <span class="queue__date-time">'.$date.'</span></p>
+                			</div>
+							
+							';
+						}
+					} else {
+						//TODO
+					}
+					$conn->close();
+				?>
               
             </div>
 		</main>
 		<footer class="footer">
 	<div class="wrapper">
-		<a href="index.html" class="logo-name"
+		<a href="index.php" class="logo-name"
 			>Mem<span class="other-color">Hub</span></a
 		>
 		<div class="footer__items">
-			<a href="../contact.html" class="footer__item">Kontakt</a>
+			<a href="./contact.php" class="footer__item">Kontakt</a>
 			<a href="#" class="footer__item">Regulamin</a>
 		</div>
 		<div class="footer__social-media">
@@ -134,6 +140,6 @@
 	</div>
 </footer>
 
-		<script src="../dist/js/main.min.js"></script>
+		<script src="./dist/js/main.min.js"></script>
 	</body>
 </html>

@@ -17,7 +17,7 @@
     $crawler->filter('.meme-item > .figure-item > a > img')->each(function ($node) use (&$arr) {
        array_push($arr, $node->attr('src'));
     });
-
+    
     //pocisk.org
     $crawler = $client->request("GET", "https://pocisk.org/");
     $crawler->filter('.attachment-bimber-stream')->each(function ($node) use (&$arr) {
@@ -34,10 +34,9 @@
         $uniqueId = uniqid('meme_', true);
         copy($arr[$i], '../../memes/'.$uniqueId.'.jpg');
         $date = date('Y/m/d');
-        $sql = "INSERT INTO meme (id_meme, title, id_user, id_comment, adding_date, accepted, imgsource) 
-                VALUES (NULL, 'scrapped', '9999', '1', '$date', '0', '$uniqueId.jpg')";
+        $sql = "INSERT INTO meme (id_meme, title, id_user, adding_date, accepted, imgsource, original_url) 
+                VALUES (NULL, 'scrapped', '9999', '$date', '0', '$uniqueId.jpg', '$arr[$i]')";
         $conn->query($sql);
-       
      }
      $conn->close();
      exit();

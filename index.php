@@ -37,11 +37,12 @@
 			<a href="./generator.php" class="nav__item">Generator</a>
 
 			<a href="#" class="nav__item">Ranking</a>
-			<a href="#" class="nav__item">Poczekalnia</a>
+			<a href="./queue.php" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
-				<a href="#" class="nav__button secondary-btn"> Dodaj mema </a>
+			
 				<?php
 					if(isset($_SESSION['userid'])) {
+						echo '<button class="nav__button secondary-btn upload-button-navbar"> Dodaj mema </button>';
 						echo '<a href="./dashboard.php" class="nav__button primary-btn"> Panel </a>';
 					} else {
 						echo '<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>';
@@ -154,7 +155,7 @@
 											</svg>
 										</button>
 									</div>
-									<a href="./account.html">
+									<a href="./account.php?user=4">
 									<div class="mem__author">
 										<div class="profile-box">
 											<img
@@ -917,11 +918,48 @@
 		<div class="alert">
 			<p class="alert__text">Zalogowano pomyślnie!</p>
 		</div>
-	
+		<div class="upload upload-overlay">
+			<div class="upload-box">
+				<div class="upload-topbar">
+					<p class="upload-title">Dodaj mema</p>
+					<button class="upload-close"><img src="./dist/assets/icons/close.svg" alt="" /></button>
+				</div>
+				<form action="./backend/upload/upload-main.php" method="post" class="upload-content" enctype="multipart/form-data">
+					<p class="upload-text">
+						Wybierz odpowiedni plik aby dodać mema na nasz portal.
+					</p>
+				
+					<div class="upload-file-box">
+						<label for="upload-file-input" class="upload-file-label">
+							<img src="./dist/assets/icons/upload.svg" class="upload-file-icon" alt="">
+							<p class="upload-file-text">Wybierz plik</p>
+						</label>
+						<input type="file" class="upload-file-input" name="upload-file-input" id="upload-file-input" required>
+						<p class="upload-filetype">Obsługiwane formaty: <span class="upload-filetype-highlighted">png, jpg, jpeg</span></p>
+						<p class="upload-filetype">Maksymalny rozmiar pliku: <span class="upload-filetype-highlighted">5mb</span></p>
+						<p class="upload-text">
+							Po dodaniu mema opublikuj go na naszym portalu aby inni,
+							mogli go ocenić!
+						</p>
+					</div>
+					<input type="submit" value="Opublikuj" name="upload-submit" class="upload-submit">
+					<p class="upload-generatorinfo">Masz pomysł na unikalnego mema który spodoba się każdemu?
+						Skorzystaj z naszego <a href="./generator.php" class="upload-generatorinfo-link">generatora</a> i stwórz nowego mema już teraz!</p>
+				</form>
+			</div>
+			<div class="upload-status upload-status--hidden">
+				<img src="./dist/assets/icons/publish.webp" alt="">
+				<p class="upload-status-text">Przesyłanie pliku...</p>
+				<p class="upload-status-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptate!</p>
+				<button class="upload-status-button">Gotowe</button>
+				<progress class="upload-progress" max="100" value="0"></progress>
+			</div>
+		</div>
 
 		<script src="./dist/js/main.min.js"></script>
 		<script src="./dist/js/mems.min.js"></script>
 		<script src="./dist/js/index.min.js"></script>
+		<script src="./dist/js/upload.min.js?v=1"></script>
 		<?php
 			sleep(0.1);
 			if(isset($_GET['login'])) {
@@ -929,6 +967,17 @@
 			}		
 			if(isset($_GET['signUp'])) {
 				echo '<script>handleAlert("Pomyślnie zarejestrowano!")</script>';
+			}
+			if(isset($_GET['upload'])) {
+				if($_GET['upload'] == "wrongfile") {
+					echo '<script>handleAlert("Wybrany plik nie jest obrazem")</script>';	
+				}
+				else if($_GET['upload'] == "size") {
+					echo '<script>handleAlert("Waga pliku jest zbyt duża")</script>';	
+				}
+				else if($_GET['upload'] == "extension") {
+					echo '<script>handleAlert("Wybrany format pliku jest niedozwolony")</script>';	
+				}
 			}		
 		?>
 	</body>
