@@ -78,64 +78,7 @@
 						</ul>
 						
 						<div class="mems__container">
-							<!-- <div class="mem">
-								<img
-									src="./dist/assets/images/mem2.webp"
-									alt=""
-									class="mem__img"
-								/>
-								<div class="mem__info">
-									<div class="mem__assessments">
-										<div class="mem__assessment">
-											<span class="mem__assessment-score"> 123 </span>
-											<button
-												aria-label="Polub ten mem"
-												class="add-assessment like"
-											>
-												<img
-													src="./dist/assets/icons/thumbs-up.svg"
-													alt=""
-													class="icon"
-												/>
-											</button>
-										</div>
-										<div class="mem__assessment">
-											<span class="mem__assessment-score"> 123 </span>
-											<button
-												aria-label="Polub ten mem"
-												class="add-assessment dilike"
-											>
-												<img
-													src="./dist/assets/icons/thumbs-down.svg"
-													alt=""
-													class="icon"
-												/>
-											</button>
-										</div>
-									</div>
-									<div class="mem__comment">
-										<span class="mem__comment-score"> 123 </span>
-										<button aria-label="Polub ten mem" class="add-comment">
-											<img
-												src="./dist/assets/icons/message-square.svg"
-												alt=""
-												class="icon"
-											/>
-										</button>
-									</div>
-									<div class="mem__author">
-										<a href="#" class="profile-box">
-											<img
-												src="./dist/assets/icons/user.svg"
-												alt=""
-												class="profile-photo"
-											/>
-										</a>
-										<span class="user-name">Jan Kowalski</span>
-									</div>
-									<button class="report-mem">Zgłoś mema</button>
-								</div>
-							</div> -->
+						<div class = "loading-spinner"id="loading-spinner-mem"></div>
 						</div>
 						
 					</section>
@@ -145,60 +88,87 @@
 				<section class="best-users">
 					<h2 class="section-title">Top 3 użytkowników tygodnia:</h2>
 					<ol class="best-users__container">
-						<li class="best-users__item">
-							<span class="number">1.</span>
-							<div class="profile-box">
-								<img
-									src="./dist/assets/icons/user.svg"
-									alt=""
-									class="profile-photo"
-								/>
-							</div>
-							<span class="name-user">Jan kowalski</span>
-							<span class="user-score">1233pkt</span>
-						</li>
-						<li class="best-users__item">
-							<span class="number">2.</span>
-							<div class="profile-box">
-								<img
-									src="./dist/assets/icons/user.svg"
-									alt=""
-									class="profile-photo"
-								/>
-							</div>
-							<span class="name-user">Jan kowalski</span>
-							<span class="user-score">1233pkt</span>
-						</li>
-						<li class="best-users__item">
-							<span class="number">3.</span>
-							<div class="profile-box">
-								<img
-									src="./dist/assets/icons/user.svg"
-									alt=""
-									class="profile-photo"
-								/>
-							</div>
-							<span class="name-user">Jan kowalski</span>
-							<span class="user-score">1233pkt</span>
-						</li>
+					<?php
+					 require_once './backend/database/database.php';
+					  $query = "SELECT
+					  account.id_user,account.nick,
+					  (COALESCE(meme_count, 0) * 5) AS waga_memow,
+					  (COALESCE(comment_count, 0) * 2) AS waga_komentarzy,
+					  (COALESCE(rating_count, 0) * 10) AS waga_ocen,
+					  (COALESCE(meme_count, 0) * 5) + (COALESCE(comment_count, 0) * 2) + (COALESCE(rating_count, 0) * 10) AS suma_wag
+				  FROM account
+				  LEFT JOIN (
+					  SELECT id_user, COUNT(id_meme) AS meme_count
+					  FROM meme
+					  GROUP BY id_user
+				  ) AS memy ON account.id_user = memy.id_user
+				  LEFT JOIN (
+					  SELECT id_user, COUNT(id_comment) AS comment_count
+					  FROM comment
+					  GROUP BY id_user
+				  ) AS komentarze ON account.id_user = komentarze.id_user
+				  LEFT JOIN (
+					  SELECT meme.id_user, COUNT(meme_rating.id_meme) AS rating_count
+					  FROM meme
+					  LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme
+					  WHERE meme_rating.rating = 1
+					  GROUP BY meme.id_user
+				  ) AS oceny ON account.id_user = oceny.id_user ORDER by suma_wag DESC limit 3;
+				  ";
+					  $result = $conn->query($query);
+					  if ($result && mysqli_num_rows($result) > 0) {
+						$counter = 1;
+					  while ($row = $result->fetch_assoc()) {
+						$score = $row['suma_wag'];
+						$nick = $row['nick'];
+						echo '<li class="best-users__item">
+							<span class="number">'.$counter.'.</span>
+								<a href="./account.php?user=' . $row['id_user'] . '" class="best-users__link">
+									<div class="profile-box">
+										<img src="./dist/assets/icons/user.svg" alt="" class="profile-photo" />
+									</div>
+									<span class="name-user">' . $nick . '</span>
+									<span class="user-score">' . $score . 'pkt</span>
+								</a>
+							</li>';
+							$counter = $counter +1;
+					}
+				}
+				
+					?>
 					</ol>
 				</section>
 				<section class="best-mems">
 					<h2 class="section-title">Najlepsze memy</h2>
-					<a
-						aria-label="link do najlepszego mema"
-						href="#"
-						class="best-mems__container"
-					>
-						<img src="./dist/assets/images/mem2.webp" alt="" />
-					</a>
-					<a
-						aria-label="link do najlepszego mema"
-						href="#"
-						class="best-mems__container"
-					>
-						<img src="./dist/assets/images/mem2.webp" alt="" />
-					</a>
+					<div class="best-mems__container">
+					<?php
+					 require_once './backend/database/database.php';
+					  $query = "SELECT COUNT(meme_rating.id_meme),  meme.imgsource, meme.id_user,meme.original_url
+					  FROM meme
+					  LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 1 WHERE meme.id_user != 9999
+					  GROUP BY meme.id_meme ORDER by COUNT(meme_rating.id_meme) DESC , meme.id_meme limit  2;";
+					  $result = $conn->query($query);
+					  if ($result && mysqli_num_rows($result) > 0) {
+					  while ($row = $result->fetch_assoc()) {
+						
+						$imageUrl = $row['imgsource'];
+						$imageLink ="";
+						
+						if($row['original_url']==''){
+							$imageLink = "./account.php?user=" . strval($row['id_user']);
+						}else{
+							$imageLink = $row['original_url'];
+						}
+			
+						echo '<a aria-label="link do najlepszego mema" href="'.$imageLink.'" class="best-mems__box">';
+						echo '<img class="best-mems__img" src="memes/' . $imageUrl . '" alt="zdjecie ktore zawiera mema" />';
+						echo '</a>';
+					}
+				}
+					
+					?>
+						
+				</div>
 				</section>
 			</aside>
 		</div>
@@ -225,7 +195,7 @@
 				<li class="sort-comments-options__item">
 					<button
 						data-category="najtrafniejsze"
-						class="sort-comments-options__btn currentSort"
+						class="sort-comments-options__btn "
 					>
 						<div class="circle">
 							<span class="inner-circle"></span>
@@ -234,7 +204,7 @@
 					</button>
 				</li>
 				<li class="sort-comments-options__item">
-					<button data-category="najnowsze" class="sort-comments-options__btn">
+					<button data-category="najnowsze" class="sort-comments-options__btn currentSort">
 						<div class="circle">
 							<span class="inner-circle"></span>
 						</div>
@@ -251,7 +221,7 @@
 				</li>
 			</ul>
 			<div class="comments__content">
-			
+			<div class = "loading-spinner"id="loading-spinner-mem"></div>
 			</div>
 			<div class="bg-shadow"></div>
 			<div class="add-coment-container">
@@ -312,10 +282,15 @@
 			</div>
 		</section>
 		<div class="body-shadow bg-shadow"></div>
-		<div class="showResponse">
+		<div class="showResponse showResponse__success">
 			<button aria-label="zakmnij powiadomienie" class="showResponse__close-btn"><img src="./dist/assets/icons/close.svg" alt="" class="icon"></button>
 			<p class="showResponse__info">Zgłoszenie zostało wysłane, dziękujemy</p>
 			<img src="./dist/assets/icons/checkToSection.svg" alt="" class="showResponse__background">
+		</div>
+		<div class="showResponse showResponse__error">
+			<button aria-label="zakmnij powiadomienie" class="showResponse__close-btn"><img src="./dist/assets/icons/close.svg" alt="" class="icon"></button>
+			<p class="showResponse__info">Musisz być zalogowanym, aby móc wysłać zgłoszenie.</p>
+			<img src="./dist/assets/icons/errorSect.svg" alt="" class="showResponse__background">
 		</div>
 <footer class="footer">
 	<div class="wrapper">
@@ -324,7 +299,7 @@
 		>
 		<div class="footer__items">
 			<a href="./contact.php" class="footer__item">Kontakt</a>
-			<a href="#" class="footer__item">Regulamin</a>
+			<a href="./regulamin.php" class="footer__item">Regulamin</a>
 		</div>
 		<div class="footer__social-media">
 			<h2 class="section-title">Zaobserwuj nas na:</h2>
@@ -428,9 +403,9 @@
 		<script src="./dist/js/upload.min.js?v=1"></script>
 		<?php
 			sleep(0.1);
-			if(isset($_GET['login'])) {
-				echo '<script>handleAlert("Witaj, '.$_SESSION['username'].'!")</script>';
-			}		
+			// if(isset($_GET['login'])) {
+			// 	echo '<script>handleAlert("Witaj, '.$_SESSION['username'].'!")</script>';
+			// }		
 			if(isset($_GET['signUp'])) {
 				echo '<script>handleAlert("Pomyślnie zarejestrowano!")</script>';
 			}

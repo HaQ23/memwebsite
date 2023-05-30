@@ -8,7 +8,9 @@ const sortCommentsBtn = document.querySelector(".btn-sort-comments");
 const sendCommentBtn = document.querySelector(".add-comment-btn");
 const reportForm = document.getElementById("report-form");
 const sortCommentBox = document.querySelector(".sort-comments-options");
-const showResponseCloseBtn = document.querySelector(".showResponse__close-btn");
+const showResponseCloseBtn = document.querySelectorAll(
+	".showResponse__close-btn"
+);
 let sortValue = "najnowsze",
 	sortCommentsValue = "najnowsze";
 let whatItemIsReported, storeIdToSendReport;
@@ -25,11 +27,17 @@ const toggleErrorOnSection = (el) => {
 		el.classList.toggle("error");
 	}, 2000);
 };
-const showResponseAlert = () => {
+
+const showResponseAlert = (type) => {
 	document.querySelector(".body-shadow").classList.toggle("show");
 	document.querySelector("body").classList.toggle("no-scroll");
-	const responseSection = document.querySelector(".showResponse");
-	responseSection.classList.toggle("show");
+	if (type === 1) {
+		const responseSection = document.querySelector(".showResponse__success");
+		if (responseSection.classList.contains("show"));
+	} else {
+		const responseSection = document.querySelector(".showResponse__error");
+		responseSection.classList.toggle("show");
+	}
 };
 function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
@@ -131,6 +139,28 @@ function updateCommentsStatus(idMeme) {
 	};
 	xhr.send();
 }
+function isLoginUser() {
+	const xhr = new XMLHttpRequest();
+	xhr.open(
+		"GET",
+		"../memwebsite/backend/utils/showMems.php?" + "&functionToDo=isLoginUser"
+	);
+
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.onload = function () {
+		if (xhr.status === 200) {
+			const response = JSON.parse(xhr.responseText);
+			return response.staus_uzytkownika;
+		} else {
+			console.log("Wystąpił błąd zapytania.");
+		}
+	};
+	xhr.onerror = function () {
+		console.log("Wystąpił błąd zapytania.");
+	};
+
+	xhr.send();
+}
 
 function getCountOfMems() {
 	const xhr = new XMLHttpRequest();
@@ -149,9 +179,16 @@ function getCountOfMems() {
 }
 function setNickofAuthor(el) {
 	if (el === null) {
-		return "Kwejk.pl";
+		return "Pobrane z ...";
 	} else {
 		return el.nick;
+	}
+}
+function setSrcOfAuthor(idUser, originalUrl) {
+	if (originalUrl === "") {
+		return `./account.php?user=${idUser}`;
+	} else {
+		return originalUrl;
 	}
 }
 function updateRatingUI(idMeme, likes, dislikes, userChoosed) {
@@ -297,6 +334,7 @@ function getMems(index) {
 				"&functionToDo=loadMems",
 			true
 		);
+
 		xhr.onload = function () {
 			if (xhr.status === 200) {
 				const memy = JSON.parse(xhr.responseText);
@@ -312,11 +350,13 @@ function getMems(index) {
 	});
 }
 
-//  /account.php?user=5
 async function loadMems(index) {
 	try {
 		const memy = await getMems(index);
 		const memyContainer = document.querySelector(".mems__container");
+		if (memyContainer.childElementCount === 1) {
+			memyContainer.textContent = "";
+		}
 		const maxMems = getCountOfMems();
 		if (memy.length === 0) {
 			stopGenerate = true;
@@ -364,7 +404,7 @@ async function loadMems(index) {
 							/>
 						</button>
 					</div>
-					<a href="#" class="mem__author">
+					<a href="${setSrcOfAuthor(mem.id_user, mem.original_url)}" class="mem__author">
 						<div class="profile-box">
 							<img
 								src="./dist/assets/icons/user.svg"
@@ -378,6 +418,7 @@ async function loadMems(index) {
 					<button class="report-mem">Zgłoś mema</button>
 				</div>`;
 			//updateAssessmentStatus(mem["id_meme"]);
+
 			sendRating(mem["id_meme"]);
 			updateCommentsStatus(mem["id_meme"]);
 			memDiv
@@ -431,6 +472,7 @@ function loadComments(idMeme) {
 			"&functionToDo=loadComments",
 		true
 	);
+	xhr.onreadystatechange = function () {};
 	xhr.onload = function () {
 		if (xhr.status === 200) {
 			const comments = JSON.parse(xhr.responseText);
@@ -523,7 +565,21 @@ const showComments = (el) => {
 	document.querySelector("body").classList.toggle("no-scroll");
 	if (currentComments.classList.contains("show")) {
 		storeIdMem = el.target.closest(".mem").dataset.idMeme;
+		currentComments.querySelector(
+			".comments__content"
+		).innerHTML = `<div class = "loading-spinner"id="loading-spinner-comment"></div>`;
 		loadComments(storeIdMem);
+	} else {
+		currentComments.querySelector(".comments__content").textContent = "";
+	}
+};
+const addErrorOnCommentInput = (el) => {
+	if (el.classList.contains("error")) {
+		el.classList.toggle("error");
+		el.setAttribute("placeholder", "Napisz komentarz...");
+	} else {
+		el.classList.toggle("error");
+		el.setAttribute("placeholder", "Musisz być zalogowany aby dodać komentarz");
 	}
 };
 function sendComment() {
@@ -532,17 +588,23 @@ function sendComment() {
 	if (commentValue.value !== "") {
 		xhr.open(
 			"POST",
-			"../memwebsite/backend/utils/showMems.php?" +
-				"&functionToDo=sendComment",
+			"../memwebsite/backend/utils/showMems.php?" + "&functionToDo=sendComment",
 			true
 		);
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xhr.onload = function () {
 			if (xhr.status === 200) {
 				const answer = JSON.parse(xhr.responseText);
+
 				if (answer.success === true) {
 					commentValue.value = "";
 					loadComments(storeIdMem);
+				} else if (answer.success === false) {
+					commentValue.value = "";
+					addErrorOnCommentInput(commentValue);
+					setTimeout(() => {
+						addErrorOnCommentInput(commentValue);
+					}, 5000);
 				}
 			}
 		};
@@ -573,10 +635,29 @@ function sendReport() {
 				if (answer.success === true) {
 					reportValue.value = "";
 					toggleShowReport();
-					showResponseAlert();
+					showResponseAlert(1);
 					setTimeout(() => {
-						showResponseAlert();
-					}, 1000);
+						if (
+							document
+								.querySelector(".showResponse__success")
+								.classList.contains("show")
+						) {
+							showResponseAlert(1);
+						}
+					}, 1200);
+				} else if (answer.success === false) {
+					reportValue.value = "";
+					toggleShowReport();
+					showResponseAlert(2);
+					setTimeout(() => {
+						if (
+							document
+								.querySelector(".showResponse__success")
+								.classList.contains("show")
+						) {
+							showResponseAlert(2);
+						}
+					}, 3000);
 				}
 			}
 		};
@@ -608,7 +689,9 @@ function checkScrollPosition() {
 	}
 }
 function changeSortMemes() {
-	document.querySelector(".mems__container").textContent = "";
+	document.querySelector(
+		".mems__container"
+	).innerHTML = `<div class = "loading-spinner" id="loading-spinner-mem"></div>`;
 	startValueShowMem = 0;
 	loadMems(startValueShowMem);
 }
@@ -641,6 +724,9 @@ const storeValueOfSortComments = (e) => {
 		sortCommentsValue = e.target.dataset.category;
 		currentSortBtn.innerHTML = `${capitalizeFirstLetter(sortCommentsValue)}`;
 		currentMem.classList.remove("show-sort-value");
+		currentMem.querySelector(
+			".comments__content"
+		).innerHTML = `<div class = "loading-spinner"id="loading-spinner-comment"></div>`;
 		loadComments(storeIdMem);
 	} else if (e.target.classList.contains("bg-shadow")) {
 		currentMem.classList.remove("show-sort-value");
@@ -676,4 +762,12 @@ reportForm.addEventListener("submit", function (event) {
 });
 sortCommentBox.addEventListener("click", storeValueOfSortComments);
 
-showResponseCloseBtn.addEventListener("click", showResponseAlert);
+showResponseCloseBtn.forEach((el) => {
+	el.addEventListener("click", function () {
+		if (el.closest(".showResponse__error")) {
+			showResponseAlert(2);
+		} else {
+			showResponseAlert(1);
+		}
+	});
+});

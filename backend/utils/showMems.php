@@ -8,19 +8,19 @@ function loadMems(){
   $query;
   switch ($sort){
     case "najnowsze":
-      $query= "SELECT id_meme,imgsource,id_user FROM meme order by adding_date,id_meme LIMIT $offset,$limit;";
+      $query= "SELECT id_meme,imgsource,id_user,original_url FROM meme order by adding_date,id_meme LIMIT $offset,$limit;";
       break;
       case "najstarsze":
-        $query= "SELECT id_meme,imgsource,id_user FROM meme order by adding_date,id_meme desc LIMIT $offset,$limit;";
+        $query= "SELECT id_meme,imgsource,id_user,original_url FROM meme order by adding_date,id_meme desc LIMIT $offset,$limit;";
         break;
         case "najgorsze":
-          $query= "SELECT COUNT(meme_rating.id_meme), meme.id_meme, meme.imgsource, meme.id_user
+          $query= "SELECT COUNT(meme_rating.id_meme), meme.id_meme, meme.imgsource, meme.id_user,meme.original_url
             FROM meme
             LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 0
             GROUP BY meme.id_meme ORDER by COUNT(meme_rating.id_meme) DESC, meme.id_meme limit  $offset,$limit;";
           break;
           case "najlepsze":
-            $query= "SELECT COUNT(meme_rating.id_meme), meme.id_meme, meme.imgsource, meme.id_user
+            $query= "SELECT COUNT(meme_rating.id_meme), meme.id_meme, meme.imgsource, meme.id_user,meme.original_url
             FROM meme
             LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 1
             GROUP BY meme.id_meme ORDER by COUNT(meme_rating.id_meme) DESC , meme.id_meme limit  $offset,$limit;";
@@ -42,9 +42,6 @@ function loadMems(){
   $conn->close();
   echo json_encode($memes);
 }
-
-
-
 function getCountAssessment($idMeme){
   require_once "../database/database.php";
   $query = "SELECT rating,count(rating) as assessment  FROM meme inner join meme_rating on meme.id_meme = meme_rating.id_meme where meme.id_meme=$idMeme GROUP by rating";
@@ -83,7 +80,7 @@ function loadComments($idMeme){
         $query = "SELECT id_comment,id_user,body,adding_date from comment where id_meme = $idMeme order by adding_date ;" ;
         break;
         case "najtrafniejsze":
-        $query = "SELECT COUNT(comment_rating.id_comment), comment.id_comment, comment.id_user, comment.body
+        $query = "SELECT COUNT(comment_rating.id_comment), comment.id_comment, comment.id_user, comment.body,comment.adding_date 
         FROM comment
         LEFT JOIN comment_rating ON comment.id_comment = comment_rating.id_comment AND comment_rating.rating = 1 where comment.id_meme = $idMeme
         GROUP BY comment.id_comment ORDER by COUNT(comment_rating.id_comment) DESC;" ;
@@ -104,7 +101,13 @@ function loadComments($idMeme){
 function sendComment(){
 require_once "../database/database.php";
 session_start();
-$idUser=$_SESSION['userid']||1 ;
+$response = "";
+if (!isset($_SESSION['userid'])) {
+  $response = array('success' => false, 'message' => 'niezaalogowany.');
+  echo json_encode($response);
+  exit();
+}
+$idUser=$_SESSION['userid'];
 $comment = $_POST['comment'];
 $idMeme = $_POST['idMeme'];
 $stmt = mysqli_stmt_init($conn);
@@ -114,22 +117,30 @@ if (mysqli_stmt_prepare($stmt, $sql)) {
   mysqli_stmt_bind_param($stmt, 'sss', $idUser,$idMeme,$comment);
   if (mysqli_stmt_execute($stmt)) {
     $response = array('success' => true, 'message' => 'Komentarz został dodany.');
-    echo json_encode($response);
+    
   } else {
     $response = array('success' => false, 'message' => 'Wystąpił błąd podczas dodawania komentarza.');
-    echo json_encode($response);
+   
   }
 } else {
   $response = array('success' => false, 'message' => 'Wystąpił błąd podczas przygotowania zapytania.');
-  echo json_encode($response);
+  
 }
 mysqli_stmt_close($stmt);
+
+echo json_encode($response);
 exit(); 
 }
 function sendReport(){
   require_once "../database/database.php";
   session_start();
-  $idUser=$_SESSION['userid']||1 ;
+ 
+  if(!isset($_SESSION['userid'])){
+    $response = array('success' => false, 'message' => 'niezaalogowany.');
+    echo json_encode($response);
+    exit(); 
+  }
+  $idUser = $_SESSION['userid']||1;
   $message = $_POST['message'];
   $idOfItem = $_POST['idItem'];
   $typeOfItem = $_POST['typeOfItem'];
@@ -159,13 +170,12 @@ function sendReport(){
 function sendRating(){
   require_once "../database/database.php";
   session_start();
-  if (!isset($_SESSION['userid'])) {
-    $response = array('success' => true, 'message' => 'niezaalogowany.');
-    die("Użytkownik nie jest zalogowany.");
-  }
   $idMeme = $_POST['idMeme'];
   $rating = $_POST['rating'];
-  $idUser=$_SESSION['userid']|| 3 ;
+  $idUser = 0;
+  if(isset($_SESSION['userid'])){
+    $idUser = $_SESSION['userid'];
+  }
 
 
   $query = "SELECT * from meme_rating where id_user=$idUser and id_meme= $idMeme";
@@ -175,19 +185,22 @@ function sendRating(){
     $row = $result->fetch_assoc();
     if($row['rating']==$rating){
       $secondQuery = "DELETE FROM meme_rating WHERE id_user =$idUser  AND id_meme = $idMeme";
-      $response = array('success' => true, 'message' => '1.');  
+      $response = array('success' => true, 'message' => '1.'); 
+      $conn->query($secondQuery); 
     }else{
       $secondQuery = "UPDATE meme_rating SET rating = $rating WHERE id_user = $idUser AND id_meme = $idMeme ;";
       $response = array('success' => true, 'message' => '2.');
+      $conn->query($secondQuery);
     }
 } 
 else{
-  $secondQuery = "INSERT into meme_rating (id_meme,id_user,rating) values ($idMeme,$idUser,$rating) ";
-  $response = array('success' => true, 'message' => '3.');
-
+  if($idUser !=0){
+    $secondQuery = "INSERT into meme_rating (id_meme,id_user,rating) values ($idMeme,$idUser,$rating) ";
+    $response = array('success' => true, 'message' => '3.');
+    $conn->query($secondQuery);
+  }
 }
 
-  $conn->query($secondQuery);
 $thirdQuery =  "SELECT r.rating, COALESCE(m.assessment, 0) AS assessment
 FROM (
   SELECT 0 AS rating
@@ -215,14 +228,12 @@ ORDER BY r.rating";
 function sendRatingComment(){
   require_once "../database/database.php";
   session_start();
-  if (!isset($_SESSION['userid'])) {
-    $response = array('success' => true, 'message' => 'niezaalogowany.');
-    die("Użytkownik nie jest zalogowany.");
-  }
   $idComment = $_POST['idComment'];
   $rating = $_POST['rating'];
-  $idUser=$_SESSION['userid']|| 3 ;
-
+  $idUser = 0;
+  if(isset($_SESSION['userid'])){
+    $idUser = $_SESSION['userid'];
+  }
 
   $query = "SELECT * from comment_rating where id_user=$idUser and id_comment= $idComment";
   $result = $conn->query($query);
@@ -238,8 +249,12 @@ function sendRatingComment(){
     }
 } 
 else{
-  $secondQuery = "INSERT into comment_rating (id_comment,id_user,rating) values ($idComment,$idUser,$rating) ";
-  $response = array('success' => true, 'message' => '3.');
+    if($idUser!=0){
+      $secondQuery = "INSERT into comment_rating (id_comment,id_user,rating) values ($idComment,$idUser,$rating) ";
+      $response = array('success' => true, 'message' => '3.');
+    }else{
+      $secondQuery ="select * from meme";
+    }
 
 }
 
@@ -266,6 +281,19 @@ ORDER BY r.rating";
   echo json_encode($response);
   header('Content-Type: application/json');
   $conn->close();
+  exit();
+}
+function isLoginUser(){
+  require_once "../database/database.php";
+  session_start();
+  $response;
+ if( isset($_SESSION['userid'])){
+  $response = array('success' => true, 'status_uzytkownika' => 'zalogowany');
+
+ }else{
+    $response = array('success' => true, 'status_uzytkownika' => 'niezalogowany');
+ }
+ echo json_encode($response);
   exit();
 }
 switch(($_GET['functionToDo'])){
@@ -296,6 +324,9 @@ switch(($_GET['functionToDo'])){
     case "sendRatingComment":
       sendRatingComment();
         break;
+    case "isLoginUser":
+      isLoginUser();
+      break;
 }
 
 ?>

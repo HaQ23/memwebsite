@@ -638,7 +638,7 @@
 		>
 		<div class="footer__items">
 			<a href="./contact.php" class="footer__item">Kontakt</a>
-			<a href="#" class="footer__item">Regulamin</a>
+			<a href="./regulamin.php" class="footer__item">Regulamin</a>
 		</div>
 		<div class="footer__social-media">
 			<h2 class="section-title">Zaobserwuj nas na:</h2>

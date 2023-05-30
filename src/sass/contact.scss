@@ -52,21 +52,26 @@
 				min-width: 100%;
 				min-height: 150px;
 				max-height: 450px;
-				transition: outline-color 0.2s;
+				transition: border-color 0.2s;
+				outline: none;
+				border: 2px solid var(--black-bg);
 				border-radius: 8px;
 				&:focus {
-					outline-color: var(--primary-color);
+					border-color: var(--primary-color);
 				}
 			}
 			input {
 				padding: 1.25rem;
 				font-size: var(--smaller-font-size);
 				border-radius: 8px;
-				transition: outline-color 0.2s;
+				transition: border-color 0.2s;
 				width: 100%;
 				height: 46px;
-				&:focus {
-					outline-color: var(--primary-color);
+				outline: none;
+				border: 2px solid var(--black-bg);
+				&:focus,
+				&:hover {
+					border-color: var(--primary-color);
 				}
 			}
 			.input-text.wrong {
