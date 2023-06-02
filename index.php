@@ -396,11 +396,12 @@
 	
 		<script>
 			
-		</script>				
+		</script>	
 		<script src="./dist/js/main.min.js"></script>
 		<script src="./dist/js/mems.min.js"></script>
 		<script src="./dist/js/index.min.js"></script>
 		<script src="./dist/js/upload.min.js?v=1"></script>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0"></script>	
 		<?php
 			sleep(0.1);
 			// if(isset($_GET['login'])) {

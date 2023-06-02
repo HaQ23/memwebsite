@@ -27,7 +27,12 @@ const toggleErrorOnSection = (el) => {
 		el.classList.toggle("error");
 	}, 2000);
 };
-
+function shareOnFacebook(memeSrc) {
+	var shareURL =
+		"https://www.facebook.com/sharer/sharer.php?u=" +
+		encodeURIComponent(memeSrc);
+	window.open(shareURL, "_blank");
+}
 const showResponseAlert = (type) => {
 	document.querySelector(".body-shadow").classList.toggle("show");
 	document.querySelector("body").classList.toggle("no-scroll");
@@ -404,6 +409,7 @@ async function loadMems(index) {
 							/>
 						</button>
 					</div>
+					<div class="box">
 					<a href="${setSrcOfAuthor(mem.id_user, mem.original_url)}" class="mem__author">
 						<div class="profile-box">
 							<img
@@ -415,7 +421,14 @@ async function loadMems(index) {
 						</div>
 						<span class="user-name">${setNickofAuthor(mem.name)}</span>
 					</a>
+					</div>
+					<div class="box">
+					<div class="share-mem">
+					<button class ="share-btn share-btn-facebook"><img class="icon"src="./dist/assets/icons/facebookSquare.webp"></button>
+
+					</div>
 					<button class="report-mem">Zgłoś mema</button>
+					</div>
 				</div>`;
 			//updateAssessmentStatus(mem["id_meme"]);
 
@@ -436,7 +449,11 @@ async function loadMems(index) {
 			memDiv.querySelector(".dislike").addEventListener("click", function (e) {
 				dislikeMem(parseInt(e.target.closest(".mem").dataset.idMeme));
 			});
-
+			memDiv.querySelector(".share-btn").addEventListener("click", function () {
+				console.log(srcMem);
+				console.log("adS");
+				shareOnFacebook(srcMem);
+			});
 			memyContainer.appendChild(memDiv);
 		}
 	} catch (error) {
