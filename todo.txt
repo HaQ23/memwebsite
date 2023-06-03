@@ -1,3 +1,4 @@
 1. Podmienic sciezke do upload-main.php w pliku upload.js na produkcji.
 2. Ustawic maila do odzyskiwania hasła tak aby wiadomość z tokenem została wysyłana.
 4. Na wszystkich podstronach "uaktywnić" przycisk "Dodaj mema" w navbarze i dodać odpowiednie kody html/js tak aby to działało poprawnie.
+5. dodac podstrone meme.php gdzie będą wyswietlane poejedyncze memy które na stronie głównej mogą być udostępniane.
