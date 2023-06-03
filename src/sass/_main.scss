@@ -108,14 +108,14 @@ a {
 		text-align: center;
 	}
 	&::before {
-		content: '';
+		content: "";
 		position: absolute;
 		width: 100%;
 		height: 5px;
 		background-color: var(--secondary-color-darker);
 		bottom: 0;
 		left: 0;
-		transition: scale .3s;
+		transition: scale 0.3s;
 		transform-origin: left;
 		scale: var(--scale-alert) 1;
 	}
@@ -132,14 +132,13 @@ a {
 		bottom: 0;
 		left: 0;
 		z-index: 11;
-		background-color: rgba(0,0,0,0.7);
+		background-color: rgba(0, 0, 0, 0.7);
 
 		&--active {
 			display: flex;
 		}
 	}
 	&-box {
-		
 		padding: 4rem 2rem;
 		max-width: 700px;
 		background-color: #fff;
@@ -171,7 +170,7 @@ a {
 		max-width: 450px;
 		line-height: 1.5em;
 	}
-	
+
 	&-file {
 		&-input {
 			visibility: hidden;
@@ -185,7 +184,7 @@ a {
 			justify-content: center;
 			border-radius: 10px;
 			cursor: pointer;
-			transition: opacity .3s;
+			transition: opacity 0.3s;
 
 			&:hover {
 				opacity: 0.5;
@@ -212,9 +211,9 @@ a {
 		width: 100%;
 		font-size: 2rem;
 		padding: 1.5rem 0;
-		font-family: 'Montserrat', sans-serif;
+		font-family: "Montserrat", sans-serif;
 		cursor: pointer;
-		transition: opacity .3s;
+		transition: opacity 0.3s;
 		&:hover {
 			opacity: 0.5;
 		}
@@ -225,9 +224,9 @@ a {
 
 		&-link {
 			color: var(--primary-color);
-			transition: opacity .3s;
+			transition: opacity 0.3s;
 			&:hover {
-				opacity: .5;
+				opacity: 0.5;
 			}
 		}
 	}
@@ -261,7 +260,7 @@ a {
 			padding: 1rem 3rem;
 			border-radius: 10px;
 			cursor: pointer;
-			transition: opacity .3s;
+			transition: opacity 0.3s;
 			font-size: 1.8rem;
 			&:hover {
 				opacity: 0.5;
@@ -277,15 +276,12 @@ a {
 	&-progress[value] {
 		width: 300px;
 		height: 30px;
-
-		
 	}
 	&-progress {
 		&--hidden {
 			display: none;
 		}
 	}
-	
 }
 .profile-box {
 	display: flex;
@@ -346,11 +342,26 @@ a {
 	display: none;
 	background-color: rgba(0, 0, 0, 0.4);
 }
+.loading-spinner {
+	margin: 10rem auto 10rem;
+	width: 40px;
+	height: 40px;
+	border: 4px solid #f3f3f3;
+	border-top: 4px solid var(--primary-color);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 
 @media (min-width: 992px) {
 	body.no-scroll {
 		overflow: hidden;
 	}
 }
-
-
