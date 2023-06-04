@@ -1,4 +1,14 @@
 <?php
+/**
+ * @file
+ * Skrypt do przesyłania memów na serwer
+ */
+/**
+ * Przesyła przesłany plik obrazu na serwer i zapisuje go w określonym katalogu.
+ * Dodaje informacje o przesłanym pliku do bazy danych.
+ *
+ * @return void
+ */
 if (isset($_FILES['upload-file-input'])) {
     session_start();
     $targetDir = '../../memes/'; // Podaj ścieżkę do katalogu, w którym chcesz zapisać przesłany plik
@@ -12,20 +22,18 @@ if (isset($_FILES['upload-file-input'])) {
     // Sprawdź, czy przesłany plik jest poprawnym obrazem
     $check = getimagesize($_FILES['upload-file-input']['tmp_name']);
     if ($check === false) {
-        echo 'Przesłany plik nie jest obrazem.';
 
         $uploadOk = false;
-        header("Location: ../../index.php?upload=wrongfile");
-        exit();
+        $response = array('success' => false, 'message' => 'Przesłany plik nie jest poprawnym obrazem');
+        
     }
 
     // Sprawdź rozmiar pliku
     if ($_FILES['upload-file-input']['size'] > 5000000) {
-        echo 'Przesłany plik jest za duży.';
  
         $uploadOk = false;
-        header("Location: ../../index.php?upload=size");
-        exit();
+        $response = array('success' => false, 'message' => 'Przesłany plik waży zbyt dużo');
+     
     }
 
     // Dozwolone rozszerzenia plików
@@ -34,8 +42,8 @@ if (isset($_FILES['upload-file-input'])) {
        
         
         $uploadOk = false;
-        header("Location: ../../index.php?upload=extension");
-        exit();
+        $response = array('success' => false, 'message' => 'Przesłany obraz posiada niedozwolony format');
+       
     }
 
     // Jeżeli wszystkie sprawdzenia przeszły pomyślnie, przenieś przesłany plik do docelowego katalogu
@@ -46,14 +54,15 @@ if (isset($_FILES['upload-file-input'])) {
             $authorId = $_SESSION['userid'];
             $date = date('Y/m/d');
             $sql = "INSERT INTO meme (id_meme, title, id_user, adding_date, accepted, imgsource, original_url) 
-                    VALUES (NULL, 'user', '$authorId', '1', '$date', '0', '$randomFilename', '-')";
+                    VALUES (NULL, 'user', '$authorId', '$date', '0', '$randomFilename', '-')";
             $conn->query($sql);
             $conn->close();
+            $response = array('success' => true, 'message' => '');
         } else {
-            echo 'Wystąpił błąd podczas przesyłania pliku.';
+            $response = array('success' => false, 'message' => 'Błąd');
         }
     }
+    echo json_encode($response);
+    exit();
 }
-
-
 ?>

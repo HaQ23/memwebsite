@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Opis pliku.
+ * Niezbędne funkcje potrzebne do poprawnego działania systemu Logowania oraz Rejestracji
  */
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

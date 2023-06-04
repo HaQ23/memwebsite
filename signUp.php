@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if(isset($_SESSION['userid'])) {
+		header("Location: ./index.php");
+		exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -78,7 +86,7 @@
 						</div>
 						<div class="input-box">
 							<label for="surname-user">Nazwisko</label>
-							<input type="text" name="surrname-user" id="surname-user" />
+							<input type="text" name="surname-user" id="surname-user" />
 							<?php 
 							if(isset($_GET['error'])) {
 								if($_GET['error'] == "emptyfields") {

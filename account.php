@@ -1,13 +1,20 @@
 <?php
+	session_start();
 	if(!isset($_GET['user'])) {
 		header("Location: ./index.php");
 		exit();
 	} else {
 		require_once './backend/database/database.php';
 		$userId = $_GET['user'];
-	
-		$thumbsUpSql = "SELECT COUNT(id_meme) AS summary FROM meme_rating WHERE id_author = '$userId' AND rating = 1";
-		$thumbsDownSql = "SELECT COUNT(id_meme) AS summary FROM meme_rating WHERE id_author = '$userId' AND rating = 0";
+		
+		$checkUserSql = "SELECT nick FROM account WHERE id_user = $userId";
+		$result = $conn->query($checkUserSql);
+		if($result->num_rows === 0) {
+			header("Location: ./index.php");
+			exit();
+		} 
+		$thumbsUpSql = "SELECT COUNT(id_meme) AS summary FROM meme_rating WHERE id_user = '$userId' AND rating = 1";
+		$thumbsDownSql = "SELECT COUNT(id_meme) AS summary FROM meme_rating WHERE id_user = '$userId' AND rating = 0";
 		$userDetailsSql = "SELECT name, surrname, nick FROM account WHERE id_user = $userId";
 		$statsAddedMemesSql = "SELECT COUNT(id_meme) AS summary FROM meme WHERE id_user = $userId";
 		$statsAddedCommentsSql = "SELECT COUNT(id_comment) AS summary FROM comment WHERE id_user = $userId";
@@ -124,8 +131,14 @@
 			<a href="#" class="nav__item">Ranking</a>
 			<a href="./queue.php" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
-				<a href="#" class="nav__button secondary-btn"> Dodaj mema </a>
-				<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>
+			<?php
+					if(isset($_SESSION['userid'])) {
+						echo '<button class="nav__button secondary-btn upload-button-navbar"> Dodaj mema </button>';
+						echo '<a href="./dashboard.php" class="nav__button primary-btn"> Panel </a>';
+					} else {
+						echo '<a href="./signIn.php" class="nav__button primary-btn"> Logowanie </a>';
+					}
+				?>
 			</div>
 		</div>
 	</div>
@@ -137,8 +150,8 @@
             <p class="user-name"><?php echo $userName.' '.$userSurrname ?></p>
             <p class="user-nickname">@<?php echo $userNickname; ?></p>
             <div class="user-fame">
-                <p class="user-fame-text user-likes"><img src="./dist/assets/icons/thumbs-up.svg" alt=""> <?php echo $thumbsUp; ?></p>
-                <p class="user-fame-text user-dislikes"><img src="./dist/assets/icons/thumbs-down.svg" alt=""> <?php echo $thumbsDown; ?></p>
+                <p class="user-fame-text user-likes">				<svg class="icon like-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5ab450" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <?php echo $thumbsUp; ?></p>
+                <p class="user-fame-text user-dislikes"><svg class="icon dislike-icon"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f72020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-down"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg> <?php echo $thumbsDown; ?></p>
             </div>
         </div>
         <div class="score">
@@ -231,6 +244,43 @@
 					<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
 			></a>
 		</div>
+		<div class="upload upload-overlay">
+			<div class="upload-box">
+				<div class="upload-topbar">
+					<p class="upload-title">Dodaj mema</p>
+					<button class="upload-close"><img src="./dist/assets/icons/close.svg" alt="" /></button>
+				</div>
+				<form action="./backend/upload/upload-main.php" method="post" class="upload-content" enctype="multipart/form-data">
+					<p class="upload-text">
+						Wybierz odpowiedni plik aby dodać mema na nasz portal.
+					</p>
+				
+					<div class="upload-file-box">
+						<label for="upload-file-input" class="upload-file-label">
+							<img src="./dist/assets/icons/upload.svg" class="upload-file-icon" alt="">
+							<p class="upload-file-text">Wybierz plik</p>
+						</label>
+						<input type="file" class="upload-file-input" name="upload-file-input" id="upload-file-input" required>
+						<p class="upload-filetype">Obsługiwane formaty: <span class="upload-filetype-highlighted">png, jpg, jpeg</span></p>
+						<p class="upload-filetype">Maksymalny rozmiar pliku: <span class="upload-filetype-highlighted">5mb</span></p>
+						<p class="upload-text">
+							Po dodaniu mema opublikuj go na naszym portalu aby inni,
+							mogli go ocenić!
+						</p>
+					</div>
+					<input type="submit" value="Opublikuj" name="upload-submit" class="upload-submit">
+					<p class="upload-generatorinfo">Masz pomysł na unikalnego mema który spodoba się każdemu?
+						Skorzystaj z naszego <a href="./generator.php" class="upload-generatorinfo-link">generatora</a> i stwórz nowego mema już teraz!</p>
+				</form>
+			</div>
+			<div class="upload-status upload-status--hidden">
+				<img src="./dist/assets/icons/publish.webp" alt="">
+				<p class="upload-status-text">Przesyłanie pliku...</p>
+				<p class="upload-status-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptate!</p>
+				<button class="upload-status-button">Gotowe</button>
+				<progress class="upload-progress" max="100" value="0"></progress>
+			</div>
+		</div>
 		<div class="line"></div>
 		<p class="copyRigth-text">
 			Copyright <span class="currentData">2023</span>. MemHub
@@ -239,5 +289,6 @@
 </footer>
 
     <script src="./dist/js/main.min.js"></script>
+	<script src="./dist/js/upload.min.js?v=1"></script>
 </body>
 </html>

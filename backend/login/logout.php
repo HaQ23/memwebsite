@@ -1,14 +1,30 @@
 <?php
+/**
+ * @file
+ * Skrypt do zakończenia sesji użytkownika i przekierowania na stronę główną.
+ */
 
+/**
+ * Rozpoczęcie lub wznowienie sesji.
+ */
+session_start();
 
-    session_start();
+/**
+ * Usunięcie wszystkich zmiennych sesji.
+ */
+session_unset();
 
-    session_unset();
-    session_destroy();
+/**
+ * Zniszczenie sesji.
+ */
+session_destroy();
 
-    header("location: ../../index.php");
-    exit();
+/**
+ * Przekierowanie użytkownika na stronę główną.
+ */
+header("location: ../../index.php");
 
-
-
-?>
+/**
+ * Zakończenie działania skryptu.
+ */
+exit();
