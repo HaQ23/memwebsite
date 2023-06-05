@@ -8,21 +8,21 @@ function loadMems(){
   $query;
   switch ($sort){
     case "najnowsze":
-      $query= "SELECT id_meme,imgsource,id_user,original_url FROM meme order by adding_date,id_meme LIMIT $offset,$limit;";
+      $query= "SELECT id_meme,imgsource,id_user,original_url FROM meme where accepted = 1 order by adding_date,id_meme LIMIT $offset,$limit;";
       break;
       case "najstarsze":
-        $query= "SELECT id_meme,imgsource,id_user,original_url FROM meme order by adding_date,id_meme desc LIMIT $offset,$limit;";
+        $query= "SELECT id_meme,imgsource,id_user,original_url FROM meme where accepted = 1  order by adding_date,id_meme desc LIMIT $offset,$limit;";
         break;
         case "najgorsze":
           $query= "SELECT COUNT(meme_rating.id_meme), meme.id_meme, meme.imgsource, meme.id_user,meme.original_url
             FROM meme
-            LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 0
+            LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 0 where meme.accepted = 1
             GROUP BY meme.id_meme ORDER by COUNT(meme_rating.id_meme) DESC, meme.id_meme limit  $offset,$limit;";
           break;
           case "najlepsze":
             $query= "SELECT COUNT(meme_rating.id_meme), meme.id_meme, meme.imgsource, meme.id_user,meme.original_url
             FROM meme
-            LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 1
+            LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme AND meme_rating.rating = 1 where meme.accepted = 1
             GROUP BY meme.id_meme ORDER by COUNT(meme_rating.id_meme) DESC , meme.id_meme limit  $offset,$limit;";
             break;
   }
