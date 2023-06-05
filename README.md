@@ -1,4 +1,4 @@
-# MemHub - Najlepsze Memy w Sieci
+# MemHub - Najlepsze Memy w Sieci :grinning:
 
 ## Uruchomienie projektu.
 
@@ -10,8 +10,7 @@
 
 4. Należy otworzyć przeglądarkę internetową oraz wybrać adres "localhost" lub (jeżeli w htdocs projekt jest zagnieżdżony w kolejnym folderze) "localhost/nazwa-folderu".
 
-5. Po wybraniu odpowiedniego adresu zostaniemy przeniesieni na stronę główną projektu. 
- 
+5. Po wybraniu odpowiedniego adresu zostaniemy przeniesieni na stronę główną projektu.
 
 ## Przykładowe konto użytkownika.
 
