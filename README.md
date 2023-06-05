@@ -1,6 +1,6 @@
 # MemHub - Najlepsze Memy w Sieci :grinning:
 
-## Uruchomienie projektu.
+## Uruchomienie projektu. :desktop_computer:
 
 1. Należy zainstalować program xampp dostępny pod adresem: https://www.apachefriends.org/pl/index.html
 
@@ -12,7 +12,7 @@
 
 5. Po wybraniu odpowiedniego adresu zostaniemy przeniesieni na stronę główną projektu. :thumbsup:
 
-## Przykładowe konto użytkownika.
+## Przykładowe konto użytkownika. :frowning_person:
 
 Chcąc sprawdzić wszystkie możliwości serwisu MemHub należy utworzyć konto użytkownika jednakże można również wykorzystać testowe konto:
 
