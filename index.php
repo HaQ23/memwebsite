@@ -111,7 +111,7 @@
 					  SELECT meme.id_user, COUNT(meme_rating.id_meme) AS rating_count
 					  FROM meme
 					  LEFT JOIN meme_rating ON meme.id_meme = meme_rating.id_meme
-					  WHERE meme_rating.rating = 1
+					  WHERE meme_rating.rating = 1 and meme.accepted = 1
 					  GROUP BY meme.id_user
 				  ) AS oceny ON account.id_user = oceny.id_user ORDER by suma_wag DESC limit 3;
 				  ";

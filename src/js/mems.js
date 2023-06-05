@@ -38,7 +38,7 @@ const showResponseAlert = (type) => {
 	document.querySelector("body").classList.toggle("no-scroll");
 	if (type === 1) {
 		const responseSection = document.querySelector(".showResponse__success");
-		if (responseSection.classList.contains("show"));
+		responseSection.classList.toggle("show");
 	} else {
 		const responseSection = document.querySelector(".showResponse__error");
 		responseSection.classList.toggle("show");
@@ -669,7 +669,7 @@ function sendReport() {
 					setTimeout(() => {
 						if (
 							document
-								.querySelector(".showResponse__success")
+								.querySelector(".showResponse__error")
 								.classList.contains("show")
 						) {
 							showResponseAlert(2);
