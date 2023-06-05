@@ -1,7 +1,7 @@
 const uploadCloseButton = document.querySelector(".upload-close");
 const uploadOverlay = document.querySelector(".upload-overlay");
 const uploadBox = document.querySelector(".upload-box");
-const uploadButtonNavbar = document.querySelector(".upload-button-navbar");
+const uploadButtonNavbar = document.querySelectorAll(".upload-button-navbar");
 const uploadButtonSubmit = document.querySelector(".upload-submit");
 const uploadProgress = document.querySelector(".upload-progress");
 const uploadStatusBox = document.querySelector(".upload-status");
@@ -83,7 +83,7 @@ const uploadFile = e => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	uploadCloseButton.addEventListener("click", handleUploadBox);
-	uploadButtonNavbar.addEventListener("click", handleUploadBox);
+	uploadButtonNavbar.forEach(btn => btn.addEventListener("click", handleUploadBox));
 
 	uploadButtonSubmit.addEventListener("click", uploadFile);
 	uploadStatusButton.addEventListener("click", restoreUploadBox);

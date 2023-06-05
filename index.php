@@ -417,6 +417,11 @@
 				else if($_GET['upload'] == "extension") {
 					echo '<script>handleAlert("Wybrany format pliku jest niedozwolony")</script>';	
 				}
+			}	
+			if(isset($_GET['error'])) {
+				if($_GET['error'] == "memeid") {
+					echo '<script>handleAlert("Taki mem nie istnieje.")</script>';	
+				}
 			}		
 		?>
 	</body>

@@ -518,7 +518,7 @@
 								class="icon"
 							/>Pobierz mema</a
 						>
-						<button class="add-mem primary-btn">Dodaj na stronę</button>
+						<button class="add-mem primary-btn upload-button-navbar">Dodaj na stronę</button>
 					</div>
 				</div>
 			</div>
