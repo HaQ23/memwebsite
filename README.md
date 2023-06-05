@@ -10,15 +10,15 @@
 
 4. Należy otworzyć przeglądarkę internetową oraz wybrać adres "localhost" lub (jeżeli w htdocs projekt jest zagnieżdżony w kolejnym folderze) "localhost/nazwa-folderu".
 
-5. Po wybraniu odpowiedniego adresu zostaniemy przeniesieni na stronę główną projektu.
+5. Po wybraniu odpowiedniego adresu zostaniemy przeniesieni na stronę główną projektu. :thumbsup:
 
 ## Przykładowe konto użytkownika.
 
 Chcąc sprawdzić wszystkie możliwości serwisu MemHub należy utworzyć konto użytkownika jednakże można również wykorzystać testowe konto:
 
-> Login: **testuser**
+> :globe_with_meridians: Login: **testuser**
 
-> Hasło: **testuser123**
+> :globe_with_meridians: Hasło: **testuser123**
 
 ## MemHub Wersja Live.
 
