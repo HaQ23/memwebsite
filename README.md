@@ -20,6 +20,6 @@ Chcąc sprawdzić wszystkie możliwości serwisu MemHub należy utworzyć konto 
 
 > :globe_with_meridians: Hasło: **testuser123**
 
-## MemHub Wersja Live.
+## MemHub Wersja Live. :earth_africa:
 
 Serwis MemHub można odwiedzić za pośrednictwem adresu: http://mem-hub.pl/
