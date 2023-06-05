@@ -1,30 +1,54 @@
-//clear errors
-const deleteErrors = (form) => {
+/**
+ * @module ContactJS - Skrypt zarządzający Formularzem Kontaktowy
+ */
+
+/**
+ * Funkcja usuwa wszystkie błędy z formularza.
+ * @param {HTMLFormElement} form - Formularz, z którego należy usunąć błędy.
+ */
+const deleteErrors = form => {
 	const allErrors = form.querySelectorAll(".wrong");
 	if (allErrors) {
-		allErrors.forEach((el) => {
+		allErrors.forEach(el => {
 			el.classList.remove("wrong");
 		});
 	}
 };
-//contact check
 
+/**
+ * Pobranie formularza kontaktowego.
+ */
 const contactForm = document.querySelector(".contact-form");
 
-const validateEmail = (email) => {
+/**
+ * Funkcja sprawdza poprawność adresu e-mail.
+ * @param {string} email - Adres e-mail, który ma zostać sprawdzony.
+ * @returns {Array|null} - Zwraca dopasowany wzorzec lub null w przypadku braku dopasowania.
+ */
+const validateEmail = email => {
 	return String(email)
 		.toLowerCase()
 		.match(
 			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		);
 };
-const clearForm = (form) => {
+
+/**
+ * Funkcja czyści zawartość formularza.
+ * @param {HTMLFormElement} form - Formularz, który ma zostać wyczyszczony.
+ */
+const clearForm = form => {
 	const allInp = form.querySelectorAll(".input-text");
-	allInp.forEach((item) => {
+	allInp.forEach(item => {
 		item.value = "";
 	});
 };
-const checkForm = (form) => {
+
+/**
+ * Funkcja sprawdza poprawność formularza.
+ * @param {HTMLFormElement} form - Formularz, który ma zostać sprawdzony.
+ */
+const checkForm = form => {
 	form.classList.remove("wrong");
 	deleteErrors(form);
 	const allImportantInputs = form.querySelectorAll(".input-text");
@@ -32,16 +56,24 @@ const checkForm = (form) => {
 	if (!validateEmail(storeEmail.value)) {
 		storeEmail.classList.add("wrong");
 	}
-	allImportantInputs.forEach((el) => {
+	allImportantInputs.forEach(el => {
 		if (el.value == "") {
 			el.classList.add("wrong");
 		}
 	});
 };
-//emailjs use https://www.emailjs.com/
+
+/**
+ * Inicjalizacja EmailJS.
+ */
 (function () {
 	emailjs.init("WTM9x0rZh8lu-b1aK");
 })();
+
+/**
+ * Funkcja wysyła formularz e-mailem.
+ * @param {Event} form - Wysłane zdarzenie formularza.
+ */
 function sendMail(form) {
 	const info = form.target.querySelector(".form-info");
 	form.preventDefault();
@@ -64,7 +96,7 @@ function sendMail(form) {
 					}, 5000);
 					alert("Dziękujemy, twoja wiadomość została wysłana");
 				},
-				(error) => {
+				error => {
 					alert("ops", error);
 				}
 			);
@@ -73,4 +105,6 @@ function sendMail(form) {
 	}
 	clearForm(form.target);
 }
+
+// Dodajemy nasłuchiwanie na zdarzenie submit dla formularza kontaktowego.
 contactForm.addEventListener("submit", sendMail);

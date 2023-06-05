@@ -26,6 +26,32 @@ if (isset($_POST['recovery-step-one'])) {
     $email = $_POST['recovery-email'];
     require_once "../database/database.php";
     $token = random_int(100000, 999999);
+    $to = $email;
+    $subject = "MemHub - Przywracanie Hasła";
+    $message = '<html>
+    <head>
+    <title>MemHub - Zmiana Hasła</title>
+    </head>
+    <body>
+    <h1>Rozpoczęto proces zmiany hasła.</h1>
+    <p>Twój wygenerowany token to: <b style="color: red;">'.$token.'</b></p>
+    <br>
+    <br>
+    <br>
+    <p>W razie problemów służymy pomocą!</p>
+    <p>Z poważaniem, <br>~ Markoni McNeil</p>
+    </body>
+    </html>';
+    $headers = 'From: biuro@memhub.pl' . "\r\n";
+    $headers .= 'Reply-To: biuro@memhub.pl' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+    $headers .= 'X-Mailer: PHP/' . phpversion();
+    
+    if (mail($to, $subject, $message, $headers)) {
+    echo "Wiadomość wysłana!";
+    } else {
+    echo "Niepowodzenie!";
+    }
     $sql = "INSERT INTO token (id, token, user_email, used) 
     VALUES (NULL, '$token', '$email', '0')";
     $conn->query($sql);

@@ -24,7 +24,7 @@
 			rel="stylesheet"
 			href="https://unpkg.com/flickity@2/dist/flickity.min.css"
 		/>
-		<link rel="stylesheet" href="./dist/css/generator.min.css" />
+		<link rel="stylesheet" href="./dist/css/generator.min.css?v=1" />
 	</head>
 	<body class="">
 		<nav class="nav">
@@ -42,7 +42,7 @@
 			<a href="./generator.php" class="nav__item">Generator</a>
 
 			<a href="#" class="nav__item">Ranking</a>
-			<a href="#" class="nav__item">Poczekalnia</a>
+			<a href="./queue.php" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
 			<?php
 					if(isset($_SESSION['userid'])) {
@@ -518,7 +518,13 @@
 								class="icon"
 							/>Pobierz mema</a
 						>
-						<button class="add-mem primary-btn upload-button-navbar">Dodaj na stronę</button>
+						<?php 
+							if(isset($_SESSION['userid'])) {
+								echo '<button class="add-mem primary-btn upload-button-navbar">Dodaj na stronę</button>';
+							} else {
+								echo '<button class="add-mem primary-btn" onclick="handleAlert(`Musisz byc zalogowany!`)">Dodaj na stronę</button>';
+							}
+						?>
 					</div>
 				</div>
 			</div>
@@ -721,8 +727,7 @@
 						</p>
 					</div>
 					<input type="submit" value="Opublikuj" name="upload-submit" class="upload-submit">
-					<p class="upload-generatorinfo">Masz pomysł na unikalnego mema który spodoba się każdemu?
-						Skorzystaj z naszego <a href="./generator.php" class="upload-generatorinfo-link">generatora</a> i stwórz nowego mema już teraz!</p>
+			
 				</form>
 			</div>
 			<div class="upload-status upload-status--hidden">
@@ -738,12 +743,15 @@
 			Copyright <span class="currentData">2023</span>. MemHub
 		</p>
 	</div>
+	<div class="alert">
+			<p class="alert__text"></p>
+		</div>
 </footer>
 
 		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 		<script src="./dist/js/carousel.min.js"></script>
-		<script src="./dist/js/main.min.js"></script>
-		<script src="./dist/js/generateMem.min.js"></script>
+		<script src="./dist/js/main.min.js?v=1"></script>
+		<script src="./dist/js/generateMem.min.js?v=1"></script>
 		<script src="./dist/js/upload.min.js?v=1"></script>
 	</body>
 </html>

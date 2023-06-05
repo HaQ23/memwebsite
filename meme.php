@@ -65,7 +65,7 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
 	rel="stylesheet"
 />
-<meta name="description" content="Put your description here." />
+<meta name="description" content="MemHub to największa na świecie platforma z memami, sprawdź już dziś!." />
 
     <link rel="stylesheet" href="./dist/css/meme.min.css">
 </head>

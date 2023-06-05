@@ -1,18 +1,78 @@
+
+
+/**
+ * Przycisk zamykający okno przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadCloseButton = document.querySelector(".upload-close");
+
+/**
+ * Nakładka na ekranie podczas przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadOverlay = document.querySelector(".upload-overlay");
+
+/**
+ * Kontener przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadBox = document.querySelector(".upload-box");
+
+/**
+ * Przyciski przesyłania pliku w pasku nawigacji.
+ * @type {NodeList<HTMLElement>}
+ */
 const uploadButtonNavbar = document.querySelectorAll(".upload-button-navbar");
+
+/**
+ * Przycisk przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadButtonSubmit = document.querySelector(".upload-submit");
+
+/**
+ * Pasek postępu przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadProgress = document.querySelector(".upload-progress");
+
+/**
+ * Kontener stanu przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadStatusBox = document.querySelector(".upload-status");
+
+/**
+ * Tekst stanu przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadStatusText = document.querySelector(".upload-status-text");
+
+/**
+ * Opis stanu przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadStatusDesc = document.querySelector(".upload-status-desc");
+
+/**
+ * Przycisk akcji w stanie przesyłania pliku.
+ * @type {HTMLElement}
+ */
 const uploadStatusButton = document.querySelector(".upload-status-button");
 
+/**
+ * Obsługa aktywacji/dezaktywacji kontenera przesyłania pliku.
+ * @function
+ */
 const handleUploadBox = () => {
 	document.body.classList.toggle("no-scroll");
 	uploadOverlay.classList.toggle("upload-overlay--active");
 };
+
+/**
+ * Przywraca stan początkowy kontenera przesyłania pliku.
+ * @function
+ */
 const restoreUploadBox = () => {
 	uploadBox.classList.remove("upload-box--hidden");
 	uploadStatusBox.classList.add("upload-status--hidden");
@@ -23,6 +83,11 @@ const restoreUploadBox = () => {
 	handleUploadBox();
 };
 
+/**
+ * Przesyła wybrany plik na serwer.
+ * @param {Event} e - Zdarzenie przesyłania pliku.
+ * @function
+ */
 const uploadFile = e => {
 	e.preventDefault();
 
@@ -37,7 +102,7 @@ const uploadFile = e => {
 
 		const xhr = new XMLHttpRequest();
 
-		xhr.open("POST", "../memwebsite/backend/upload/upload-main.php", true);
+		xhr.open("POST", "./backend/upload/upload-main.php", true);
 
 		xhr.upload.onprogress = function (event) {
 			if (event.lengthComputable) {
@@ -83,7 +148,9 @@ const uploadFile = e => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	uploadCloseButton.addEventListener("click", handleUploadBox);
-	uploadButtonNavbar.forEach(btn => btn.addEventListener("click", handleUploadBox));
+	uploadButtonNavbar.forEach(btn =>
+		btn.addEventListener("click", handleUploadBox)
+	);
 
 	uploadButtonSubmit.addEventListener("click", uploadFile);
 	uploadStatusButton.addEventListener("click", restoreUploadBox);
