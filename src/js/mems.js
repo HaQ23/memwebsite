@@ -765,7 +765,7 @@ function loadComments(idMeme) {
 					<a href="#" class="profile-box">
 						<img src="./dist/assets/icons/user.svg" alt="" class="profile-photo" />
 					</a>
-					<div class="comment__content-box data-id-coment='${comment.idComment}'>
+					<div class="comment__content-box" data-id-comment='${comment.idComment}'>
 						<div class="comment__content">
 							<span class="comment__author">${comment.name.nick}</span>
 							<p class="comment__text">

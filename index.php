@@ -398,7 +398,7 @@
 			
 		</script>	
 		<script src="./dist/js/main.min.js?v=1"></script>
-		<script src="./dist/js/mems.min.js?v=6"></script>
+		<script src="./dist/js/mems.min.js?v=7"></script>
 		<script src="./dist/js/index.min.js?v=1"></script>
 		<script src="./dist/js/upload.min.js?v=3"></script>
 		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0"></script>	
