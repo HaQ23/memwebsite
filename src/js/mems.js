@@ -432,7 +432,7 @@ async function loadMems(index) {
 				</div>`;
 			//updateAssessmentStatus(mem["id_meme"]);
 
-			sendRating(mem["id_meme"]);
+			sendRating(mem["id_meme"],2);
 			updateCommentsStatus(mem["id_meme"]);
 			memDiv
 				.querySelector(".add-comment")

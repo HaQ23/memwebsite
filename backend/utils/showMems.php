@@ -183,15 +183,19 @@ function sendRating(){
   $secondQuery ="";
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    if($row['rating']==$rating){
+    
+      if($row['rating']==$rating){
       $secondQuery = "DELETE FROM meme_rating WHERE id_user =$idUser  AND id_meme = $idMeme";
       $response = array('success' => true, 'message' => '1.'); 
       $conn->query($secondQuery); 
     }else{
+      $cos = !$row['rating'];
       $secondQuery = "UPDATE meme_rating SET rating = $rating WHERE id_user = $idUser AND id_meme = $idMeme ;";
       $response = array('success' => true, 'message' => '2.');
       $conn->query($secondQuery);
     }
+  
+
 } 
 else{
   if($idUser !=0){
