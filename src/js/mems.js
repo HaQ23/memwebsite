@@ -439,7 +439,7 @@ function updateRatingCommentUI(idComment, likes, dislikes, userChoosed) {
  */
 function sendRating(idMeme, rating) {
 	const xhr = new XMLHttpRequest();
-
+	console.log(xhr);
 	xhr.open(
 		"POST",
 		"./backend/utils/showMems.php?" + "&functionToDo=sendRating"
@@ -678,7 +678,7 @@ async function loadMems(index) {
 					</div>
 				</div>`;
 
-			sendRating(mem["id_meme"]);
+			sendRating(mem["id_meme"], 2);
 			updateCommentsStatus(mem["id_meme"]);
 			memDiv
 				.querySelector(".add-comment")
@@ -696,7 +696,7 @@ async function loadMems(index) {
 				dislikeMem(parseInt(e.target.closest(".mem").dataset.idMeme));
 			});
 			memDiv.querySelector(".share-btn").addEventListener("click", function () {
-				shareOnFacebook(`http://mem-hub.pl/m/${srcMem}`);
+				shareOnFacebook(`http://mem-hub.pl/${srcMem}`);
 			});
 			memyContainer.appendChild(memDiv);
 		}
@@ -820,7 +820,7 @@ function loadComments(idMeme) {
 					</div>`;
 
 				storeIdComment = comment.id_comment;
-				sendCommentRating(storeIdComment);
+				sendCommentRating(storeIdComment, 2);
 
 				// Dodanie event listenera do przycisku zgłaszania komentarza
 				commentBox

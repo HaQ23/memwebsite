@@ -266,15 +266,23 @@ function sendRating() {
   if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
 
-      if ($row['rating'] == $rating) {
-          $secondQuery = "DELETE FROM meme_rating WHERE id_user=$idUser AND id_meme=$idMeme"; // Usunięcie oceny, jeśli jest taka sama jak wcześniej
-          $response = array('success' => true, 'message' => '1.'); 
-          $conn->query($secondQuery); 
-      } else {
-          $secondQuery = "UPDATE meme_rating SET rating=$rating WHERE id_user=$idUser AND id_meme=$idMeme"; // Aktualizacja oceny, jeśli się zmieniła
-          $response = array('success' => true, 'message' => '2.');
-          $conn->query($secondQuery);
+     
+      if($row['rating']==$rating){
+        $secondQuery = "DELETE FROM meme_rating WHERE id_user =$idUser  AND id_meme = $idMeme";
+        $response = array('success' => true, 'message' => '1.'); 
+        $conn->query($secondQuery); 
+      }else{
+        $siema = 0;
+        if($rating > 1) {
+          $siema = 0;
+        } else {
+          $siema = 1;
+        }
+        $secondQuery = "UPDATE meme_rating SET rating = $siema WHERE id_user = $idUser AND id_meme = $idMeme ;";
+        $response = array('success' => true, 'message' => '2.');
+        $conn->query($secondQuery);
       }
+    
   } else {
       if ($idUser != 0) {
           $secondQuery = "INSERT INTO meme_rating (id_meme, id_user, rating) VALUES ($idMeme, $idUser, $rating)"; // Dodanie nowej oceny
@@ -341,7 +349,13 @@ function sendRatingComment() {
           $secondQuery = "DELETE FROM comment_rating WHERE id_user=$idUser AND id_comment=$idComment"; // Usunięcie oceny, jeśli jest taka sama jak wcześniej
           $response = array('success' => true, 'message' => '1.');  
       } else {
-          $secondQuery = "UPDATE comment_rating SET rating=$rating WHERE id_user=$idUser AND id_comment=$idComment"; // Aktualizacja oceny, jeśli się zmieniła
+          $siema = 0;
+          if($rating > 1) {
+            $siema = 0;
+          } else {
+            $siema = 1;
+          }
+          $secondQuery = "UPDATE comment_rating SET rating=$siema WHERE id_user=$idUser AND id_comment=$idComment"; // Aktualizacja oceny, jeśli się zmieniła
           $response = array('success' => true, 'message' => '2.');
       }
   } else {
@@ -351,6 +365,7 @@ function sendRatingComment() {
       } else {
           $secondQuery = "SELECT * FROM meme";
       }
+      
   }
 
   $conn->query($secondQuery);
