@@ -168,27 +168,12 @@ const showResponseAlert = type => {
 		responseSection.classList.toggle("show");
 	}
 };
-
-/**
- * Zwraca podaną wartość z pierwszą wielką literą.
- *
- * @param {string} str - Tekst.
- * @returns {string} - Tekst z pierwszą wielką literą.
- */
 function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-/**
- * Przełącza wyświetlanie listy sortowania memów.
- */
 const showSortMemsList = () => {
 	sortList.classList.toggle("active");
 };
-
-/**
- * Przełącza wyświetlanie sekcji zgłaszania.
- */
 const toggleShowReport = () => {
 	const currentReport = document.querySelector(".report");
 	currentReport.classList.toggle("show");
@@ -198,13 +183,7 @@ const toggleShowReport = () => {
 		showComments();
 	}
 };
-
-/**
- * Ustawia wartości do zgłoszenia.
- *
- * @param {HTMLElement} el - Element, który jest zgłaszany.
- */
-const setValuesToReport = el => {
+const setValuesToReport = (el) => {
 	const currentReport = document.querySelector(".report");
 	toggleShowReport();
 	if (currentReport.classList.contains("show")) {
@@ -439,7 +418,7 @@ function updateRatingCommentUI(idComment, likes, dislikes, userChoosed) {
  */
 function sendRating(idMeme, rating) {
 	const xhr = new XMLHttpRequest();
-	console.log(xhr);
+
 	xhr.open(
 		"POST",
 		"./backend/utils/showMems.php?" + "&functionToDo=sendRating"
@@ -744,7 +723,7 @@ function getTimeAgo(commentDate) {
 function loadComments(idMeme) {
 	// Utworzenie nowego obiektu XMLHttpRequest
 	const xhr = new XMLHttpRequest();
-
+	console.log(xhr);
 	// Ustawienie parametrów zapytania GET
 	xhr.open(
 		"GET",

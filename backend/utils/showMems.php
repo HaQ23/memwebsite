@@ -272,13 +272,11 @@ function sendRating() {
         $response = array('success' => true, 'message' => '1.'); 
         $conn->query($secondQuery); 
       }else{
-        $siema = 0;
+       
         if($rating > 1) {
-          $siema = 0;
-        } else {
-          $siema = 1;
-        }
-        $secondQuery = "UPDATE meme_rating SET rating = $siema WHERE id_user = $idUser AND id_meme = $idMeme ;";
+          $rating = $row['rating'];
+        } 
+        $secondQuery = "UPDATE meme_rating SET rating = $rating WHERE id_user = $idUser AND id_meme = $idMeme ;";
         $response = array('success' => true, 'message' => '2.');
         $conn->query($secondQuery);
       }
@@ -349,13 +347,10 @@ function sendRatingComment() {
           $secondQuery = "DELETE FROM comment_rating WHERE id_user=$idUser AND id_comment=$idComment"; // Usunięcie oceny, jeśli jest taka sama jak wcześniej
           $response = array('success' => true, 'message' => '1.');  
       } else {
-          $siema = 0;
-          if($rating > 1) {
-            $siema = 0;
-          } else {
-            $siema = 1;
-          }
-          $secondQuery = "UPDATE comment_rating SET rating=$siema WHERE id_user=$idUser AND id_comment=$idComment"; // Aktualizacja oceny, jeśli się zmieniła
+        if($rating > 1) {
+          $rating = $row['rating'];
+        } 
+          $secondQuery = "UPDATE comment_rating SET rating=$rating WHERE id_user=$idUser AND id_comment=$idComment"; // Aktualizacja oceny, jeśli się zmieniła
           $response = array('success' => true, 'message' => '2.');
       }
   } else {
