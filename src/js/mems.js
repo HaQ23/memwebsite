@@ -1,162 +1,38 @@
-/**
- * @module memsJS - Skrypt zarządzający wyświetlaniem oraz obsługą memów na stronie głównej
- */
-
-/**
- * Przyciski do dodawania komentarzy
- * @type {NodeList}
- */
 const allAddCommentBtn = document.querySelectorAll(".add-comment");
-
-/**
- * Przycisk do zamykania sekcji komentarzy
- * @type {Element}
- */
 const closeCommentBtn = document.querySelector(".comments .close-btn");
-
-/**
- * Przycisk do zamykania sekcji zgłoszeń
- * @type {Element}
- */
 const closeReportBtn = document.querySelector(".close-report-btn");
-
-/**
- * Przycisk sortowania
- * @type {Element}
- */
 const sortBtn = document.querySelector(".sort");
-
-/**
- * Lista sortowania
- * @type {Element}
- */
 const sortList = document.querySelector(".sort-list");
-
-/**
- * Elementy listy sortowania
- * @type {NodeList}
- */
 const sortListItems = document.querySelectorAll(".sort-list__item");
-
-/**
- * Przycisk sortowania komentarzy
- * @type {Element}
- */
 const sortCommentsBtn = document.querySelector(".btn-sort-comments");
-
-/**
- * Przycisk do wysyłania komentarza
- * @type {Element}
- */
 const sendCommentBtn = document.querySelector(".add-comment-btn");
-
-/**
- * Formularz zgłoszenia
- * @type {Element}
- */
 const reportForm = document.getElementById("report-form");
-
-/**
- * Pole sortowania komentarzy
- * @type {Element}
- */
 const sortCommentBox = document.querySelector(".sort-comments-options");
-
-/**
- * Przyciski do zamykania sekcji odpowiedzi
- * @type {NodeList}
- */
 const showResponseCloseBtn = document.querySelectorAll(
 	".showResponse__close-btn"
 );
-
-/**
- * Wartość sortowania
- * @type {string}
- */
-let sortValue = "najnowsze";
-
-/**
- * Wartość sortowania komentarzy
- * @type {string}
- */
-let sortCommentsValue = "najnowsze";
-
-/**
- * Identyfikator zgłoszonego elementu
- * @type {string}
- */
+let sortValue = "najnowsze",
+	sortCommentsValue = "najnowsze";
 let whatItemIsReported, storeIdToSendReport;
-
-/**
- * Identyfikator elementu mema
- * @type {string}
- */
 let storeIdMem, storeIdComment;
-
-/**
- * Wartość memów
- * @type {string}
- */
 let valueOfMems;
-
-/**
- * Początkowa wartość wyświetlania memów
- * @type {number}
- */
-let startValueShowMem = 0;
-
-/**
- * Limit memów
- * @type {number}
- */
-let limit = 10;
-
-/**
- * Wysokość przewijania
- * @type {number}
- */
-let scrollHeight;
-
-/**
- * Maksymalna liczba memów
- * @type {number}
- */
-let maxMems;
-
-/**
- * Zmienna kontrolująca generowanie memów
- * @type {boolean}
- */
-let stopGenerate = false;
-
-/**
- * Przełącza błąd na sekcji
- * @param {Element} el - Element, na którym ma zostać wykonane przełączenie
- */
+let startValueShowMem = 0,
+	limit = 10;
+let scrollHeight,
+	maxMems,
+	stopGenerate = false;
 const toggleErrorOnSection = el => {
 	el.classList.toggle("error");
 	setTimeout(function () {
 		el.classList.toggle("error");
 	}, 2000);
 };
-/**
- * Udostępnia mem na Facebooku.
- *
- * @param {string} memeSrc - Adres URL mema.
- */
 function shareOnFacebook(memeSrc) {
 	var shareURL =
 		"https://www.facebook.com/sharer/sharer.php?u=" +
 		encodeURIComponent(memeSrc);
 	window.open(shareURL, "_blank");
 }
-
-/**
- * Wyświetla sekcję powiadomienia o podanym typie.
- *
- * @param {number} type - Typ powiadomienia (1 - sukces, inna wartość - błąd).
- */
 const showResponseAlert = type => {
 	document.querySelector(".body-shadow").classList.toggle("show");
 	document.querySelector("body").classList.toggle("no-scroll");
@@ -183,7 +59,7 @@ const toggleShowReport = () => {
 		showComments();
 	}
 };
-const setValuesToReport = (el) => {
+const setValuesToReport = el => {
 	const currentReport = document.querySelector(".report");
 	toggleShowReport();
 	if (currentReport.classList.contains("show")) {
@@ -197,11 +73,6 @@ const setValuesToReport = (el) => {
 	}
 };
 
-/**
- * Aktualizuje status oceny mema.
- *
- * @param {string} idMeme - Identyfikator mema.
- */
 function updateAssessmentStatus(idMeme) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
@@ -243,12 +114,6 @@ function updateAssessmentStatus(idMeme) {
 	};
 	xhr.send();
 }
-
-/**
- * Aktualizuje status komentarzy mema.
- *
- * @param {string} idMeme - Identyfikator mema.
- */
 function updateCommentsStatus(idMeme) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
@@ -279,12 +144,6 @@ function updateCommentsStatus(idMeme) {
 	};
 	xhr.send();
 }
-
-/**
- * Sprawdza, czy użytkownik jest zalogowany.
- *
- * @returns {boolean} - Wartość logiczna, czy użytkownik jest zalogowany.
- */
 function isLoginUser() {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
@@ -308,9 +167,6 @@ function isLoginUser() {
 	xhr.send();
 }
 
-/**
- * Pobiera liczbę memów.
- */
 function getCountOfMems() {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
@@ -326,13 +182,6 @@ function getCountOfMems() {
 	};
 	xhr.send();
 }
-
-/**
- * Ustawia nick autora.
- *
- * @param {HTMLElement} el - Element autora.
- * @returns {string} - Nick autora lub domyślny tekst.
- */
 function setNickofAuthor(el) {
 	if (el === null) {
 		return "Pobrane z ...";
@@ -340,14 +189,6 @@ function setNickofAuthor(el) {
 		return el.nick;
 	}
 }
-
-/**
- * Ustawia źródło autora.
- *
- * @param {string} idUser - Identyfikator użytkownika.
- * @param {string} originalUrl - Oryginalny URL.
- * @returns {string} - Źródło autora.
- */
 function setSrcOfAuthor(idUser, originalUrl) {
 	if (originalUrl === "") {
 		return `./account.php?user=${idUser}`;
@@ -355,15 +196,6 @@ function setSrcOfAuthor(idUser, originalUrl) {
 		return originalUrl;
 	}
 }
-
-/**
- * Aktualizuje interfejs oceny mema.
- *
- * @param {string} idMeme - Identyfikator mema.
- * @param {number} likes - Liczba polubień.
- * @param {number} dislikes - Liczba niepolubień.
- * @param {number} userChoosed - Wybór użytkownika (0 - niepolubienie, 1 - polubienie, inna wartość - brak wyboru).
- */
 function updateRatingUI(idMeme, likes, dislikes, userChoosed) {
 	const memyContainer = document.querySelector(`[data-id-meme="${idMeme}"]`);
 	if (memyContainer !== null) {
@@ -383,15 +215,6 @@ function updateRatingUI(idMeme, likes, dislikes, userChoosed) {
 		}
 	}
 }
-
-/**
- * Aktualizuje interfejs oceny komentarza.
- *
- * @param {string} idComment - Identyfikator komentarza.
- * @param {number} likes - Liczba polubień.
- * @param {number} dislikes - Liczba niepolubień.
- * @param {number} userChoosed - Wybór użytkownika (0 - niepolubienie, 1 - polubienie, inna wartość - brak wyboru).
- */
 function updateRatingCommentUI(idComment, likes, dislikes, userChoosed) {
 	const comment = document.querySelector(`[data-id-comment="${idComment}"]`);
 	if (comment !== null) {
@@ -409,13 +232,6 @@ function updateRatingCommentUI(idComment, likes, dislikes, userChoosed) {
 		}
 	}
 }
-
-/**
- * Wysyła ocenę mema.
- *
- * @param {string} idMeme - Identyfikator mema.
- * @param {string} rating - Ocena (0 - niepolubienie, 1 - polubienie).
- */
 function sendRating(idMeme, rating) {
 	const xhr = new XMLHttpRequest();
 
@@ -452,13 +268,6 @@ function sendRating(idMeme, rating) {
 			encodeURIComponent(rating)
 	);
 }
-
-/**
- * Wysyła ocenę komentarza.
- *
- * @param {string} idComment - Identyfikator komentarza.
- * @param {string} rating - Ocena (0 - niepolubienie, 1 - polubienie).
- */
 function sendCommentRating(idComment, rating) {
 	const xhr = new XMLHttpRequest();
 
@@ -495,57 +304,26 @@ function sendCommentRating(idComment, rating) {
 			encodeURIComponent(rating)
 	);
 }
-
-/**
- * Funkcja do polubienia mema.
- *
- * @param {string} idMeme - Identyfikator mema.
- */
 function likeMem(idMeme) {
 	if (idMeme !== null) {
 		sendRating(idMeme, 1);
 	}
 }
-
-/**
- * Funkcja do niepolubienia mema.
- *
- * @param {string} idMeme - Identyfikator mema.
- */
 function dislikeMem(idMeme) {
 	if (idMeme !== null) {
 		sendRating(idMeme, 0);
 	}
 }
-
-/**
- * Funkcja do polubienia komentarza.
- *
- * @param {string} idComment - Identyfikator komentarza.
- */
 function likeComment(idComment) {
 	if (idComment !== null) {
 		sendCommentRating(idComment, 1);
 	}
 }
-
-/**
- * Funkcja do niepolubienia komentarza.
- *
- * @param {string} idComment - Identyfikator komentarza.
- */
 function dislikeComment(idComment) {
 	if (idComment !== null) {
 		sendCommentRating(idComment, 0);
 	}
 }
-
-/**
- * Funkcja do pobierania memów.
- *
- * @param {number} index - Indeks memów.
- * @returns {Promise} - Obiekt Promise z memami.
- */
 function getMems(index) {
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
@@ -576,11 +354,6 @@ function getMems(index) {
 	});
 }
 
-/**
- * Funkcja do ładowania memów.
- *
- * @param {number} index - Indeks memów.
- */
 async function loadMems(index) {
 	try {
 		const memy = await getMems(index);
@@ -656,8 +429,9 @@ async function loadMems(index) {
 					<button class="report-mem">Zgłoś mema</button>
 					</div>
 				</div>`;
+			//updateAssessmentStatus(mem["id_meme"]);
 
-			sendRating(mem["id_meme"], 2);
+			sendRating(mem["id_meme"]);
 			updateCommentsStatus(mem["id_meme"]);
 			memDiv
 				.querySelector(".add-comment")
@@ -675,7 +449,7 @@ async function loadMems(index) {
 				dislikeMem(parseInt(e.target.closest(".mem").dataset.idMeme));
 			});
 			memDiv.querySelector(".share-btn").addEventListener("click", function () {
-				shareOnFacebook(`http://mem-hub.pl/${srcMem}`);
+				shareOnFacebook(`http://mem-hub.pl/m/${srcMem}`);
 			});
 			memyContainer.appendChild(memDiv);
 		}
@@ -683,29 +457,15 @@ async function loadMems(index) {
 		console.error("Błąd podczas pobierania memów:", error);
 	}
 }
-
-/**
- * Funkcja oblicza czas, który minął od dodania komentarza do teraźniejszości.
- *
- * @param {string} commentDate - Data dodania komentarza w formacie tekstowym.
- * @returns {string} - Czas, który minął od dodania komentarza.
- */
 function getTimeAgo(commentDate) {
-	// Pobranie aktualnej daty
 	const currentDate = new Date();
-
-	// Konwersja daty komentarza na obiekt Date
 	const commentDateTime = new Date(commentDate);
 
-	// Obliczenie różnicy czasu między aktualną datą a datą komentarza
 	const timeDiff = currentDate - commentDateTime;
-
-	// Obliczenie różnicy w minutach, godzinach i dniach
 	const minutesDiff = Math.ceil(timeDiff / (1000 * 60));
 	const hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
 	const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-	// Sprawdzenie, czy minęły dni, godziny lub tylko minuty i zwrócenie odpowiedniego wyniku
 	if (daysDiff > 0) {
 		return `${daysDiff} dni temu`;
 	} else if (hoursDiff > 0) {
@@ -715,16 +475,8 @@ function getTimeAgo(commentDate) {
 	}
 }
 
-/**
- * Funkcja wczytuje komentarze dla danego mema i wyświetla je na stronie.
- *
- * @param {number} idMeme - ID mema.
- */
 function loadComments(idMeme) {
-	// Utworzenie nowego obiektu XMLHttpRequest
 	const xhr = new XMLHttpRequest();
-	console.log(xhr);
-	// Ustawienie parametrów zapytania GET
 	xhr.open(
 		"GET",
 		"./backend/utils/showMems.php?idMeme=" +
@@ -734,81 +486,69 @@ function loadComments(idMeme) {
 			"&functionToDo=loadComments",
 		true
 	);
-
-	// Ustawienie funkcji wywoływanej przy zmianie stanu zapytania
 	xhr.onreadystatechange = function () {};
-
-	// Ustawienie funkcji wywoływanej po odebraniu odpowiedzi
 	xhr.onload = function () {
-		// Sprawdzenie statusu odpowiedzi
 		if (xhr.status === 200) {
-			// Parsowanie otrzymanych komentarzy
 			const comments = JSON.parse(xhr.responseText);
-
-			// Znalezienie kontenera na komentarze
 			const commentsContainer = document.querySelector(".comments__content");
-
-			// Wyczyszczenie kontenera komentarzy
 			commentsContainer.innerHTML = "";
-
-			// Przeiterowanie przez wszystkie komentarze
 			for (let i = 0; i < comments.length; i++) {
 				const comment = comments[i];
-
-				// Utworzenie elementu div dla komentarza
 				const commentBox = document.createElement("div");
 				commentBox.classList.add("comment");
 				commentBox.setAttribute("data-id-comment", comment["id_comment"]);
-
-				// Uzupełnienie zawartości komentarza
-				commentBox.innerHTML = `
-					<a href="#" class="profile-box">
-						<img src="./dist/assets/icons/user.svg" alt="" class="profile-photo" />
-					</a>
-					<div class="comment__content-box" data-id-comment='${comment.idComment}'>
-						<div class="comment__content">
-							<span class="comment__author">${comment.name.nick}</span>
-							<p class="comment__text">
-								${comment["body"]}
-							</p>
+				commentBox.innerHTML = `<a href="#" class="profile-box">
+				<img
+					src="./dist/assets/icons/user.svg"
+					alt=""
+					class="profile-photo"
+				/>
+			</a>
+			<div class="comment__content-box data-id-coment='${comment.idComment}'">
+				<div class="comment__content">
+					<span class="comment__author">${comment.name.nick}</span>
+					<p class="comment__text">
+					${comment["body"]}
+					</p>
+				</div>
+				<div class="comment__options">
+					<div class="box">
+						<div class="comment__assessment">
+							<button
+								aria-label="Polub ten mem"
+								class="comment__option comment__like like"
+							>
+							<svg class="like-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5ab450" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+							</button>
+							<span class="comment__assessment-score comment__like-score like-score"
+								>0</span
+							>
 						</div>
-						<div class="comment__options">
-							<div class="box">
-								<div class="comment__assessment">
-									<button aria-label="Polub ten mem" class="comment__option comment__like like">
-										<svg class="like-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5ab450" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up">
-											<path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
-										</svg>
-									</button>
-									<span class="comment__assessment-score comment__like-score like-score">0</span>
-								</div>
-								<div class="comment__assessment">
-									<button aria-label="Polub ten mem" class="comment__option comment__dislike dislike">
-										<svg class="dislike-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f72020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-down">
-											<path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path>
-										</svg>
-									</button>
-									<span class="comment__assessment-score comment__unlike-score dislike-score">0</span>
-								</div>
-							</div>
-							<div class="box">
-								<button class="comment__option comment__report">Zgłoś</button>
-								<span class="comment__date-info">${getTimeAgo(comment.adding_date)}</span>
-							</div>
+						<div class="comment__assessment">
+							<button
+								aria-label="Polub ten mem"
+								class="comment__option comment__dislike dislike"
+							>
+							<svg class="dislike-icon"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f72020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-down"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg>
+							</button>
+							<span class="comment__assessment-score comment__unlike-score dislike-score"
+								>0
+							</span>
 						</div>
-					</div>`;
-
+					</div>
+					<div class="box">
+						<button class="comment__option comment__report">Zgłoś</button>
+						<span class="comment__date-info">${getTimeAgo(comment.adding_date)}</span>
+					</div>
+				</div>
+			</div>`;
 				storeIdComment = comment.id_comment;
-				sendCommentRating(storeIdComment, 2);
-
-				// Dodanie event listenera do przycisku zgłaszania komentarza
+				sendCommentRating(storeIdComment);
 				commentBox
 					.querySelector(".comment__report")
 					.addEventListener("click", function () {
 						setValuesToReport(this);
 					});
-
-				// Dodanie event listenera do przycisku polubienia komentarza
 				commentBox
 					.querySelector(".like")
 					.addEventListener("click", function (e) {
@@ -816,8 +556,6 @@ function loadComments(idMeme) {
 							parseInt(e.target.closest(".comment").dataset.idComment)
 						);
 					});
-
-				// Dodanie event listenera do przycisku niepolubienia komentarza
 				commentBox
 					.querySelector(".dislike")
 					.addEventListener("click", function (e) {
@@ -825,30 +563,16 @@ function loadComments(idMeme) {
 							parseInt(e.target.closest(".comment").dataset.idComment)
 						);
 					});
-
-				// Dodanie komentarza do kontenera
 				commentsContainer.appendChild(commentBox);
 			}
 		}
 	};
-
-	// Ustawienie funkcji wywoływanej w przypadku błędu zapytania
 	xhr.onerror = function () {
 		console.log("Wystąpił błąd zapytania.");
 	};
-
-	// Wysłanie zapytania
 	xhr.send();
 }
-
-/**
- * Funkcja odpowiedzialna za pokazywanie/ukrywanie sekcji z komentarzami.
- * @param {Element} el - Element, który wywołał funkcję.
- */
 const showComments = el => {
-	/**
-	 * @type {Element}
-	 */
 	const currentComments = document.querySelector(".comments");
 	currentComments.classList.toggle("show");
 	document.querySelector(".body-shadow").classList.toggle("show");
@@ -863,11 +587,6 @@ const showComments = el => {
 		currentComments.querySelector(".comments__content").textContent = "";
 	}
 };
-
-/**
- * Funkcja odpowiedzialna za dodawanie/usuwanie błędu na polu wprowadzania komentarza.
- * @param {Element} el - Pole wprowadzania komentarza.
- */
 const addErrorOnCommentInput = el => {
 	if (el.classList.contains("error")) {
 		el.classList.toggle("error");
@@ -877,10 +596,6 @@ const addErrorOnCommentInput = el => {
 		el.setAttribute("placeholder", "Musisz być zalogowany aby dodać komentarz");
 	}
 };
-
-/**
- * Funkcja odpowiedzialna za wysyłanie komentarza.
- */
 function sendComment() {
 	const commentValue = document.getElementById("addComment");
 	const xhr = new XMLHttpRequest();
@@ -918,10 +633,6 @@ function sendComment() {
 		);
 	}
 }
-
-/**
- * Funkcja odpowiedzialna za wysyłanie zgłoszenia.
- */
 function sendReport() {
 	const reportValue = document.getElementById("reportInputValue");
 	if (reportValue.value !== "") {
@@ -981,14 +692,7 @@ function sendReport() {
 		toggleErrorOnSection(reportSection);
 	}
 }
-
-/**
- * Funkcja sprawdzająca pozycję przewijania strony i ładowanie nowych memów, jeśli użytkownik jest blisko końca strony.
- */
 function checkScrollPosition() {
-	/**
-	 * @type {number}
-	 */
 	scrollHeight = document.querySelector(".mems__container").scrollHeight;
 	const windowHeight = window.innerHeight;
 	const scrollTop =
@@ -998,10 +702,6 @@ function checkScrollPosition() {
 		loadMems(startValueShowMem);
 	}
 }
-
-/**
- * Funkcja zmieniająca sortowanie memów.
- */
 function changeSortMemes() {
 	document.querySelector(
 		".mems__container"
@@ -1009,11 +709,6 @@ function changeSortMemes() {
 	startValueShowMem = 0;
 	loadMems(startValueShowMem);
 }
-
-/**
- * Funkcja obsługująca zamknięcie listy sortowania memów.
- * @param {Event} el - Zdarzenie zamknięcia listy sortowania.
- */
 function closeSortList(el) {
 	if (el.target.classList.contains("sort-list__item")) {
 		sortValue = el.target.dataset.category;
@@ -1028,11 +723,6 @@ function closeSortList(el) {
 		changeSortMemes();
 	}
 }
-
-/**
- * Funkcja przechowująca wartość sortowania komentarzy i aktualizująca wygląd interfejsu.
- * @param {Event} e - Zdarzenie kliknięcia na opcję sortowania komentarzy.
- */
 const storeValueOfSortComments = e => {
 	showCommentsSortList(e);
 	const currentMem = e.target.closest(".comments");
@@ -1056,16 +746,10 @@ const storeValueOfSortComments = e => {
 		currentMem.classList.remove("show-sort-value");
 	}
 };
-
-/**
- * Funkcja wyświetlająca listę sortowania komentarzy.
- * @param {Event} el - Zdarzenie kliknięcia na przycisk sortowania komentarzy.
- */
 const showCommentsSortList = el => {
 	const currentMem = el.target.closest(".comments");
 	currentMem.classList.toggle("show-sort-value");
 };
-
 window.addEventListener("load", function () {
 	loadMems(startValueShowMem);
 });
