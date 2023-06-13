@@ -9,28 +9,28 @@
  *
  * @var string $database_host
  */
-$database_host = "45.84.205.255";
+$database_host = "serwer2234994.home.pl";
 
 /**
  * Nazwa użytkownika bazy danych.
  *
  * @var string $database_user
  */
-$database_user = "u596017563_memhub";
+$database_user = "36676132_memhub";
 
 /**
  * Nazwa bazy danych.
  *
  * @var string $database_name
  */
-$database_name = "u596017563_memhub";
+$database_name = "36676132_memhub";
 
 /**
  * Hasło dostępu do bazy danych.
  *
  * @var string $database_pwd
  */
-$database_pwd = "j@E2s$2V";
+$database_pwd = "gGAwrHl$%j";
 
 /**
  * Obiekt reprezentujący połączenie z bazą danych.
