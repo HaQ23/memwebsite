@@ -2,6 +2,11 @@
     Łączenie z bazą
 -->
 <?php
+    if(!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
+      header("Location: index.php");
+     }
+
+
     require_once './backend/database/database.php';
 
     ?>
@@ -37,14 +42,14 @@
       </nav>
     </div>
   </header>
-
-
+<!--
   <div class="meme-scraping">
     <form method="post" action="./backend/api/scrapping.php">
       <input type="submit" value="Scrapowanie">
     </form>
 
   </div>
+-->
   <main>
 
   <div class="meme-acceptance">
