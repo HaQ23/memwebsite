@@ -33,7 +33,7 @@
             <a href="./generator.php" class="nav--list-link">Generator</a>
           </li>
           <li class="nav--list-item">
-            <a href="#" class="nav--list-link">Ranking</a>
+            <a href="./rankingi.php" class="nav--list-link">Ranking</a>
           </li>
           <li class="nav--list-item">
             <a href="./queue.php" class="nav--list-link">Poczekalnia</a>
