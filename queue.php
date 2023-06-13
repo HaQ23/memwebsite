@@ -39,7 +39,7 @@
 			<a href="./index.php" class="nav__item">Strona główna</a>
 			<a href="./generator.php" class="nav__item">Generator</a>
 
-			<a href="#" class="nav__item">Ranking</a>
+			<a href="./rankingi.php" class="nav__item">Ranking</a>
 			<a href="#" class="nav__item">Poczekalnia</a>
 			<div class="button-box">
 			<?php
