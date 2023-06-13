@@ -20,7 +20,6 @@
 
 	<body>
 		<?php
-
 			if(!isset($_SESSION['userid'])) {
 				header("Location: ./index.php");
 				exit();
@@ -28,11 +27,7 @@
 				require_once './backend/database/database.php';
 				$id_user = $_SESSION['userid'];
 				include 'backend/userpanel/userPanelFunctions.php';
-				$results = array(0,0,0,0,0);
-				$results = getStatistic($id_user,$conn);
-				$resultsMeme = getMemes($id_user,$conn);
-				$top_memes = $resultsMeme['top_memes'];
-				$last_memes = $resultsMeme['last_memes'];
+				$resultsMeme = getUserMemes($id_user,$conn);
 			}
 			include('html/sidebar.html'); 
 		?>
@@ -44,54 +39,32 @@
 		<main class="main">
 			<div class="header">
 				<div class="title">
-						<svg xmlns="http://www.w3.org/2000/svg"
+					<svg xmlns="http://www.w3.org/2000/svg"
 						width="30"
 						height="30"
 						viewBox="0 0 24 24"
 						fill="none"
 						stroke="currentColor"
-						stroke-width="2" 
-						stroke-linecap="round" 
-						stroke-linejoin="round" 
-						class="feather-file-text">
-						<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
-						</path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-						Pulpit
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="feather feather-image">
+						<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+						<circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+						Memy
 				</div>
 				<a href="index.php" class="button"> Strona Główna</a>
 			</div>
 			<div class="content">
 				<div class="container">
-					<div class="title">
-						Podsumowanie
-					</div>
-					<div class="stats">
-						<div class = "area">
-							Dodane memy: <span> <?php echo $results[0];?> </span>
-						</div>
-						<div class = "area">
-							Polubione memy: <span> <?php echo  $results[3];?> </span>
-						</div>
-						<div class = "area">
-							Dodane komentarze: <span> <?php echo  $results[1];?> </span>
-						</div>
-						<div class = "area">
-							Dodane zgłoszenia: <span> <?php echo  $results[2];?> </span>
-						</div>
-						<div class = "area">
-							Zebrane polubienia: <span> <?php if(isset($results)){echo  0;}else {echo  $results[4];}?> </span>
-						</div>
-					</div>
-				</div>
-				<div class="container">
-				<?php if(empty($top_memes)){ 
+				<?php if(empty($resultsMeme)){ 
 				
 					echo '<div class="title">Nie dodałeś jeszcze żadnego mema</div>';
 				}
 					else {
 				?>
 					<div class="title">
-						Twoje najlepsze memy
+						Twoje memy
 					</div>
 					<div class="table">
 						<table>
@@ -101,48 +74,41 @@
 								<th>Polubienia</th>
 								<th>Komentarze</th>
 								<th>Data dodania</th>
+								<th>Usun mema</th>
 							</tr>
-							<?php foreach ($top_memes as $meme) : ?>
+							<?php foreach ($resultsMeme as $meme) : ?>
 							<tr>
 								<td><?php echo $meme['id_meme']; ?></td>
-								<td><img src="<?php echo 'mem2.jpg'; ?>" alt="Meme"></td>
-								<td><?php if($meme['like_count']>0)echo $meme['like_count']; else echo 0; ?></td>
+								<td><img class="myImages" id="myImg" src="<?php echo $meme['imgsource']; ?>" alt="Meme"/></td>
+								<td><?php if($meme['like_count']>0){echo $meme['like_count'];} else {echo 0;} ?></td>
 								<td><?php echo $meme['comment_count']; ?></td>
 								<td><?php echo $meme['adding_date']; ?></td>
+								<td>
+									<form  method="post"> 
+										<input type="hidden" name="id_meme" value="<?php echo $meme['id_meme']; ?>">
+										<button type="submit" name="delete_button">Usuń</button> 
+									</form>
+									<?php
+									require_once 'backend/database/database.php';
+									if(isset($_POST['delete_button'])){
+										$id_meme = $_POST['id_meme'];
+										deleteMeme($id_meme,$conn);?>
+										<script>
+											function refreshPage() {
+											location.reload();
+											}
+										</script><?php
+									}
+									?>
+								</td>
 							</tr>
 							<?php endforeach; ?>
 						</table>
 					</div>
-				</div>
-				<div class="container">
-					<div class="title">
-						Twoje ostatnie memy
-					</div>
-					<div class="table">
-						<table>
-							<tr>
-								<th>ID</th>
-								<th>Mem</th>
-								<th>Polubienia</th>
-								<th>Komentarze</th>
-								<th>Data dodania</th>
-							</tr>
-							<?php foreach ($last_memes as $meme) : ?>
-							<tr>
-								<td><?php echo $meme['id_meme']; ?></td>
-								<td><img src="<?php echo 'mem2.jpg'; ?>" alt="Meme"></td>
-								<td><?php if($meme['like_count']>0)echo $meme['like_count']; else echo 0; ?></td>
-								<td><?php echo $meme['comment_count']; ?></td>
-								<td><?php echo $meme['adding_date']; ?></td>
-							</tr>
-							<?php endforeach; ?>
-						</table>
-					</div>
-				</div>
 					<?php }?>
+				</div>
 			</div>
 		</main>
-
 	</body>
 <script>
 	var modal = document.getElementById('myModal');
@@ -166,3 +132,4 @@
 	}
 </script>
 </html>
+		

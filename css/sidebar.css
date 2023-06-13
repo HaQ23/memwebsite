@@ -1,0 +1,113 @@
+.sidebar{
+	min-width: 300px;
+	display:flex;
+	background-color: var(--black-bg);
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	flex-direction:column;
+	padding:20px;
+	height:100%;
+	position:fixed;
+	justify-content:space-between;
+}
+.sidebar .button{
+	display: none;
+	height:50px;
+	text-align: center;
+	margin-bottom: 70px;
+}
+.sidebar .button button{
+	border: none;
+    outline: none;
+	background: transparent;
+	cursor:pointer;
+}
+.sidebar .item{
+	cursor:pointer;
+	margin:10px;
+}
+.sidebar .item a{
+	display:flex;
+	align-items: center;
+	gap:10px;
+	padding:10px;
+	text-decoration: none;
+	color: var(--white-bg);
+	font-size: var(--bigger-font-size);
+}
+.sidebar .item:hover{
+	background-color: var(--primary-color); 
+	border-radius: 5px;
+}
+.sidebar .logo{
+	height:50px;
+	cursor:pointer;
+	font-weight:700;
+	padding:20px;
+	text-align: center;
+}
+.sidebar .logo a{
+	display:block;
+	text-decoration: none;
+	color: var(--white-bg);
+	font-size: var(--bigger-font-size);
+}
+.sidebar .sidebar-section {
+	padding:10px;
+	flex-grow:4;
+}
+.sidebar .sidebar-section ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+	flex-direction: column;
+	padding:0;
+}
+ .sidebar .logo .other-logo {
+	 padding: 0.5rem;
+	 font-weight:700;
+	 background-color: var(--primary-color);
+	 color: var(--black-bg);
+	 border-radius: 3px;
+}
+
+
+@media only screen and (max-width: 992px){
+	.sidebar{
+		position:sticky;
+		height:80px;
+		display:flex;
+		justify-content: space-between;
+		flex-direction:row;
+	}
+	.sidebar .item{
+		display: none;
+	}
+	.sidebar .button{
+		display:block;
+		cursor:pointer;
+		text-decoration: none;
+		color: var(--white-bg);
+		font-size: var(--bigger-font-size);
+	}
+	.sidebar .button a{
+		display:block;
+		text-decoration: none;
+		color: var(--white-bg);
+		font-size: var(--bigger-font-size);
+	}
+	.sidebar.active {
+		width:300px;
+		display:flex;
+		background-color: var(--black-bg);
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		flex-direction:column;
+		padding:20px;
+		height:100%;
+		position:fixed;
+		justify-content:space-between;
+	  }
+	  .sidebar .item.active{
+		display:block;
+	}
+	
+}
