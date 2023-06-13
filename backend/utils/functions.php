@@ -179,6 +179,7 @@ function loginUser($conn, $userLogin, $userPwd) {
         session_start();
         $_SESSION['userid'] = $userExists['id_user'];
         $_SESSION['username'] = $userExists['nick'];
+        $_SESSION['role'] = $userExists['role'];
         header("location: ../../index.php?login=success");
         exit();
     }
