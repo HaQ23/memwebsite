@@ -1,0 +1,435 @@
+/* 
+main color: #5ab450
+main background color: #fafafa 
+*/
+.header {
+  background-color: #111;
+  color: #fff;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.fill {
+  height: 100px;
+}
+
+.container-header {
+  max-width: 130rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo:link,
+.logo:visited {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.logo-green {
+  background-color: #5ab450;
+  padding: 0.5rem;
+  color: #111;
+}
+
+.nav-list {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav--list-item {
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.nav--list-item:hover {
+  border-bottom: 3px solid #5ab450;
+}
+
+.nav--list-link:link,
+.nav--list-link:visited {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.btn-nav {
+  padding: 1.3rem 3rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.btn--nav-link {
+  font-size: 1.5rem !important;
+  padding: 1.25rem 0;
+  font-weight: 500;
+}
+
+.btn--nav-blue {
+  background-color: #316dd9;
+}
+.btn--nav-blue:hover {
+  background-color: #0a51d5;
+}
+
+.btn--nav-green {
+  background-color: #5ab450;
+}
+
+.btn--nav-green:hover {
+  background-color: #409037;
+}
+
+.open--nav-icon,
+.close--nav-icon {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* RANKINGI */
+.ranking {
+  background-color: #fafafa;
+  color: #111;
+  padding: 6rem;
+  column-gap: 8rem;
+}
+
+.header-rankingi::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  margin-top: 2rem;
+  background-color: #5ab450;
+}
+
+.header-hub {
+  color: #5ab450;
+}
+
+.month-header {
+  display: flex;
+  align-items: center;
+}
+
+.meme-month,
+.worst-meme {
+  margin: 0 auto;
+  display: block;
+  max-width: 80%;
+  max-height: 53rem;
+}
+
+.margin-top {
+  margin-top: 24rem;
+}
+
+.cross {
+  margin-top: 6rem;
+}
+
+.meme-window,
+.worst--meme-window,
+.worst--user-window {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  height: 100%;
+  box-shadow: 0 0 10px 5px rgba(27, 27, 27, 0.1);
+  border-radius: 5px;
+}
+
+.user-Month {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 0 10px 5px rgba(27, 27, 27, 0.1);
+  align-items: center;
+  border-radius: 5px;
+}
+
+.korona-icon {
+  display: block;
+  margin-top: 6rem;
+}
+
+.user--Month-stats {
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  row-gap: 1rem;
+  column-gap: 2rem;
+}
+
+.user--Month-nick {
+  font-size: 3rem;
+  color: #111;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  margin-top: 3rem;
+  grid-column: 1/-1;
+}
+
+.stats-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stats-text {
+  font-size: 1.8rem;
+}
+
+.meme--ranking-box,
+.users--ranking-box {
+  margin-top: 24rem;
+}
+
+.meme--ranking-table,
+.users--ranking-table {
+  margin: 4rem 2rem 0 0;
+  box-shadow: 0 0 10px 5px rgba(27, 27, 27, 0.1);
+  height: 100rem;
+  overflow: scroll;
+  border-radius: 5px;
+}
+
+.meme--ranking-table .grid--2-cols {
+  grid-template-columns: 1fr 2fr;
+}
+
+.meme--ranking-table .grid {
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.meme--ranking-table .grid:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.meme-row {
+  position: relative;
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.meme--ranking-place {
+  position: absolute;
+  transform: rotate(-45deg);
+  top: 1.4rem;
+  left: -4rem;
+  font-size: 1.6rem;
+  font-family: "Lucida Sans Regular";
+  color: #252525;
+  background-color: #5ab450;
+  padding: 0.5rem 6rem;
+}
+
+.meme-ranking {
+  width: 70%;
+}
+
+.meme--ranking-img {
+  width: 100%;
+}
+
+.users--ranking-rows {
+  grid-template-columns: 1fr 2.5fr 1.5fr;
+}
+
+.user-nick {
+  text-align: center;
+}
+
+.user-points {
+  text-align: center;
+}
+
+.users--ranking-rows:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.users--ranking-rows div {
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+.users--ranking-rows:hover {
+  background-color: #5ab450;
+  cursor: pointer;
+  color: #fff;
+  stroke: #fff;
+}
+
+.grid--4-cols {
+  grid-template-columns: 1fr 2fr 1fr 1.5fr;
+}
+
+.user--number-memes,
+.user--number-likes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* modal window */
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111;
+  padding: 5rem 2rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.8rem;
+  gap: 1.2rem;
+  width: 40rem;
+  z-index: 11;
+}
+
+.modal-cross {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.user--modal-nick {
+  font-size: 3.2rem;
+}
+
+.user--modal-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.user-lmemow,
+.user-lkomentarzy {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.lkom-num,
+.lmem-num {
+  font-size: 2rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgb(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+/* footer */
+.footer {
+  background-color: #111;
+
+}
+
+.footer-container {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-header {
+  padding-top: 4.8rem;
+  font-size: 3.5rem;
+}
+
+.footer-logo:link,
+.footer-logo:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-hub {
+  background-color: #5ab450;
+  color: #111;
+  padding: 0.5rem;
+}
+
+.footer-list {
+  list-style-type: none;
+  margin-top: 4rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.footer--list-link:link,
+.footer--list-link:visited {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.8rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  padding-bottom: 0.5rem;
+}
+
+.footer--list-link:hover,
+.footer--list-link:active {
+  border-bottom: 2px solid #5ab450;
+}
+
+.observe-us {
+  margin-top: 3rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.socials a svg {
+  transition: all 0.3s;
+}
+
+.socials a svg:hover {
+  stroke: #409037;
+}
+
+.footer-line {
+  content: "";
+  height: 2px;
+  background-color: #fff;
+  margin-top: 3rem;
+}
+
+.copyright {
+  text-align: right;
+  font-size: 1.4rem;
+  padding: 4rem 0 4rem 0;
+}
