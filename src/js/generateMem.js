@@ -29,22 +29,23 @@ let useYourPhoto = false;
 let image;
 let imageWidth, imageHeight;
 let numberOfMem = 1;
+
 const changeShowElement = () => {
 	setImageSection.classList.toggle("show");
 	selectTemplateSection.classList.toggle("show");
 };
 
-const chooseCurrentTemaplte = (el) => {
+const chooseCurrentTemaplte = el => {
 	selectedElement = el.target.dataset.typeTemplate;
 	const selectedTemplateImg = document.querySelector(".selected-temaplate img");
 	selectedTemplateImg.setAttribute(
 		"src",
-		`../dist/assets/images/meme-demo-template-${selectedElement}.webp`
+		`./dist/assets/images/meme-demo-template-${selectedElement}.webp`
 	);
 	changeShowElement();
 };
 
-const showCreateMem = (el) => {
+const showCreateMem = el => {
 	if (!createMemSection.classList.contains("show")) {
 		setWidthAndHeightMem(el);
 	}
@@ -53,7 +54,7 @@ const showCreateMem = (el) => {
 	useYourPhoto = false;
 };
 //this function sets   imageWidth, imageHeight  which will be needed for the correct display of memes
-const setWidthAndHeightMem = (el) => {
+const setWidthAndHeightMem = el => {
 	if (useYourPhoto) {
 		const imageDataUrl = URL.createObjectURL(loadFileBtn.files[0]);
 		image = new Image();
@@ -228,7 +229,7 @@ const toggleShowChangeTemaplateSec = () => {
 		const allTempaltes = changeTemplateSect.querySelectorAll(
 			".change-template__item"
 		);
-		allTempaltes.forEach((el) => {
+		allTempaltes.forEach(el => {
 			if (el.dataset.typeTemplate == selectedElement) {
 				el.classList.add("current-template");
 			} else {
@@ -238,7 +239,7 @@ const toggleShowChangeTemaplateSec = () => {
 	}
 	changeTemplateSect.classList.toggle("show");
 };
-allTemaplateItems.forEach((el) => {
+allTemaplateItems.forEach(el => {
 	el.addEventListener("click", chooseCurrentTemaplte);
 });
 backToSelectTemplateSeciontBtn.addEventListener("click", changeShowElement);
@@ -253,38 +254,38 @@ createMemBackBtn.addEventListener("click", function () {
 	canvas.style.display = "none";
 	currentlyCreatedMem.classList.remove("active");
 });
-allStandardImage.forEach((el) => {
+allStandardImage.forEach(el => {
 	el.addEventListener("click", showCreateMem);
 });
 
 downloadMemBtn.addEventListener("click", downloadMem);
-textAlignBtns.forEach((el) => {
+textAlignBtns.forEach(el => {
 	el.addEventListener("click", function () {
-		textAlignBtns.forEach((el) => {
+		textAlignBtns.forEach(el => {
 			el.classList.remove("active-value");
 		});
 		el.classList.add("active-value");
 		genereteMem(imageWidth, imageHeight);
 	});
 });
-document.querySelectorAll(".create-mem__input").forEach((el) => {
+document.querySelectorAll(".create-mem__input").forEach(el => {
 	el.addEventListener("input", function () {
 		genereteMem(imageWidth, imageHeight);
 	});
 });
-fontStyleBtns.forEach((el) => {
+fontStyleBtns.forEach(el => {
 	el.addEventListener("click", function () {
-		fontStyleBtns.forEach((el) => {
+		fontStyleBtns.forEach(el => {
 			el.classList.remove("active-value");
 		});
 		el.classList.add("active-value");
 		genereteMem(imageWidth, imageHeight);
 	});
 });
-[closeChangeTemplateSectBtn, changeTemplateBtn].forEach((el) => {
+[closeChangeTemplateSectBtn, changeTemplateBtn].forEach(el => {
 	el.addEventListener("click", toggleShowChangeTemaplateSec);
 });
-changeTemplateSect.querySelectorAll(".change-template__item").forEach((el) => {
+changeTemplateSect.querySelectorAll(".change-template__item").forEach(el => {
 	el.addEventListener("click", function () {
 		selectedElement = el.dataset.typeTemplate;
 		changeTemplateSect.classList.toggle("show");

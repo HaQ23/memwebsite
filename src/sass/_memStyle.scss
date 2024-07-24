@@ -4,6 +4,9 @@
 	flex-direction: column;
 	gap: 3rem;
 	margin-top: 4rem;
+	width: 100%;
+	max-width: 550px;
+
 	&::after,
 	&::before {
 		content: "";
@@ -63,16 +66,16 @@
 		transform: scaleY(100%);
 	}
 	.mem {
+		margin-bottom: 4rem;
 		width: 100%;
 		max-width: 550px;
-
 		background-color: #fff;
 		border-radius: 8px;
 		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 		&__img {
 			width: 100%;
-			max-height: 600px;
+			max-height: 1000px;
 			object-fit: fill;
 		}
 		&__info {
@@ -94,6 +97,34 @@
 		&__comment {
 			font-size: var(--font-size);
 			font-weight: bold;
+		}
+		.box {
+			display: flex;
+			&:nth-last-of-type(1) {
+				justify-content: flex-end;
+				gap: 2rem;
+			}
+			align-items: center;
+		}
+		.share-mem {
+			&__name {
+				font-size: 1.2rem;
+				font-weight: 500;
+				color: var(--black-bg);
+			}
+			.icon {
+				height: 24px;
+				width: 24px;
+			}
+		}
+		.share-btn {
+			display: flex;
+			align-items: center;
+			font-size: 0;
+			transition: opacity 0.3s;
+			&:hover {
+				opacity: 0.7;
+			}
 		}
 		.like {
 			svg {
@@ -119,7 +150,7 @@
 			cursor: pointer;
 		}
 		.like,
-		.dilike,
+		.dislike,
 		.add-comment,
 		.report-mem {
 			&:hover {
@@ -132,6 +163,7 @@
 			align-items: center;
 			justify-content: flex-end;
 			gap: 0.75rem;
+			color: var(--black-bg);
 		}
 		&__author {
 			justify-content: flex-start;
@@ -156,6 +188,7 @@
 		}
 	}
 }
+
 .comments {
 	position: fixed;
 	top: 0;
@@ -173,7 +206,7 @@
 		position: relative;
 		margin: 0 auto;
 		padding: 0 1.5rem;
-		overflow: scroll;
+		overflow-y: scroll;
 		width: 100%;
 		height: auto;
 	}
@@ -195,6 +228,9 @@
 		gap: 0.25rem;
 		font-size: var(--comment-font);
 		font-weight: 600;
+		.icon {
+			transition: transform 0.3s;
+		}
 	}
 	.sort-comments-options {
 		position: fixed;
@@ -254,10 +290,12 @@
 	.comment {
 		display: grid;
 		grid-template-columns: max-content 1fr;
+		grid-template-rows: 1fr;
 		gap: 0.75rem;
 		margin: 0 auto;
 		font-size: var(--comment-font);
 		max-width: 550px;
+		width: 100%;
 		&:nth-last-of-type(1) {
 			margin-bottom: 13rem;
 		}
@@ -269,7 +307,8 @@
 				justify-content: flex-end;
 			}
 		}
-		&__content {
+
+		&__content-box {
 			padding: 1rem;
 			background-color: #ebebeb;
 			border-radius: 12px;
@@ -283,8 +322,10 @@
 		&__options {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
+			grid-column: 1/-1;
+			grid-row: 2/3;
 			margin-top: 0.5rem;
-			padding-left: 0.5rem;
+			padding-left: 1rem;
 			button {
 				transition: opacity 0.3s;
 				&:hover {
@@ -317,6 +358,11 @@
 		.bg-shadow {
 			display: block;
 		}
+		.btn-sort-comments {
+			.icon {
+				transform: rotate(-180deg);
+			}
+		}
 	}
 	.add-coment-container {
 		position: absolute;
@@ -340,6 +386,12 @@
 			&:hover,
 			&:focus {
 				border-color: var(--primary-color);
+			}
+			&.error {
+				border: 2px solid var(--warning);
+				&::placeholder {
+					color: var(--warning);
+				}
 			}
 		}
 	}

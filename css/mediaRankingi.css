@@ -1,0 +1,51 @@
+@media (max-width: 65em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 50em) {
+  .primary-header {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .ranking {
+    justify-items: center;
+    align-items: center;
+  }
+
+  .meme--month-box,
+  .shame--hall-box,
+  .meme--ranking-box,
+  .users--ranking-box {
+    width: 90%;
+  }
+
+  .meme-window {
+    padding-bottom: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .worst--user-window {
+    padding-bottom: 5rem;
+  }
+
+  .worst--meme-window {
+    padding-bottom: 5rem;
+  }
+
+  .margin-top {
+    margin-top: 5rem;
+  }
+
+  .meme--ranking-box,
+  .users--ranking-box {
+    margin-top: 5rem;
+  }
+ }

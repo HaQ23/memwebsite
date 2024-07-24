@@ -1,0 +1,2 @@
+1. Podmienic sciezke do upload-main.php w pliku upload.js na produkcji.
+2. Ustawic maila do odzyskiwania hasła tak aby wiadomość z tokenem została wysyłana.

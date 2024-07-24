@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Memhub | Odzyskiwanie hasła</title>
+		<!-- @include 'googleFonts.kit' -->
+		<link rel="stylesheet" href="../dist/css/recovery.min.css" />
+	</head>
+	<body>
+		<!-- @include navbar.kit -->
+		<main class="main wrapper">
+			<form
+				action="../backend/login/recovery.php"
+				method="post"
+				class="recovery__form recovery__form--step-one"
+			>
+				<h2 class="recovery__heading">Resetowanie hasła</h2>
+
+				<div class="recovery__box">
+					<label class="recovery__label" for="recovery-email"
+						>Adres e-mail<sup class="recovery__sup">*</sup>
+					</label>
+					<input
+						class="recovery__input"
+						type="email"
+						id="recovery-email"
+						name="recovery-email"
+						placeholder="Podaj adres e-mail"
+                        required
+					/>
+				</div>
+				<p class="recovery__info">
+					<sup class="recovery__sup">*</sup> - Pole wymagane
+				</p>
+				<input
+					type="submit"
+					value="Przywróć hasło"
+					name="recovery-step-one"
+					class="recovery__submit"
+				/>
+			</form>
+			<form action="" class="recovery__form recovery__form--step-two">
+				<h2 class="recovery__heading">Resetowanie hasła</h2>
+				<p class="recovery__text">
+					Na podany adres e-mail wysłaliśmy odpowiednie instrukcje, zapoznaj się
+					z nimi a następnie wypełnij poniższe pola.
+				</p>
+				<div class="recovery__box">
+					<label class="recovery__label" for="recovery-token"
+						>Token<sup class="recovery__sup">*</sup>
+					</label>
+					<input
+						class="recovery__input"
+						type="text"
+						id="recovery-token"
+						name="recovery-token"
+						placeholder="Podaj otrzymany token"
+					/>
+				</div>
+				<div class="recovery__box">
+					<label class="recovery__label" for="recovery-password"
+						>Nowe hasło<sup class="recovery__sup">*</sup>
+					</label>
+					<input
+						class="recovery__input"
+						type="password"
+						id="recovery-password"
+						name="recovery-password"
+						placeholder="Podaj nowe hasło"
+					/>
+				</div>
+				<p class="recovery__info">
+					<sup class="recovery__sup">*</sup> - Pole wymagane
+				</p>
+				<input type="submit" value="Zatwierdź" class="recovery__submit" />
+			</form>
+			<div class="final">
+				<img src="../dist/assets/icons/check_circle.svg" alt="" />
+				<h2 class="final__heading">Hasło zostało zmienione pomyślnie!</h2>
+				<p class="final__text">
+					Od teraz możesz zalogować się do swojego konta korzystając z nowego
+					hasła, zrób to już teraz!
+				</p>
+				<a href="../signIn.php" class="final__button">Logowanie</a>
+			</div>
+		</main>
+		<!-- @include footer.kit -->
+		<script src="../dist/js/main.min.js"></script>
+	</body>
+</html>

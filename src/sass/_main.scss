@@ -3,6 +3,8 @@
 	// #ff9000
 	--primary-color-pale: hsl(114, 40%, 81%);
 	--secondary-color: #316dd9;
+	--secondary-color-darker: #183975;
+	--light-green-background: #f9fbf7;
 	--primary-font-color: #111;
 	--lighter-font-color: hsl(0, 0%, 27%);
 	--dark-grey: hsl(0, 0%, 92%);
@@ -92,6 +94,195 @@ a {
 		background-color: #0a51d5;
 	}
 }
+.alert {
+	display: none;
+	position: fixed;
+	background-color: var(--secondary-color);
+	padding: 1.5rem;
+	z-index: 20;
+	bottom: 0;
+	width: 100%;
+	&__text {
+		font-size: 1.8rem;
+		color: #fff;
+		text-align: center;
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 5px;
+		background-color: var(--secondary-color-darker);
+		bottom: 0;
+		left: 0;
+		transition: scale 0.3s;
+		transform-origin: left;
+		scale: var(--scale-alert) 1;
+	}
+}
+.upload {
+	padding: 1.5rem;
+	&-overlay {
+		display: none;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 20;
+		background-color: rgba(0, 0, 0, 0.7);
+
+		&--active {
+			display: flex;
+		}
+	}
+	&-box {
+		padding: 4rem 2rem;
+		max-width: 700px;
+		background-color: #fff;
+		border-radius: 10px;
+		&--hidden {
+			display: none;
+		}
+	}
+	&-topbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid var(--dark-grey);
+		padding-bottom: 2rem;
+	}
+	&-title {
+		font-size: 2.6rem;
+		font-weight: 500;
+	}
+	&-content {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		margin-top: 2rem;
+	}
+	&-text {
+		margin-top: 1.5rem;
+		font-size: 1.6rem;
+		max-width: 450px;
+		line-height: 1.5em;
+	}
+
+	&-file {
+		&-input {
+			visibility: hidden;
+		}
+		&-label {
+			display: flex;
+			align-items: center;
+			gap: 1.5rem;
+			border: 1px solid var(--primary-color);
+			padding: 1rem;
+			justify-content: center;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: opacity 0.3s;
+
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+		&-text {
+			font-size: 1.6rem;
+			color: var(--primary-color);
+			font-weight: 500;
+		}
+	}
+	&-filetype {
+		font-size: 1.2rem;
+		&-highlighted {
+			color: var(--secondary-color);
+		}
+	}
+	&-submit {
+		background-color: var(--primary-color);
+		border: 0;
+		border-radius: 10px;
+		color: #fff;
+		text-align: center;
+		width: 100%;
+		font-size: 2rem;
+		padding: 1.5rem 0;
+		font-family: "Montserrat", sans-serif;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+	&-generatorinfo {
+		font-size: 1.6rem;
+		line-height: 1.5em;
+
+		&-link {
+			color: var(--primary-color);
+			transition: opacity 0.3s;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+	}
+	&-status {
+		display: flex;
+		padding: 4rem 2rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 2rem;
+		background-color: #fff;
+		border-radius: 10px;
+		max-width: 700px;
+
+		&-text {
+			font-size: 2.2rem;
+		}
+		&-desc {
+			display: none;
+			font-size: 1.5rem;
+			max-width: 300px;
+			text-align: center;
+			&--active {
+				display: block;
+			}
+		}
+		&-button {
+			display: none;
+			color: #fff;
+			background-color: var(--primary-color);
+			padding: 1rem 3rem;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: opacity 0.3s;
+			font-size: 1.8rem;
+			&:hover {
+				opacity: 0.5;
+			}
+			&--active {
+				display: block;
+			}
+		}
+		&--hidden {
+			display: none;
+		}
+	}
+	&-progress[value] {
+		width: 300px;
+		height: 30px;
+	}
+	&-progress {
+		&--hidden {
+			display: none;
+		}
+	}
+}
 .profile-box {
 	display: flex;
 	align-items: center;
@@ -150,6 +341,23 @@ a {
 	height: 100vh;
 	display: none;
 	background-color: rgba(0, 0, 0, 0.4);
+}
+.loading-spinner {
+	margin: 10rem auto 10rem;
+	width: 40px;
+	height: 40px;
+	border: 4px solid #f3f3f3;
+	border-top: 4px solid var(--primary-color);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @media (min-width: 992px) {

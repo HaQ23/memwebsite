@@ -27,7 +27,6 @@ function startSass(done) {
 		.pipe(sourcemaps.init())
 		.pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
 		.pipe(autoprefixer())
-		.pipe(cssnano())
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(sourcemaps.write())
 		.pipe(dest(paths.sassDest));

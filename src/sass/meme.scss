@@ -1,0 +1,63 @@
+@use "./main" as *;
+@use "./navbar";
+@use "./footer";
+
+
+.main {
+    display: grid;
+    
+    padding: 10rem 2rem;
+    
+}
+.box {
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+}
+.meme {
+    &__info {
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 3rem;
+   
+    }
+    &__image {
+        width: 300px;
+        justify-self: center;
+    }
+    &__author {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+    }
+    &__date {
+        
+        font-size: 2rem;
+        &--highlighted {
+            color: var(--primary-color);
+        }
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .meme {
+        &__image {
+            width: 500px;
+            height: 500px;
+       
+        }
+    }
+}
+@media screen and (min-width: 1200px) {
+    .meme {
+        &__image {
+            width: 800px;
+            height: 600px;
+       
+        }
+    }
+}
