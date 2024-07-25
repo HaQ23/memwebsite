@@ -1,25 +1,49 @@
-# MemHub - Najlepsze Memy w Sieci :grinning:
+# Memwebsite
 
-## Uruchomienie projektu. :desktop_computer:
+Memwebsite is a full-featured web application designed for creating, sharing, and moderating memes. The application allows users to sign up, log in, submit memes, comment on memes, and report inappropriate content. Admins have the ability to manage user content and handle reports.
 
-1. Należy zainstalować program xampp dostępny pod adresem: https://www.apachefriends.org/pl/index.html
+## Table of Contents
 
-2. Należy uruchomić program xampp oraz serwery Apache i MySQL które są w nim zawarte.
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Usage](#usage)
+- [Appearance of the application ](#views)
 
-3. W folderze instalacyjnym xampp'a znajduje się folder "htdocs", należy przenieść do tego folderu pliki projektu.
+## Features
 
-4. Należy otworzyć przeglądarkę internetową oraz wybrać adres "localhost" lub (jeżeli w htdocs projekt jest zagnieżdżony w kolejnym folderze) "localhost/nazwa-folderu".
+- **User Registration and Login**: Users can create an account, log in, and manage their profile.
+- **Meme Submission**: Users can upload memes and add descriptions.
+- **Commenting**: Users can comment on memes.
+- **Reporting**: Users can report inappropriate memes and comments.
+- **Admin Dashboard**: Admins can view, approve, or delete memes and comments, and handle user reports.
+- **Ranking System**: Display rankings of users based on their activity and popularity of their memes.
+- **Contact Form**: Users can contact the site administrators through a contact form.
+- **Password Recovery**: Users can recover their passwords via email.
 
-5. Po wybraniu odpowiedniego adresu zostaniemy przeniesieni na stronę główną projektu. :thumbsup:
+## Technologies Used
 
-## Przykładowe konto użytkownika. :frowning_person:
+- **Frontend**:
 
-Chcąc sprawdzić wszystkie możliwości serwisu MemHub należy utworzyć konto użytkownika jednakże można również wykorzystać testowe konto:
+  - HTML5
+  - CSS3
+  - JavaScript
+  - Bootstrap
 
-> :globe_with_meridians: Login: **testuser**
+- **Backend**:
 
-> :globe_with_meridians: Hasło: **testuser123**
+  - PHP
+  - MySQL (for database management)
 
-## MemHub Wersja Live. :earth_africa:
+- **Tools and Libraries**:
+  - Composer (for PHP dependency management)
+  - Gulp (for task automation)
+  - JSDoc (for JavaScript documentation)
+  - Doxygen (for generating documentation from annotated C++ sources)
+  - Node.js (for JavaScript runtime environment)
+  - Various PHP packages (specified in `composer.json`)
 
-Serwis MemHub można odwiedzić za pośrednictwem adresu: http://mem-hub.pl/
+## Appearance of the application
+
+[text](<readmeDoc/Testy - Dodawanie mema.pdf>)
+[text](<readmeDoc/Testy - Logowanie.pdf>)
+[text](<readmeDoc/Testy - Profil Użytkownika.pdf>)
