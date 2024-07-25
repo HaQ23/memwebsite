@@ -46,6 +46,12 @@ Memwebsite is a full-featured web application designed for creating, sharing, an
 
 ### Generate mem section
 
-![alt text](readmeDoc/image1.png)
-![alt text](readmeDoc/image2.png)
-![alt text](readmeDoc/image3.png) - [Adding](<readmeDoc/Testy - Dodawanie mema.pdf>) - [Login](<readmeDoc/Testy - Logowanie.pdf>) - [User account](<readmeDoc/Testy - Profil Użytkownika.pdf>)
+![alt text](app/readmeDoc/image1.png)
+![alt text](app/readmeDoc/image2.png)
+![alt text](app/readmeDoc/image3.png)
+
+### Other views you can see in the pdf files below
+
+- [Adding](<app/readmeDoc/Testy - Dodawanie mema.pdf>)
+- [Login](<app/readmeDoc/Testy - Logowanie.pdf>)
+- [User account](<app/readmeDoc/Testy - Profil Użytkownika.pdf>)
